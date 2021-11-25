@@ -1,0 +1,48 @@
+@font-face { font-family: "MonumentExtended-Black.woff2"; 
+src: url("../assets/MonumentExtended-Black.woff2"); } 
+
+html {
+  font-size: 16px;
+  /*font-family: 'Arial', sans-serif;*/
+/*width: 1900px;*/
+  max-width: 1900px;
+  background-color: #E8BEAC;
+  box-sizing: border-box;
+  margin: auto;
+  width: 100%;
+}
+
+*, *:before, *:after {
+box-sizing: inherit;
+}
+
+.title {
+    margin-top: 1.5rem;
+    margin-right: 30%;
+}
+.sub-title span {
+display: block;
+ font-size: 400%;
+ font-family: "MonumentExtended-Black";
+ /*border: 1px solid black;*/
+}
+
+.section-intro {
+    display: block;
+    position: relative;
+}
+
+
+.section-intro-chart {
+    float: left;
+    border: 1px solid black;
+    width: 67%;
+    height: 800px;
+}
+
+.section-intro-description {
+    float: right;
+    border: 1px solid black;
+    width: 32%;
+    height: 800px;
+}
