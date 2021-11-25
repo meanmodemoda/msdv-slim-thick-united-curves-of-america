@@ -46,3 +46,9 @@ display: block;
     width: 32%;
     height: 800px;
 }
+
+.axis text,
+.slider text {
+  /*font-size: 1rem;*/
+  fill: black;
+}
