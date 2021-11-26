@@ -5,7 +5,7 @@ html {
   font-size: 16px;
   /*font-family: 'Arial', sans-serif;*/
 /*width: 1900px;*/
-  max-width: 1900px;
+  width: 1900px;
   background-color: #E8BEAC;
   box-sizing: border-box;
   margin: auto;
@@ -35,20 +35,32 @@ display: block;
 
 .section-intro-chart {
     float: left;
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     width: 67%;
     height: 800px;
 }
 
 .section-intro-description {
-    float: right;
-    border: 1px solid black;
+    margin: 10%;
+    display: table-cell;
+    font-size: 1rem;
+    font-family: "Work Sans";
+    /*border: 1px solid black;*/
     width: 32%;
     height: 800px;
+    vertical-align: middle;
 }
+
+/*.rapsheet {*/
+/*    float: left;*/
+/* vertical-align: middle;*/
+/* margin-top: 200px;*/
+/*border: 1px solid black;*/
+/*}*/
 
 .axis text,
 .slider text {
   /*font-size: 1rem;*/
   fill: black;
 }
+

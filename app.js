@@ -191,6 +191,19 @@ function drawAreaChart(periodNum) {
 
 sliderGenerator.on('onchange', (value) => {
  drawAreaChart(value);
+ 
+ if(value==1){
+     document.querySelector(".section-intro-description").textContent = "This is new Story";
+ document.querySelector(".rapsheet").textContent = "Common";
+ }
+else  if(value==2){
+ document.querySelector(".section-intro-description").textContent = "This is about Heroine Chic";
+  document.querySelector(".rapsheet").textContent = "Sir Mix A Lot";}
+else if(value==3){
+ document.querySelector(".section-intro-description").textContent = "This is about Pilates";
+  document.querySelector(".rapsheet").textContent = "Don't Pilate Nothing";}
+else   if(value==4){document.querySelector(".section-intro-description").textContent = "This is about Slim Chick";
+  document.querySelector(".rapsheet").textContent = "Slim Thick";}
 });
     
 drawAreaChart(1);
