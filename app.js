@@ -49,8 +49,6 @@ async function draw() {
         
 // console.table(msm[0]) //this is good for csv
 // console.log(msm[0])      
-const sumMsm = d3.group(msm, d => d.type)
-    
 //**************************5. Create Data Accessors
     //bodyType
     const typeAccessor = d => d.type;
@@ -61,11 +59,15 @@ const sumMsm = d3.group(msm, d => d.type)
     //period
     const periodAccessor = d => d.period;
     
+    const periodNumAccessor = d =>d.periodNum;
+    
 // console.log(periodAccessor(msm[0]))
 
-    const bodyParts = ["bust","abdomen","waist","hip","butt"]
-    const bodyTypes = ["Hour Glass","Heroine Chic","Pilates Body","Slim Thick"]
-    const periods = ["since Playboy","1990s","2000s","2010s - now"]
+ const bodyParts = ["bust","abdomen","waist","hip","butt"]
+const bodyTypes = ["Hour Glass","Heroine Chic","Pilates Body","Slim Thick"]
+const periods = ["since Playboy","1990s","2000s","2010s - now"]
+    
+
 // //**************************6. Create Scale  
 
 const xScale = d3.scaleLinear()
@@ -80,17 +82,17 @@ const colorScale = d3.scaleOrdinal()
     .domain(bodyTypes)
     .range(['#999999','#666666','#333333','#000000'])
     
-const sliderScale = d3.scaleOrdinal()
-    .domain(periods)
-    .range([dimensions.boundedWidth/2+100,dimensions.boundedWidth/2+200,dimensions.boundedWidth/2+300,dimensions.boundedWidth/2+400])
+// const sliderScale = d3.scaleOrdinal()
+//     .domain(periods)
+//     .range([dimensions.boundedWidth/2+100,dimensions.boundedWidth/2+200,dimensions.boundedWidth/2+300,dimensions.boundedWidth/2+400])
     
 //**************************** Draw Axis
 
 const xAxisBottomGenerator = d3.axisBottom()
     .scale(xScale)
 
-const sliderAxisGenerator = d3.axisBottom()
-    .scale(sliderScale)
+// const sliderAxisGenerator = d3.axisBottom()
+//     .scale(sliderScale)
 
 const xAxisTopGenerator = d3.axisTop()
     .scale(xScale)
@@ -103,9 +105,9 @@ const xAxisBottom = bounds.append("g")
     .call(xAxisBottomGenerator)
     .style("transform",`translateY(${dimensions.boundedHeight/2+350}px)`)
 
-const sliderAxis = bounds.append("g")
-    .call(sliderAxisGenerator)
-    .style("transform",`translateY(${dimensions.boundedHeight/2+370}px)`)
+// const sliderAxis = bounds.append("g")
+//     .call(sliderAxisGenerator)
+//     .style("transform",`translateY(${dimensions.boundedHeight/2+370}px)`)
     
 const xAxisTop = bounds.append("g")
     .call(xAxisTopGenerator)
@@ -114,30 +116,6 @@ const xAxisTop = bounds.append("g")
 const yAxis = bounds.append("g")
     .call(yAxisGenerator)
     .style("transform",`translateX(${dimensions.boundedWidth/2+100}px)`)
-    
-
-// //**************************7. Draw Dots
-// // Select the svg area and add circles:
-
-//-----------------Draw Multiple Lines
-
-const areaGenerator = d3.area()
-    .x1(d => xScale(measurementAccessor(d)))
-    .x0(d => xScale(22))
-    .y(d => yScale(partAccessor(d)))
-    .curve(d3.curveCardinal)
-    // .curve(d3.curveCatmullRom.alpha(0.9))
-    // .curve(d3.curveBundle.beta(1))
-    
-bounds.selectAll(".line")
-    .data(sumMsm)
-    .enter().append("path")
-    .classed("line",true)
-    .attr("d", d=>areaGenerator(d[1]))
-    .attr("fill", d => colorScale(d[0]))
-    .attr("stroke", d => colorScale(d[0]))
-    .attr("stroke-width", 2)
-    .attr("opacity",0.8)
     
     
 const testDot = bounds.append("circle")
@@ -152,6 +130,7 @@ const sliderGenerator = d3.sliderHorizontal()
     .ticks(4)
     .tickFormat((d,i) => periods[i])
     .step(1)
+    .default(1)
     .width(300)
     .displayValue(false)
     .fill("#000000")
@@ -161,11 +140,6 @@ const sliderGenerator = d3.sliderHorizontal()
         .size(200)())
     
 
-sliderGenerator.on('onchange', (val) => {
-      d3.select('#value').text(val);
-      console.log(val);
-    });
-
 const slider = bounds.append('g')
     .classed("slider",true)
     .attr('width', 500)
@@ -174,15 +148,52 @@ const slider = bounds.append('g')
     .attr('transform', `translate(${dimensions.boundedWidth/2+100},${dimensions.boundedHeight/2+400})`)
     .call(sliderGenerator);
     
-// slider.select(".domain")
-//      .attr("stroke","#E04836")
-//      .attr("stroke-width","10")
-//      .attr("opacity",".6")
-//      .attr("stroke-dasharray","4");    
     
 //***************************8. Draw Tooltip
-
+ const areaGenerator = d3.area()
+    .x1(d => xScale(measurementAccessor(d)))
+    .x0(d => xScale(22))
+    .y(d => yScale(partAccessor(d)))
+    .curve(d3.curveCardinal)
+     // .curve(d3.curveCatmullRom.alpha(0.9))
+    // .curve(d3.curveBundle.beta(1))
 //***************************9. Draw Interactivity
 
+function drawAreaChart(periodNum) {
+
+const msmFilter = msm.filter(d => periodNumAccessor(d) == periodNum);
+
+    const sumMsm = d3.group(msmFilter, d => d.type)
+
+//-----------------Draw Multiple Lines
+
+  const gradientChange=(periodNum)=>{
+        if(periodNum==1) return 0.3;
+        else if(periodNum==2) return 0.6;
+        else if(periodNum==3) return 0.4;
+        else if(periodNum==4) return 0.3;
+    }   
+ 
+    bounds.selectAll(".path")
+    .data(sumMsm)
+    .join("path")
+    .attr("d", d=>areaGenerator(d[1]))
+    .attr("fill","#000000")
+    // .attr("fill", d => colorScale(d[0]))
+    // .attr("stroke", d => colorScale(d[0]))
+    // .attr("stroke-width", 2)
+    .attr("opacity",gradientChange(periodNum))
+    
+    console.log(periodNum);
+
+}
+
+sliderGenerator.on('onchange', (value) => {
+ 
+ drawAreaChart(value);
+    
+});
+    
+drawAreaChart(1);
    
 } draw()
