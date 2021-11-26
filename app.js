@@ -2,7 +2,7 @@
 
 async function draw() {
 
-//*************************1. Set up Measurement
+//*************************1. Draw Dimensions
 
    const width = 1000;
     
@@ -30,8 +30,7 @@ async function draw() {
 //         console.log("mouse page Y: ", e.pageY);
 //     }, );
         
-//*************************2. Draw Canvas
-
+//*************************2. Draw Wrapper and Bounds
    const wrapper = d3.select("#section-intro-chart") 
         .append("svg")
         .attr("width", dimensions.width)
@@ -41,7 +40,7 @@ async function draw() {
         .style("translate",`transform(${dimensions.margin.left}px, ${dimensions.margin.top}px)`)
   // const tooltip = d3.select("#tooltip")
   
-//**************************3. Load and Prepare Data  
+//**************************3. Load Data and Create Accessors
 
   const msm = await d3.csv("./body_measurement.csv",(d) => {
       d3.autoType(d) //time will converted to time format
@@ -49,26 +48,25 @@ async function draw() {
         
 // console.table(msm[0]) //this is good for csv
 // console.log(msm[0])      
-//**************************5. Create Data Accessors
+
     //bodyType
-    const typeAccessor = d => d.type;
+const typeAccessor = d => d.type;
      //bodyMeasurement (x-value)
-    const measurementAccessor = d => d.measurement;
+const measurementAccessor = d => d.measurement;
     //bodyPart (y-value)
-    const partAccessor = d => d.part;
+const partAccessor = d => d.part;
     //period
-    const periodAccessor = d => d.period;
-    
-    const periodNumAccessor = d =>d.periodNum;
-    
+const periodAccessor = d => d.period;
+    //periodNum 1,2,3,4
+const periodNumAccessor = d =>d.periodNum;
 // console.log(periodAccessor(msm[0]))
 
- const bodyParts = ["bust","abdomen","waist","hip","butt"]
+//set up Arrays manually so I can control the order
+const bodyParts = ["bust","abdomen","waist","hip","butt"]
 const bodyTypes = ["Hour Glass","Heroine Chic","Pilates Body","Slim Thick"]
 const periods = ["since Playboy","1990s","2000s","2010s - now"]
-    
 
-// //**************************6. Create Scale  
+//*************************4. Create Scale  
 
 const xScale = d3.scaleLinear()
     .domain([22,40])
@@ -86,8 +84,9 @@ const colorScale = d3.scaleOrdinal()
 //     .domain(periods)
 //     .range([dimensions.boundedWidth/2+100,dimensions.boundedWidth/2+200,dimensions.boundedWidth/2+300,dimensions.boundedWidth/2+400])
     
-//**************************** Draw Axis
+//****************************5. Draw Peripherals
 
+//----------------------Draw Axis Generators
 const xAxisBottomGenerator = d3.axisBottom()
     .scale(xScale)
 
@@ -101,6 +100,7 @@ const yAxisGenerator = d3.axisLeft()
     .scale(yScale)
     .tickSize(5)
 
+//----------------------Draw Axes
 const xAxisBottom = bounds.append("g")
     .call(xAxisBottomGenerator)
     .style("transform",`translateY(${dimensions.boundedHeight/2+350}px)`)
@@ -117,12 +117,13 @@ const yAxis = bounds.append("g")
     .call(yAxisGenerator)
     .style("transform",`translateX(${dimensions.boundedWidth/2+100}px)`)
     
-    
+//----------------------Draw Test Dots  
 const testDot = bounds.append("circle")
     .attr("cx",dimensions.boundedWidth/2)
     .attr("cy",dimensions.boundedHeight/2)
     .attr("r", 5)
-    
+
+//---------------------------Draw Ordinal Scale Slider    
 //using d3=simple-slider package, note syntax slightly different from d3.js
 const sliderGenerator = d3.sliderHorizontal()
     .min(1)
@@ -148,8 +149,7 @@ const slider = bounds.append('g')
     .attr('transform', `translate(${dimensions.boundedWidth/2+100},${dimensions.boundedHeight/2+400})`)
     .call(sliderGenerator);
     
-    
-//***************************8. Draw Tooltip
+//***************************6. Draw Chart Generator
  const areaGenerator = d3.area()
     .x1(d => xScale(measurementAccessor(d)))
     .x0(d => xScale(22))
@@ -157,23 +157,24 @@ const slider = bounds.append('g')
     .curve(d3.curveCardinal)
      // .curve(d3.curveCatmullRom.alpha(0.9))
     // .curve(d3.curveBundle.beta(1))
-//***************************9. Draw Interactivity
+
+//***************************7. Draw Chart
 
 function drawAreaChart(periodNum) {
 
-const msmFilter = msm.filter(d => periodNumAccessor(d) == periodNum);
-
-    const sumMsm = d3.group(msmFilter, d => d.type)
-
-//-----------------Draw Multiple Lines
-
+//----------------------------Ppre-filter data
+    const msmFilter = msm.filter(d => periodNumAccessor(d) == periodNum);
+    const sumMsm = d3.group(msmFilter, d => d.type);
+    
+//---------------------Change gradient value by filter
   const gradientChange=(periodNum)=>{
         if(periodNum==1) return 0.3;
         else if(periodNum==2) return 0.6;
         else if(periodNum==3) return 0.4;
         else if(periodNum==4) return 0.3;
     }   
- 
+    
+ //--------------------Draw areaChart
     bounds.selectAll(".path")
     .data(sumMsm)
     .join("path")
@@ -183,15 +184,13 @@ const msmFilter = msm.filter(d => periodNumAccessor(d) == periodNum);
     // .attr("stroke", d => colorScale(d[0]))
     // .attr("stroke-width", 2)
     .attr("opacity",gradientChange(periodNum))
-    
     console.log(periodNum);
-
 }
 
+//-----------------------------9. Draw Interaction
+
 sliderGenerator.on('onchange', (value) => {
- 
  drawAreaChart(value);
-    
 });
     
 drawAreaChart(1);
