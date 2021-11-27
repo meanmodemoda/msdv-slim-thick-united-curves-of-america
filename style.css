@@ -28,27 +28,42 @@ display: block;
 }
 
 .section-intro {
-    display: block;
-    position: relative;
+  display: inline-grid;
+  width: 100%;
+  grid-auto-flow: column;
+    /*position: relative;*/
 }
 
 
-.section-intro-chart {
-    float: left;
-    /*border: 1px solid black;*/
-    width: 67%;
-    height: 800px;
+.intro-element {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+    border: 1px solid black;
 }
 
-.section-intro-description {
-    margin: 10%;
-    display: table-cell;
-    font-size: 1rem;
-    font-family: "Work Sans";
-    /*border: 1px solid black;*/
-    width: 32%;
-    height: 800px;
-    vertical-align: middle;
+
+#section-intro-description{
+    border: 1px solid black;
+} 
+
+#section-intro-rapsheet {
+    border: 1px solid black;
+}
+
+h3 {
+    width: 60%;
+}
+
+#section-intro-chart {
+    /*display: inline-grid;*/
+    border: 1px solid black;
+    /*width: 67%;*/
+    /*height: 800px;*/
+}
+
+.rapsheet p{
+   width: 80%;
 }
 
 /*.rapsheet {*/

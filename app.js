@@ -4,15 +4,15 @@ async function draw() {
 
 //*************************1. Draw Dimensions
 
-   const width = 1000;
+   const width = 400;
     
     let dimensions = {
         width: width,
-        height: width * 0.8,
+        height: 800,
         margin: {
-            top: 80,
-            right: 50,
-            bottom: 50,
+            top: 20,
+            right: 20,
+            bottom: 20,
             left: 50
         }
     }
@@ -70,11 +70,11 @@ const periods = ["since Playboy","1990s","2000s","2010s - now"]
 
 const xScale = d3.scaleLinear()
     .domain([22,40])
-    .range([dimensions.boundedWidth/2+100,dimensions.boundedWidth/2+400])
+    .range([dimensions.margin.left,dimensions.margin.left+250])
     
 const yScale = d3.scaleOrdinal()
     .domain(bodyParts)
-    .range([dimensions.boundedHeight/2-150,dimensions.boundedHeight/2-50,dimensions.boundedHeight/2+100,dimensions.boundedHeight/2+250,dimensions.boundedHeight/2+350])
+    .range([dimensions.boundedHeight/2-250,dimensions.boundedHeight/2-150,dimensions.boundedHeight/2-50,dimensions.boundedHeight/2+100,dimensions.boundedHeight/2+200])
     
 const colorScale = d3.scaleOrdinal()
     .domain(bodyTypes)
@@ -103,7 +103,7 @@ const yAxisGenerator = d3.axisLeft()
 //----------------------Draw Axes
 const xAxisBottom = bounds.append("g")
     .call(xAxisBottomGenerator)
-    .style("transform",`translateY(${dimensions.boundedHeight/2+350}px)`)
+    .style("transform",`translateY(${dimensions.boundedHeight/2+200}px)`)
 
 // const sliderAxis = bounds.append("g")
 //     .call(sliderAxisGenerator)
@@ -111,11 +111,11 @@ const xAxisBottom = bounds.append("g")
     
 const xAxisTop = bounds.append("g")
     .call(xAxisTopGenerator)
-    .style("transform",`translateY(${dimensions.boundedHeight/2-150}px)`)
+    .style("transform",`translateY(${dimensions.boundedHeight/2-250}px)`)
     
 const yAxis = bounds.append("g")
     .call(yAxisGenerator)
-    .style("transform",`translateX(${dimensions.boundedWidth/2+100}px)`)
+    .style("transform",`translateX(${dimensions.margin.left}px)`)
     
 //----------------------Draw Test Dots  
 const testDot = bounds.append("circle")
@@ -132,7 +132,7 @@ const sliderGenerator = d3.sliderHorizontal()
     .tickFormat((d,i) => periods[i])
     .step(1)
     .default(1)
-    .width(300)
+    .width(250)
     .displayValue(false)
     .fill("#000000")
     .handle(
@@ -143,10 +143,10 @@ const sliderGenerator = d3.sliderHorizontal()
 
 const slider = bounds.append('g')
     .classed("slider",true)
-    .attr('width', 500)
-    .attr('height', 100)
+    // .attr('width', 400)
+    // .attr('height', 100)
     //note this is different from CSS, d3 standard `translate` syntax, `px` is omitted
-    .attr('transform', `translate(${dimensions.boundedWidth/2+100},${dimensions.boundedHeight/2+400})`)
+    .attr('transform', `translate(${dimensions.margin.left},${dimensions.boundedHeight/2+250})`)
     .call(sliderGenerator);
     
 //***************************6. Draw Chart Generator
@@ -193,17 +193,17 @@ sliderGenerator.on('onchange', (value) => {
  drawAreaChart(value);
  
  if(value==1){
-     document.querySelector(".section-intro-description").textContent = "This is new Story";
- document.querySelector(".rapsheet").textContent = "Common";
+     document.querySelector("#section-intro-description").textContent = "This is new Story";
+ document.querySelector("#section-intro-rapsheet").textContent = "Common";
  }
 else  if(value==2){
- document.querySelector(".section-intro-description").textContent = "This is about Heroine Chic";
-  document.querySelector(".rapsheet").textContent = "Sir Mix A Lot";}
+ document.querySelector("#section-intro-description").textContent = "This is about Heroine Chic";
+  document.querySelector("#section-intro-rapsheet").textContent = "Sir Mix A Lot";}
 else if(value==3){
- document.querySelector(".section-intro-description").textContent = "This is about Pilates";
-  document.querySelector(".rapsheet").textContent = "Don't Pilate Nothing";}
-else   if(value==4){document.querySelector(".section-intro-description").textContent = "This is about Slim Chick";
-  document.querySelector(".rapsheet").textContent = "Slim Thick";}
+ document.querySelector("#section-intro-description").textContent = "This is about Pilates";
+  document.querySelector("#section-intro-rapsheet").textContent = "Don't Pilate Nothing";}
+else   if(value==4){document.querySelector("#section-intro-description").textContent = "This is about Slim Chick";
+  document.querySelector("#section-intro-rapsheet").textContent = "Slim Thick";}
 });
     
 drawAreaChart(1);
