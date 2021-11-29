@@ -17,12 +17,12 @@ box-sizing: inherit;
 }
 
 .title {
-    margin-top: 1.5rem;
+    margin-top: 1.2rem;
     margin-right: 30%;
 }
 .sub-title span {
 display: block;
- font-size: 400%;
+ font-size: 300%;
  font-family: "MonumentExtended-Black";
  /*border: 1px solid black;*/
 }
@@ -31,7 +31,7 @@ display: block;
   display: inline-grid;
   width: 100%;
   grid-auto-flow: column;
-    /*position: relative;*/
+  grid-template-columns: 4fr 3fr 2fr;
 }
 
 
@@ -39,25 +39,26 @@ display: block;
   display: flex;
   align-items: center;
   justify-content: center;
-    border: 1px solid black;
+    /*border: 1px solid black;*/
 }
 
 
 #section-intro-description{
-    border: 1px solid black;
+    /*border: 1px solid black;*/
 } 
 
 #section-intro-rapsheet {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
 }
 
 h3 {
     width: 60%;
+    font-size: 1rem;
 }
 
 #section-intro-chart {
     /*display: inline-grid;*/
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     /*width: 67%;*/
     /*height: 800px;*/
 }
@@ -79,3 +80,27 @@ h3 {
   fill: black;
 }
 
+.transition-description {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+    /*border: 1px solid black;*/
+}
+
+.svg-group {
+  display: block;
+  border: 1px solid black;
+}
+
+.curve-slider {
+  float: left;
+  border: 1px solid black;
+  position: absolute;
+}
+/*.svg-group {*/
+/*  display: inline-grid;*/
+/*  width: 100%;*/
+/*  grid-auto-flow: column;*/
+/*  grid-template-columns: 1fr 1fr;*/
+/*}*/
