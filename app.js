@@ -54,7 +54,7 @@ async function draw() {
 //         console.log("mouse page Y: ", e.pageY);
 //     }, );
         
-//*************************2. Draw Wrapper and Bounds
+//*************************2. Draw Wrappers and Bounds
 
 //----------------------------Area Chart Wrapper and Bounds
    const wrapperArea = d3.select("#section-intro-chart") 
@@ -80,10 +80,11 @@ async function draw() {
   
 //**************************3. Load Data and Create Accessors
 
+//----------------------Load Data
   const msm = await d3.csv("./body_measurement.csv",(d) => {
-      d3.autoType(d) //time will converted to time format
+      d3.autoType(d)  
         return d})
-// console.table(msm[0]) //this is good for csv
+// console.table(msm[0])  
 // console.log(msm[0])      
 
  const surgery = await d3.csv("./plastic_surgery_growth.csv",(d) => {
@@ -97,6 +98,7 @@ async function draw() {
 const sumSry = d3.group(surgery, d => d.surgery);    
 // console.log(sumSry)
 
+//--------------------Create Accessors
     //bodyType
 const typeAccessor = d => d.type;
      //bodyMeasurement (x-value)
@@ -109,8 +111,9 @@ const periodAccessor = d => d.period;
 const periodNumAccessor = d =>d.periodNum;
 // console.log(periodAccessor(msm[0]))
 
-//surgery year
+//surgeryType
 const surgeryAccessor = d => d.surgery;
+//surgeryYear
 const yearParser = d3.timeParse("%Y");
 const yearAccessor = d =>yearParser(d.year);
 // console.log(yearAccessor(surgery[0]))
@@ -122,6 +125,7 @@ const rateAccessor = d => d.rate;
 const bodyParts = ["bust","abdomen","waist","hip","butt"]
 const bodyTypes = ["Hour Glass","Heroine Chic","Pilates Body","Slim Thick"]
 const periods = ["since Playboy","1990s","2000s","2010s - now"]
+const surgeryTypes = ["Breast augmentation","Buttock augmentation", "Cheek implant","Chin augmentation","Facelift","Lip augmentation","Liposuction","Nose reshaping","Tummy tuck"]
 
 //*************************4. Create Scale  
 
@@ -148,8 +152,9 @@ const areaColorScale = d3.scaleOrdinal()
     .range(['#999999','#666666','#333333','#000000'])
     
 
-const lineColorScale = d3.scaleOrdinal(d3.schemeCategory10)
-    // .domain(d3.extent(surgery,surgeryAccessor))
+const lineColorScale = d3.scaleOrdinal()
+    .domain(surgeryTypes)
+    .range(['#000000','#8b0000','#8b0000','#000000','#000000','#000000','#000000','#000000','#000000'])
     
 // const sliderScale = d3.scaleOrdinal()
 //     .domain(periods)
@@ -243,10 +248,21 @@ const lineGenerator = d3.line()
     .y(d => timeScale(yearAccessor(d)))
     // .curve(d3.curveCardinal)
     .curve(d3.curveCatmullRom.alpha(0.9))
-//***************************7. Draw Chart
+//***************************7. Draw Area Chart
 
+const lineChart = boundsLine.selectAll(".path")
+    .data(sumSry)
+    .join("path")
+    .attr("d", d => lineGenerator(d[1]))
+    .attr("stroke", d => lineColorScale(d[0]))
+    .attr("stroke-width",3)
+    .attr("fill","none")
+    .attr("opacity",0.8)
+    .raise()
+    
+    
+    
 function drawAreaChart(periodNum) {
-
 //----------------------------Ppre-filter data
     const msmFilter = msm.filter(d => periodNumAccessor(d) == periodNum);
     const sumMsm = d3.group(msmFilter, d => d.type);
@@ -272,6 +288,7 @@ function drawAreaChart(periodNum) {
     // console.log(periodNum);
 }
 
+
 //-----------------------------9. Draw Interaction
 
 sliderGenerator.on('onchange', (value) => {
@@ -293,14 +310,7 @@ else   if(value==4){document.querySelector("#section-intro-description").textCon
     
 drawAreaChart(1);
 
-const lineChart = boundsLine.selectAll(".path")
-    .data(sumSry)
-    .join("path")
-    .attr("d", d => lineGenerator(d[1]))
-    .attr("stroke", d => lineColorScale(d[0]))
-    .attr("stroke-width",2)
-    .attr("fill","none")
-    .raise()
+
 //--------------------------------10 line tracing
 
 //----------------------Draw Test Dots  
