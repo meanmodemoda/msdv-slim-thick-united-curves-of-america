@@ -14,7 +14,7 @@ async function draw() {
         margin: {
             top: 20,
             right: 20,
-            bottom: 20,
+            bottom: 0,
             left: 50
         }
     }
@@ -30,8 +30,8 @@ async function draw() {
 //-----------------------Line Chart Dimensions        
         
    const dimensionsLine = {
-        width: 400,
-        height: 800,
+        width: 2000,
+        height: 3050,
         margin: {
             top: 20,
             right: 20,
@@ -67,7 +67,7 @@ async function draw() {
 
 //----------------------------Line Chart Wrapper and Bounds
 
-   const wrapperLine = d3.select("#svg-group") 
+   const wrapperLine = d3.select("g#time-line") 
         .append("svg")
         .attr("width", dimensionsLine.width)
         .attr("height", dimensionsLine.height)
@@ -89,6 +89,8 @@ async function draw() {
  const surgery = await d3.csv("./plastic_surgery_growth.csv",(d) => {
      d3.autoType(d)
       return d})
+      
+ surgery.sort((a,b)=>b.year-a.year);
 // console.table(surgery[0]) 
 // console.log(surgery[0])  
 
@@ -108,6 +110,7 @@ const periodNumAccessor = d =>d.periodNum;
 // console.log(periodAccessor(msm[0]))
 
 //surgery year
+const surgeryAccessor = d => d.surgery;
 const yearParser = d3.timeParse("%Y");
 const yearAccessor = d =>yearParser(d.year);
 // console.log(yearAccessor(surgery[0]))
@@ -130,17 +133,23 @@ const yScale = d3.scaleOrdinal()
     .domain(bodyParts)
     .range([dimensionsArea.boundedHeight/2-250,dimensionsArea.boundedHeight/2-150,dimensionsArea.boundedHeight/2-50,dimensionsArea.boundedHeight/2+100,dimensionsArea.boundedHeight/2+200])
     
-const colorScale = d3.scaleOrdinal()
+const timeScale = d3.scaleTime()
+    .domain(d3.extent(surgery,yearAccessor))
+    .range([dimensionsLine.boundedHeight/2-600,dimensionsLine.boundedHeight])
+    .nice()
+    
+const rateScale = d3.scaleLinear()
+    .domain(d3.extent(surgery,rateAccessor))
+    .range([dimensionsLine.boundedWidth/2-20,dimensionsLine.boundedWidth/2+500])
+    
+    
+const areaColorScale = d3.scaleOrdinal()
     .domain(bodyTypes)
     .range(['#999999','#666666','#333333','#000000'])
     
-const timeScale = d3.scaleTime()
-    .domain(d3.extent(surgery,yearAccessor))
-    .range([dimensionsLine.boundedHeight,dimensionsLine.margin.top])
-    .nice()
-    
-const pctScale = d3.scaleLinear()
-    .domain(d3.extent(surgery))
+
+const lineColorScale = d3.scaleOrdinal(d3.schemeCategory10)
+    // .domain(d3.extent(surgery,surgeryAccessor))
     
 // const sliderScale = d3.scaleOrdinal()
 //     .domain(periods)
@@ -151,7 +160,7 @@ const pctScale = d3.scaleLinear()
 //----------------------Draw Axis Generators
 const xAxisBottomGenerator = d3.axisBottom()
     .scale(xScale)
-
+    
 // const sliderAxisGenerator = d3.axisBottom()
 //     .scale(sliderScale)
 
@@ -161,6 +170,12 @@ const xAxisTopGenerator = d3.axisTop()
 const yAxisGenerator = d3.axisLeft()
     .scale(yScale)
     .tickSize(5)
+    
+const timeAxisGenerator = d3.axisLeft()
+    .scale(timeScale)
+    
+const rateAxisGenerator = d3.axisBottom()
+    .scale(rateScale)
 
 //----------------------Draw Axes
 const xAxisBottom = boundsArea.append("g")
@@ -179,7 +194,14 @@ const yAxis = boundsArea.append("g")
     .call(yAxisGenerator)
     .style("transform",`translateX(${dimensionsArea.margin.left}px)`)
     
+// const timeAxis = boundsLine.append("g")
+//     .call(timeAxisGenerator)
+//     .style("transform",`translateX(${dimensionsLine.boundedWidth/2}px)`)
+    
 
+// const rateAxis = boundsLine.append("g")
+//     .call(rateAxisGenerator)
+//     .style("transform",`translateY(${dimensionsLine.boundedHeight}px)`)
 
 //---------------------------Draw Ordinal Scale Slider    
 //using d3=simple-slider package, note syntax slightly different from d3.js
@@ -207,7 +229,7 @@ const slider = boundsArea.append('g')
     .attr('transform', `translate(${dimensionsArea.margin.left},${dimensionsArea.boundedHeight/2+250})`)
     .call(sliderGenerator);
     
-//***************************6. Draw Chart Generator
+//***************************6. Draw Chart Generators
  const areaGenerator = d3.area()
     .x1(d => xScale(measurementAccessor(d)))
     .x0(d => xScale(22))
@@ -216,6 +238,11 @@ const slider = boundsArea.append('g')
      // .curve(d3.curveCatmullRom.alpha(0.9))
     // .curve(d3.curveBundle.beta(1))
 
+const lineGenerator = d3.line()
+  .x(d => rateScale(rateAccessor(d)))
+    .y(d => timeScale(yearAccessor(d)))
+    // .curve(d3.curveCardinal)
+    .curve(d3.curveCatmullRom.alpha(0.9))
 //***************************7. Draw Chart
 
 function drawAreaChart(periodNum) {
@@ -238,8 +265,8 @@ function drawAreaChart(periodNum) {
     .join("path")
     .attr("d", d=>areaGenerator(d[1]))
     .attr("fill","#000000")
-    // .attr("fill", d => colorScale(d[0]))
-    // .attr("stroke", d => colorScale(d[0]))
+    // .attr("fill", d => areaColorScale(d[0]))
+    // .attr("stroke", d => areaColorScale(d[0]))
     // .attr("stroke-width", 2)
     .attr("opacity",gradientChange(periodNum))
     // console.log(periodNum);
@@ -266,7 +293,14 @@ else   if(value==4){document.querySelector("#section-intro-description").textCon
     
 drawAreaChart(1);
 
-
+const lineChart = boundsLine.selectAll(".path")
+    .data(sumSry)
+    .join("path")
+    .attr("d", d => lineGenerator(d[1]))
+    .attr("stroke", d => lineColorScale(d[0]))
+    .attr("stroke-width",2)
+    .attr("fill","none")
+    .raise()
 //--------------------------------10 line tracing
 
 //----------------------Draw Test Dots  
