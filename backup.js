@@ -81,11 +81,11 @@ async function draw() {
 //**************************3. Load Data and Create Accessors
 
 //----------------------Load Data
-  const msm = await d3.csv("./body_measurement_v2.csv",(d) => {
+  const msm = await d3.csv("./body_measurement.csv",(d) => {
       d3.autoType(d)  
         return d})
 // console.table(msm[0])  
-// console.log(msm[0])   
+// console.log(msm[0])      
 
  const surgery = await d3.csv("./plastic_surgery_growth.csv",(d) => {
      d3.autoType(d)
@@ -109,10 +109,7 @@ const partAccessor = d => d.part;
 const periodAccessor = d => d.period;
     //periodNum 1,2,3,4
 const periodNumAccessor = d =>d.periodNum;
-
-const cultureAccessor = d =>d.culture;
 // console.log(periodAccessor(msm[0]))
-const iconAccessor = d =>d.icon;
 
 //surgeryType
 const surgeryAccessor = d => d.surgery;
@@ -125,16 +122,15 @@ const rateAccessor = d => d.rate;
 // console.log(rateAccessor(surgery[0]))
 
 //set up Arrays manually so I can control the order
-const cultureTypes = ["main","counter"]
 const bodyParts = ["bust","abdomen","waist","hip","butt"]
-const bodyTypes = ["Hour Glass","Androgyny","Fitness Craze","Heroine Chic","Pilates Body","Slim Thick"]
-const periods = ["1950s","1960s-'70s","1980s","1990s","2000s","2010s-now"]
+const bodyTypes = ["Hour Glass","Heroine Chic","Pilates Body","Slim Thick"]
+const periods = ["since Playboy","1990s","2000s","2010s - now"]
 const surgeryTypes = ["Breast augmentation","Buttock augmentation", "Cheek implant","Chin augmentation","Facelift","Lip augmentation","Liposuction","Nose reshaping","Tummy tuck"]
 
 //*************************4. Create Scale  
 
 const xScale = d3.scaleLinear()
-    .domain([20,46])
+    .domain([22,40])
     .range([dimensionsArea.margin.left,dimensionsArea.margin.left+250])
     
 const yScale = d3.scaleOrdinal()
@@ -154,10 +150,7 @@ const rateScale = d3.scaleLinear()
 const areaColorScale = d3.scaleOrdinal()
     .domain(bodyTypes)
     .range(['#999999','#666666','#333333','#000000'])
- 
-const cultureColorScale = d3.scaleOrdinal()
-    .domain(cultureTypes)
-    .range(['#000000','#999999'])
+    
 
 const lineColorScale = d3.scaleOrdinal()
     .domain(surgeryTypes)
@@ -219,8 +212,8 @@ const yAxis = boundsArea.append("g")
 //using d3=simple-slider package, note syntax slightly different from d3.js
 const sliderGenerator = d3.sliderHorizontal()
     .min(1)
-    .max(6)
-    .ticks(6)
+    .max(4)
+    .ticks(4)
     .tickFormat((d,i) => periods[i])
     .step(1)
     .default(1)
@@ -244,7 +237,7 @@ const slider = boundsArea.append('g')
 //***************************6. Draw Chart Generators
  const areaGenerator = d3.area()
     .x1(d => xScale(measurementAccessor(d)))
-    .x0(d => xScale(20))
+    .x0(d => xScale(22))
     .y(d => yScale(partAccessor(d)))
     .curve(d3.curveCardinal)
      // .curve(d3.curveCatmullRom.alpha(0.9))
@@ -272,16 +265,14 @@ const lineChart = boundsLine.selectAll(".path")
 function drawAreaChart(periodNum) {
 //----------------------------Ppre-filter data
     const msmFilter = msm.filter(d => periodNumAccessor(d) == periodNum);
-    const sumMsm = d3.group(msmFilter,cultureAccessor);
+    const sumMsm = d3.group(msmFilter, d => d.type);
     
 //---------------------Change gradient value by filter
   const gradientChange=(periodNum)=>{
         if(periodNum==1) return 0.3;
-        else if(periodNum==2) return 0.4;
-        else if(periodNum==3) return 0.5;
-        else if(periodNum==4) return 0.7;
-        else if(periodNum==5) return 0.8;
-        else if(periodNum==6) return 1;
+        else if(periodNum==2) return 0.6;
+        else if(periodNum==3) return 0.4;
+        else if(periodNum==4) return 0.3;
     }   
     
  //--------------------Draw areaChart
@@ -289,13 +280,11 @@ function drawAreaChart(periodNum) {
     .data(sumMsm)
     .join("path")
     .attr("d", d=>areaGenerator(d[1]))
-    .attr("fill", d => cultureColorScale(d[0]))
-    // .attr("opacity",gradientChange(periodNum))
+    .attr("fill","#000000")
     // .attr("fill", d => areaColorScale(d[0]))
-    .attr("stroke", d => cultureColorScale(d[0]))
-      .attr("opacity",0.5)
-    // .attr("stroke-width", 5)
-   
+    // .attr("stroke", d => areaColorScale(d[0]))
+    // .attr("stroke-width", 2)
+    .attr("opacity",gradientChange(periodNum))
     // console.log(periodNum);
 }
 

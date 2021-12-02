@@ -88,16 +88,26 @@ h3 {
     /*border: 1px solid black;*/
 }
 
+.gaze {
+  display: block;
+  /*margin: auto 0;*/
+}
+
 .svg-group {
   display: block;
+/*height: 800px;*/
+    align-items: center;
+      justify-content: center;
   border: 1px solid black;
 }
 
-.curve-slider {
-  float: left;
-  border: 1px solid black;
-  position: absolute;
-}
+/*.curve-slider {*/
+/*  float: left;*/
+/*  border: 1px solid black;*/
+  /*position: absolute;*/
+/*}*/
+
+
 /*.svg-group {*/
 /*  display: inline-grid;*/
 /*  width: 100%;*/
