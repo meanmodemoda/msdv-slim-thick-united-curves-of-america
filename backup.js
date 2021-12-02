@@ -76,16 +76,22 @@ async function draw() {
         .style("translate",`transform(${dimensionsLine.margin.left}px, ${dimensionsLine.margin.top}px)`)
 
 
+// ------------------------------Initial static 
+    
+    const areaChartGroup = boundsArea.append("g")
+         .classed("areaChart",true)
+    
+
   // const tooltip = d3.select("#tooltip")
   
 //**************************3. Load Data and Create Accessors
 
 //----------------------Load Data
-  const msm = await d3.csv("./body_measurement_v2.csv",(d) => {
+  const msm = await d3.csv("./body_measurement.csv",(d) => {
       d3.autoType(d)  
         return d})
-        
-msm.sort((a,b)=>a.culture-b.culture);
+
+msm.sort((a,b)=> a.culture - b.culture)        
 // console.table(msm[0])  
 // console.log(msm[0])   
 
@@ -130,8 +136,8 @@ const rateAccessor = d => d.rate;
 //set up Arrays manually so I can control the order
 const cultureTypes = ["counter","main"]
 const bodyParts = ["bust","abdomen","waist","hip","butt"]
-const bodyTypes = ["Hour Glass","Androgyny","Fitness Craze","Heroine Chic","Pilates Body","Slim Thick"]
-const periods = ["1950s","1960s-'70s","1980s","1990s","2000s","2010s-now"]
+const bodyTypes = ["Hour Glass","Androgyny","Disco Diva","Fitness Craze","Heroine Chic","Pilates Body","Slim Thick"]
+const periods = ["1950s","1960s","1970s","1980s","1990s","2000s","2010s+"]
 const surgeryTypes = ["Breast augmentation","Buttock augmentation", "Cheek implant","Chin augmentation","Facelift","Lip augmentation","Liposuction","Nose reshaping","Tummy tuck"]
 
 //*************************4. Create Scale  
@@ -222,8 +228,8 @@ const yAxis = boundsArea.append("g")
 //using d3=simple-slider package, note syntax slightly different from d3.js
 const sliderGenerator = d3.sliderHorizontal()
     .min(1)
-    .max(6)
-    .ticks(6)
+    .max(7)
+    .ticks(7)
     .tickFormat((d,i) => periods[i])
     .step(1)
     .default(1)
@@ -275,8 +281,8 @@ const lineChart = boundsLine.selectAll(".path")
 function drawAreaChart(periodNum) {
 //----------------------------Ppre-filter data
     const msmFilter = msm.filter(d => periodNumAccessor(d) == periodNum);
-    const sumMsm = d3.group(msmFilter,cultureAccessor);
-    
+    const sumMsm = d3.group(msmFilter,cultureAccessor)
+    console.log(sumMsm)
 //---------------------Change gradient value by filter
   const gradientChange=(periodNum)=>{
         if(periodNum==1) return 0.3;
@@ -292,9 +298,10 @@ function drawAreaChart(periodNum) {
         else return 1;
     }       
  //--------------------Draw areaChart
-    boundsArea.selectAll(".path")
+    areaChartGroup.selectAll("path")
     .data(sumMsm)
     .join("path")
+    
     .attr("d", d=>areaGenerator(d[1]))
     .attr("fill", d => cultureColorScale(d[0]))
     .attr("opacity", d => opacityCultureChange(d[0]))
