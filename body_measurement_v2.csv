@@ -1,54 +1,54 @@
 ﻿periodNum,period,type,culture,icon,part,measurement
-1,1950s,Hour Glass,main,Playmate,bust,36
-1,1950s,Hour Glass,main,Playmate,abdomen,34
-1,1950s,Hour Glass,main,Playmate,waist,24
-1,1950s,Hour Glass,main,Playmate,hip,34
-1,1950s,Hour Glass,main,Playmate,butt,36
 1,1950s,Hour Glass,counter,Playmate,bust,36
 1,1950s,Hour Glass,counter,Playmate,abdomen,34
 1,1950s,Hour Glass,counter,Playmate,waist,24
 1,1950s,Hour Glass,counter,Playmate,hip,40
 1,1950s,Hour Glass,counter,Playmate,butt,44
-2,1960s-'70s,Androgyny,main,Twiggy,bust,32
-2,1960s-'70s,Androgyny,main,Twiggy,abdomen,30
-2,1960s-'70s,Androgyny,main,Twiggy,waist,23
-2,1960s-'70s,Androgyny,main,Twiggy,hip,30
-2,1960s-'70s,Androgyny,main,Twiggy,butt,32
+1,1950s,Hour Glass,main,Playmate,bust,36
+1,1950s,Hour Glass,main,Playmate,abdomen,34
+1,1950s,Hour Glass,main,Playmate,waist,24
+1,1950s,Hour Glass,main,Playmate,hip,34
+1,1950s,Hour Glass,main,Playmate,butt,36
 2,1960s-'70s,Androgyny,counter,Twiggy,bust,39
 2,1960s-'70s,Androgyny,counter,Twiggy,abdomen,34
 2,1960s-'70s,Androgyny,counter,Twiggy,waist,21
 2,1960s-'70s,Androgyny,counter,Twiggy,hip,42
 2,1960s-'70s,Androgyny,counter,Twiggy,butt,46
-3,1980s,Fitness Craze,main,Jane Fonda,bust,36
-3,1980s,Fitness Craze,main,Jane Fonda,abdomen,34
-3,1980s,Fitness Craze,main,Jane Fonda,waist,25
-3,1980s,Fitness Craze,main,Jane Fonda,hip,33
-3,1980s,Fitness Craze,main,Jane Fonda,butt,35
+2,1960s-'70s,Androgyny,main,Twiggy,bust,32
+2,1960s-'70s,Androgyny,main,Twiggy,abdomen,30
+2,1960s-'70s,Androgyny,main,Twiggy,waist,23
+2,1960s-'70s,Androgyny,main,Twiggy,hip,30
+2,1960s-'70s,Androgyny,main,Twiggy,butt,32
 3,1980s,Fitness Craze,counter,Jane Fonda,bust,38
 3,1980s,Fitness Craze,counter,Jane Fonda,abdomen,36
 3,1980s,Fitness Craze,counter,Jane Fonda,waist,27
 3,1980s,Fitness Craze,counter,Jane Fonda,hip,36
 3,1980s,Fitness Craze,counter,Jane Fonda,butt,38
-4,1990s,Heroine Chic,main,Kate Moss,bust,34
-4,1990s,Heroine Chic,main,Kate Moss,abdomen,33
-4,1990s,Heroine Chic,main,Kate Moss,waist,24
-4,1990s,Heroine Chic,main,Kate Moss,hip,33
-4,1990s,Heroine Chic,main,Kate Moss,butt,34
+3,1980s,Fitness Craze,main,Jane Fonda,bust,36
+3,1980s,Fitness Craze,main,Jane Fonda,abdomen,34
+3,1980s,Fitness Craze,main,Jane Fonda,waist,25
+3,1980s,Fitness Craze,main,Jane Fonda,hip,33
+3,1980s,Fitness Craze,main,Jane Fonda,butt,35
 4,1990s,Heroine Chic,counter,Kate Moss,bust,38
 4,1990s,Heroine Chic,counter,Kate Moss,abdomen,36
 4,1990s,Heroine Chic,counter,Kate Moss,waist,24
 4,1990s,Heroine Chic,counter,Kate Moss,hip,36
 4,1990s,Heroine Chic,counter,Kate Moss,butt,37
-5,2000s,Pilates Body,main,Britney Spears,bust,36
-5,2000s,Pilates Body,main,Britney Spears,abdomen,35
-5,2000s,Pilates Body,main,Britney Spears,waist,25
-5,2000s,Pilates Body,main,Britney Spears,hip,33
-5,2000s,Pilates Body,main,Britney Spears,butt,34
+4,1990s,Heroine Chic,main,Kate Moss,bust,34
+4,1990s,Heroine Chic,main,Kate Moss,abdomen,33
+4,1990s,Heroine Chic,main,Kate Moss,waist,24
+4,1990s,Heroine Chic,main,Kate Moss,hip,33
+4,1990s,Heroine Chic,main,Kate Moss,butt,34
 5,2000s,Pilates Body,counter,Britney Spears,bust,36
 5,2000s,Pilates Body,counter,Britney Spears,abdomen,34
 5,2000s,Pilates Body,counter,Britney Spears,waist,24
 5,2000s,Pilates Body,counter,Britney Spears,hip,38
 5,2000s,Pilates Body,counter,Britney Spears,butt,40
+5,2000s,Pilates Body,main,Britney Spears,bust,36
+5,2000s,Pilates Body,main,Britney Spears,abdomen,35
+5,2000s,Pilates Body,main,Britney Spears,waist,25
+5,2000s,Pilates Body,main,Britney Spears,hip,33
+5,2000s,Pilates Body,main,Britney Spears,butt,34
 6,2010s-now,Slim Thick,main,Kylie Jenner,bust,36
 6,2010s-now,Slim Thick,main,Kylie Jenner,abdomen,34
 6,2010s-now,Slim Thick,main,Kylie Jenner,waist,24

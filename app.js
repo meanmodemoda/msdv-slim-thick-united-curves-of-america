@@ -76,6 +76,12 @@ async function draw() {
         .style("translate",`transform(${dimensionsLine.margin.left}px, ${dimensionsLine.margin.top}px)`)
 
 
+// ------------------------------Initial static 
+    
+    const areaChartGroup = boundsArea.append("g")
+         .classed("areaChart",true)
+    
+
   // const tooltip = d3.select("#tooltip")
   
 //**************************3. Load Data and Create Accessors
@@ -84,6 +90,8 @@ async function draw() {
   const msm = await d3.csv("./body_measurement_v2.csv",(d) => {
       d3.autoType(d)  
         return d})
+
+msm.sort((a,b)=> a.culture - b.culture)        
 // console.table(msm[0])  
 // console.log(msm[0])   
 
@@ -92,6 +100,7 @@ async function draw() {
       return d})
       
  surgery.sort((a,b)=>b.year-a.year);
+
 // console.table(surgery[0]) 
 // console.log(surgery[0])  
 
@@ -125,7 +134,7 @@ const rateAccessor = d => d.rate;
 // console.log(rateAccessor(surgery[0]))
 
 //set up Arrays manually so I can control the order
-const cultureTypes = ["main","counter"]
+const cultureTypes = ["counter","main"]
 const bodyParts = ["bust","abdomen","waist","hip","butt"]
 const bodyTypes = ["Hour Glass","Androgyny","Fitness Craze","Heroine Chic","Pilates Body","Slim Thick"]
 const periods = ["1950s","1960s-'70s","1980s","1990s","2000s","2010s-now"]
@@ -157,7 +166,7 @@ const areaColorScale = d3.scaleOrdinal()
  
 const cultureColorScale = d3.scaleOrdinal()
     .domain(cultureTypes)
-    .range(['#000000','#999999'])
+    .range(['#8b0000','#000000'])
 
 const lineColorScale = d3.scaleOrdinal()
     .domain(surgeryTypes)
@@ -272,8 +281,8 @@ const lineChart = boundsLine.selectAll(".path")
 function drawAreaChart(periodNum) {
 //----------------------------Ppre-filter data
     const msmFilter = msm.filter(d => periodNumAccessor(d) == periodNum);
-    const sumMsm = d3.group(msmFilter,cultureAccessor);
-    
+    const sumMsm = d3.group(msmFilter,cultureAccessor)
+    console.log(sumMsm)
 //---------------------Change gradient value by filter
   const gradientChange=(periodNum)=>{
         if(periodNum==1) return 0.3;
@@ -283,17 +292,22 @@ function drawAreaChart(periodNum) {
         else if(periodNum==5) return 0.8;
         else if(periodNum==6) return 1;
     }   
-    
+
+  const opacityCultureChange=(cultureTypes)=>{
+        if(cultureTypes=="counter") return 0.5;
+        else return 1;
+    }       
  //--------------------Draw areaChart
-    boundsArea.selectAll(".path")
+    areaChartGroup.selectAll("path")
     .data(sumMsm)
     .join("path")
+    
     .attr("d", d=>areaGenerator(d[1]))
     .attr("fill", d => cultureColorScale(d[0]))
-    // .attr("opacity",gradientChange(periodNum))
+    .attr("opacity", d => opacityCultureChange(d[0]))
     // .attr("fill", d => areaColorScale(d[0]))
     .attr("stroke", d => cultureColorScale(d[0]))
-      .attr("opacity",0.5)
+    //   .attr("opacity",0.5)
     // .attr("stroke-width", 5)
    
     // console.log(periodNum);
