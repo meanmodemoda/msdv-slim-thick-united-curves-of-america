@@ -226,7 +226,6 @@ const xAxisLeftBottom = leftAxisGroup.append("g")
 // const sliderAxis = bounds.append("g")
 //     .call(sliderAxisGenerator)
 //     .style("transform",`translateY(${dimensionsArea.boundedHeight/2+370}px)`)
-    
 const xAxisRightTop = rightAxisGroup.append("g")
     .call(xAxisRightTopGenerator)
     .style("transform",`translateY(${dimensionsArea.boundedHeight/2-250}px)`)
@@ -306,7 +305,10 @@ const lineChart = boundsLine.selectAll(".path")
     .attr("opacity",0.8)
     .raise()
     
-    
+//*****************************8. Transition Generator
+
+const exitTransition = d3.transition().duration(500)
+const updateTransition = exitTransition.transition().duration(500)
     
 function drawAreaChart(periodNum) {
 //----------------------------Ppre-filter data
@@ -331,7 +333,7 @@ function drawAreaChart(periodNum) {
     rightChartGroup.selectAll("path")
     .data(sumMsm)
     .join("path")
-    
+    .transition().duration(600)
     .attr("d", d=>areaRightGenerator(d[1]))
     .attr("fill", d => cultureColorScale(d[0]))
     .attr("opacity", d => opacityCultureChange(d[0]))
@@ -345,6 +347,7 @@ function drawAreaChart(periodNum) {
      leftChartGroup.selectAll("path")
     .data(sumMsm)
     .join("path")
+    .transition().duration(600)
     .attr("d", d=>areaLeftGenerator(d[1]))
     .attr("fill", d => cultureColorScale(d[0]))
     .attr("opacity", d => opacityCultureChange(d[0]))
