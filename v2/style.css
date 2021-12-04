@@ -35,12 +35,13 @@
   background-color: #008080;
 }
 
-#scrolly-side .scrolly article .step p {
+#scrolly-side .scrolly article .step {
   margin: 0;
   padding: 1rem;
   text-align: center;
   font-weight: 400;
   color: #f4f4f4;
+  
 }
 
 #scrolly-side .scrolly figure.sticky {
@@ -56,17 +57,28 @@
 
 #scrolly-side .scrolly figure.sticky .bar-outer {
   position: absolute;
-  top: 80%;
-  left: 20%;
+  top: 40%;
+  left: 60%;
   transform: translateY(-50%);
-  width: 60%;
-  height: 1rem;
+  width: 30%;
+  height: 15rem;
   background-color: #fff;
 }
 
 #scrolly-side .scrolly figure.sticky .bar-inner {
   width: 14%;
-  height: 20%;
+  height: 100%;
   transition: width 1s ease-in-out;
   background-color: #daa520;
+}
+
+.quotes {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  opacity: 0;
+  font-size: 1.2rem;
+  text-anchor: middle;
+  border: 1px solid black;
+    text-align: center;
 }

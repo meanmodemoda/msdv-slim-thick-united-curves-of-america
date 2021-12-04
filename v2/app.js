@@ -28,6 +28,8 @@ async function draw() {
     dimensionsArea.boundedHeight = dimensionsArea.height
         - dimensionsArea.margin.top
         - dimensionsArea.margin.bottom
+
+        
         
 //*************************2. Draw Wrappers and Bounds
 
@@ -40,7 +42,7 @@ async function draw() {
         
    const boundsArea = wrapperArea.append("g")
         .style("translate",`transform(${dimensionsArea.margin.left}px, ${dimensionsArea.margin.top}px)`)
-
+     
 // ------------------------------Initial static 
     
     const rightChartGroup = boundsArea.append("g")
@@ -57,18 +59,22 @@ async function draw() {
     
      const labelsGroup = boundsArea.append("g")
          .classed("labels",true)
+         
+     const annoGroup = boundsArea.append("g")
+        .classed("anno",true)
+        
+        
     //**************************3. Load Data and Create Accessors
 
     
 //----------------------Load Data
- const msm = await d3.csv("./body_measurement.csv",(d) => {
+const msm = await d3.csv("./body_measurement.csv",(d) => {
       d3.autoType(d)  
         return d})
 
 msm.sort((a,b)=> a.culture - b.culture)        
 // console.table(msm[0])  
-// console.log(msm[0])   
-
+// console.log(msm[0])  
 //--------------------Create Accessors
     //bodyType
 const typeAccessor = d => d.type;
@@ -76,7 +82,7 @@ const typeAccessor = d => d.type;
 const measurementAccessor = d => d.measurement;
     //bodyPart (y-value)
 const partAccessor = d => d.part;
-    //period
+
 const periodAccessor = d => d.period;
     //periodNum 1,2,3,4
 const periodNumAccessor = d =>parseInt(d.periodNum);
@@ -91,6 +97,7 @@ const bodyParts = ["bust","abdomen","waist","hip","butt"]
 const bodyTypes = ["Hour Glass","Androgyny","Disco Diva","Fitness Craze","Heroine Chic","Pilates Body","Slim Thick"]
 const periods = ["1950s","1960s","1970s","1980s","1990s","2000s","2010s+"]
 const periodNums = [1,2,3,4,5,6,7]	
+
 //*************************4. Create Scale  
 
 const xRightScale = d3.scaleLinear()
@@ -114,7 +121,7 @@ const cultureColorScale = d3.scaleOrdinal()
     .domain(cultureTypes)
     .range(['#8b0000','#000000'])
   
-const sliderScale = d3.scaleLinear()
+const progressScale = d3.scaleLinear()
     .domain(d3.extent(msm,periodNumAccessor))
     .range([dimensionsArea.boundedWidth/3-160,dimensionsArea.boundedWidth/3+160])
     .nice()
@@ -141,8 +148,8 @@ const yAxisGenerator = d3.axisLeft()
     .scale(yScale)
     .ticks(5)
     
-const sliderAxisGenerator = d3.axisBottom()
-    .scale(sliderScale)
+const progressAxisGenerator = d3.axisBottom()
+    .scale(progressScale)
     .ticks(7)
 	.tickFormat((d,i) => periods[i])
 	
@@ -167,8 +174,8 @@ const yAxis = rightAxisGroup.append("g")
     .call(yAxisGenerator)
     .style("transform",`translateX(${dimensionsArea.boundedWidth/3}px)`)
     
-const sliderAxis = labelsGroup.append("g")
-    .call(sliderAxisGenerator)
+const progressAxis = labelsGroup.append("g")
+    .call(progressAxisGenerator)
     .style("transform",`translateY(${dimensionsArea.boundedHeight/2+100}px)`)
     
 
@@ -215,7 +222,7 @@ function drawAreaChart(periodNum) {
 //----------------------------Ppre-filter data
     const msmFilter = msm.filter(d => periodNumAccessor(d) == periodNum);
     const sumMsm = d3.group(msmFilter,cultureAccessor)
-    // console.log(sumMsm)
+ 
 //---------------------Change gradient value by filter
   const gradientChange=(periodNum)=>{
         if(periodNum==1) return 0.3;
@@ -253,14 +260,16 @@ function drawAreaChart(periodNum) {
     .attr("opacity", d => opacityCultureChange(d[0]))
     // .attr("fill", d => areaColorScale(d[0]))
     .attr("stroke", d => cultureColorScale(d[0]))
-    
+
+
+//-------------------Draw Progress Bar    
 const progressBar = labelsGroup.selectAll("rect")
     .data(sumMsm)
     .join("rect")
     // .transition().duration(600)
     .attr("x",dimensionsArea.boundedWidth/3-160)
     .attr("y",dimensionsArea.boundedHeight/2+100)
-    .attr("width",sliderScale(periodNum-1)-40)
+    .attr("width",progressScale(periodNum-1)-40)
     .attr("height",2)
     .attr("fill", "#000000")
     
@@ -268,7 +277,7 @@ const progressDot =  labelsGroup.selectAll("circle")
     .data(sumMsm)
     .join("circle")
     // .transition().duration(600)
-    .attr("cx",sliderScale(periodNum))
+    .attr("cx",progressScale(periodNum))
     .attr("cy",dimensionsArea.boundedHeight/2+100)
     .attr("r",4)
     .attr("fill", "#000000")
@@ -276,12 +285,28 @@ const progressDot =  labelsGroup.selectAll("circle")
     .attr("stroke-width",2)
     
 //progress hightlight    
-sliderAxis.selectAll("text")
+progressAxis.selectAll("text")
     .style('fill',  i =>
         (periodNums[i] ==(periodNum+1))? 'red': "black")
 //     .attr('font-size',"10px")
-//     .style("text-anchor", "middle");    
+//     .style("text-anchor", "middle");
 
+annoGroup.selectAll("text")
+    .data(sumMsm)
+    .join("text")
+    .attr("x", d=> xRightScale(measurementAccessor(d)))
+    .attr("y", d => yScale(partAccessor(d)))
+    .text("Hello")
+
+// annoGroup.selectAll("text")
+//     .data(sumMsm)
+//     .join("text")
+//     .attr("x", d=>areaLeftGenerator(d[1])+50)
+//     .attr("y", d=> yScale(partAccessor(d[0])))
+//     .text(d => partAccessor(d[0]))
+//     .style("fill", "black")
+//     .style("font-family", "Arial Black")
+//     .style("font-size", 12)
 }
 
 
@@ -291,13 +316,15 @@ sliderAxis.selectAll("text")
 
 const container = d3.select('#scrolly-side');
 const stepSel = container.selectAll('.step');
-
+const quoteSel = container.selectAll('.quotes');
 
     
 function updateChart(index=1) {
 	const sel = container.select(`[data-index='${index}']`);
 	const width = sel.attr('data-width');
+	quoteSel.style("opacity",(d, i) => i === (index-1)? 1:0)
 	stepSel.classed('is-active', (d, i) => i === index);
+	
 	container.select('.bar-inner').style('width', width);
 	drawAreaChart(index)
 }
