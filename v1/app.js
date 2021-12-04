@@ -9,7 +9,7 @@ async function draw() {
 //------------------------ Area Chart Dimensions
 
     const dimensionsArea = {
-        width: 400,
+        width: 600,
         height: 800,
         margin: {
             top: 20,
@@ -78,10 +78,17 @@ async function draw() {
 
 // ------------------------------Initial static 
     
-    const areaChartGroup = boundsArea.append("g")
-         .classed("areaChart",true)
+    const rightChartGroup = boundsArea.append("g")
+         .classed("rightAreaChart",true)
     
+    const leftChartGroup = boundsArea.append("g")
+         .classed("leftAreaChart",true)
 
+    const rightAxisGroup = boundsArea.append("g")
+         .classed("rightAxis",true)
+         
+     const leftAxisGroup = boundsArea.append("g")
+         .classed("leftAxis",true)
   // const tooltip = d3.select("#tooltip")
   
 //**************************3. Load Data and Create Accessors
@@ -142,9 +149,13 @@ const surgeryTypes = ["Breast augmentation","Buttock augmentation", "Cheek impla
 
 //*************************4. Create Scale  
 
-const xScale = d3.scaleLinear()
+const xRightScale = d3.scaleLinear()
     .domain([20,46])
-    .range([dimensionsArea.margin.left,dimensionsArea.margin.left+250])
+    .range([dimensionsArea.boundedWidth/2,dimensionsArea.boundedWidth/2+220])
+    
+const xLeftScale = d3.scaleLinear()
+    .domain([20,46])
+    .range([dimensionsArea.boundedWidth/2,dimensionsArea.boundedWidth/2-220])
     
 const yScale = d3.scaleOrdinal()
     .domain(bodyParts)
@@ -179,14 +190,19 @@ const lineColorScale = d3.scaleOrdinal()
 //****************************5. Draw Peripherals
 
 //----------------------Draw Axis Generators
-const xAxisBottomGenerator = d3.axisBottom()
-    .scale(xScale)
+const xAxisRightBottomGenerator = d3.axisBottom()
+    .scale(xRightScale)
     
+const xAxisLeftBottomGenerator = d3.axisBottom()
+    .scale(xLeftScale)
 // const sliderAxisGenerator = d3.axisBottom()
 //     .scale(sliderScale)
 
-const xAxisTopGenerator = d3.axisTop()
-    .scale(xScale)
+const xAxisRightTopGenerator = d3.axisTop()
+    .scale(xRightScale)
+    
+const xAxisLeftTopGenerator = d3.axisTop()
+    .scale(xLeftScale)
     
 const yAxisGenerator = d3.axisLeft()
     .scale(yScale)
@@ -199,21 +215,28 @@ const rateAxisGenerator = d3.axisBottom()
     .scale(rateScale)
 
 //----------------------Draw Axes
-const xAxisBottom = boundsArea.append("g")
-    .call(xAxisBottomGenerator)
+const xAxisRightBottom = rightAxisGroup.append("g")
+    .call(xAxisRightBottomGenerator)
+    .style("transform",`translateY(${dimensionsArea.boundedHeight/2+200}px)`)
+
+const xAxisLeftBottom = leftAxisGroup.append("g")
+    .call(xAxisLeftBottomGenerator)
     .style("transform",`translateY(${dimensionsArea.boundedHeight/2+200}px)`)
 
 // const sliderAxis = bounds.append("g")
 //     .call(sliderAxisGenerator)
 //     .style("transform",`translateY(${dimensionsArea.boundedHeight/2+370}px)`)
-    
-const xAxisTop = boundsArea.append("g")
-    .call(xAxisTopGenerator)
+const xAxisRightTop = rightAxisGroup.append("g")
+    .call(xAxisRightTopGenerator)
+    .style("transform",`translateY(${dimensionsArea.boundedHeight/2-250}px)`)
+
+const xAxisLeftTop = rightAxisGroup.append("g")
+    .call(xAxisLeftTopGenerator)
     .style("transform",`translateY(${dimensionsArea.boundedHeight/2-250}px)`)
     
-const yAxis = boundsArea.append("g")
+const yAxis = rightAxisGroup.append("g")
     .call(yAxisGenerator)
-    .style("transform",`translateX(${dimensionsArea.margin.left}px)`)
+    .style("transform",`translateX(${dimensionsArea.boundedWidth/2}px)`)
     
 // const timeAxis = boundsLine.append("g")
 //     .call(timeAxisGenerator)
@@ -233,7 +256,7 @@ const sliderGenerator = d3.sliderHorizontal()
     .tickFormat((d,i) => periods[i])
     .step(1)
     .default(1)
-    .width(250)
+    .width(400)
     .displayValue(false)
     .fill("#000000")
     .handle(
@@ -247,17 +270,23 @@ const slider = boundsArea.append('g')
     // .attr('width', 400)
     // .attr('height', 100)
     //note this is different from CSS, d3 standard `translate` syntax, `px` is omitted
-    .attr('transform', `translate(${dimensionsArea.margin.left},${dimensionsArea.boundedHeight/2+250})`)
+    .attr('transform', `translate(${dimensionsArea.margin.left+20},${dimensionsArea.boundedHeight/2+250})`)
     .call(sliderGenerator);
     
 //***************************6. Draw Chart Generators
- const areaGenerator = d3.area()
-    .x1(d => xScale(measurementAccessor(d)))
-    .x0(d => xScale(20))
+ const areaRightGenerator = d3.area()
+    .x1(d => xRightScale(measurementAccessor(d)))
+    .x0(d => xRightScale(20))
     .y(d => yScale(partAccessor(d)))
     .curve(d3.curveCardinal)
      // .curve(d3.curveCatmullRom.alpha(0.9))
     // .curve(d3.curveBundle.beta(1))
+
+const areaLeftGenerator = d3.area()
+    .x1(d => xLeftScale(measurementAccessor(d)))
+    .x0(d => xLeftScale(20))
+    .y(d => yScale(partAccessor(d)))
+    .curve(d3.curveCardinal)
 
 const lineGenerator = d3.line()
   .x(d => rateScale(rateAccessor(d)))
@@ -276,13 +305,16 @@ const lineChart = boundsLine.selectAll(".path")
     .attr("opacity",0.8)
     .raise()
     
-    
+//*****************************8. Transition Generator
+
+const exitTransition = d3.transition().duration(500)
+const updateTransition = exitTransition.transition().duration(500)
     
 function drawAreaChart(periodNum) {
 //----------------------------Ppre-filter data
     const msmFilter = msm.filter(d => periodNumAccessor(d) == periodNum);
     const sumMsm = d3.group(msmFilter,cultureAccessor)
-    console.log(sumMsm)
+    // console.log(sumMsm)
 //---------------------Change gradient value by filter
   const gradientChange=(periodNum)=>{
         if(periodNum==1) return 0.3;
@@ -298,19 +330,29 @@ function drawAreaChart(periodNum) {
         else return 1;
     }       
  //--------------------Draw areaChart
-    areaChartGroup.selectAll("path")
+    rightChartGroup.selectAll("path")
     .data(sumMsm)
     .join("path")
-    
-    .attr("d", d=>areaGenerator(d[1]))
+    .transition().duration(600)
+    .attr("d", d=>areaRightGenerator(d[1]))
     .attr("fill", d => cultureColorScale(d[0]))
     .attr("opacity", d => opacityCultureChange(d[0]))
     // .attr("fill", d => areaColorScale(d[0]))
     .attr("stroke", d => cultureColorScale(d[0]))
     //   .attr("opacity",0.5)
     // .attr("stroke-width", 5)
-   
     // console.log(periodNum);
+    
+    
+     leftChartGroup.selectAll("path")
+    .data(sumMsm)
+    .join("path")
+    .transition().duration(600)
+    .attr("d", d=>areaLeftGenerator(d[1]))
+    .attr("fill", d => cultureColorScale(d[0]))
+    .attr("opacity", d => opacityCultureChange(d[0]))
+    // .attr("fill", d => areaColorScale(d[0]))
+    .attr("stroke", d => cultureColorScale(d[0]))
 }
 
 
@@ -355,7 +397,7 @@ const getPos = () => {
     let lineLength = line.node().getTotalLength();
     let pct = Number(sliderTest.node().value);
     let pos = line.node().getPointAtLength(pct * lineLength);
-    console.log(pos)
+    // console.log(pos)
     return pos;
 }
 

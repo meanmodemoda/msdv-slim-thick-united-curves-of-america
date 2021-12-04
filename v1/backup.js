@@ -314,7 +314,7 @@ function drawAreaChart(periodNum) {
 //----------------------------Ppre-filter data
     const msmFilter = msm.filter(d => periodNumAccessor(d) == periodNum);
     const sumMsm = d3.group(msmFilter,cultureAccessor)
-    console.log(sumMsm)
+    // console.log(sumMsm)
 //---------------------Change gradient value by filter
   const gradientChange=(periodNum)=>{
         if(periodNum==1) return 0.3;
@@ -397,7 +397,7 @@ const getPos = () => {
     let lineLength = line.node().getTotalLength();
     let pct = Number(sliderTest.node().value);
     let pos = line.node().getPointAtLength(pct * lineLength);
-    console.log(pos)
+    // console.log(pos)
     return pos;
 }
 
