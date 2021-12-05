@@ -197,7 +197,25 @@ const areaLeftGenerator = d3.area()
     .y(d => yScale(partAccessor(d)))
     .curve(d3.curveCardinal)
     
+//bound borders
+ const topRight = boundsArea.append("circle")
+    .attr("cx",dimensionsArea.boundedWidth)
+    .attr("cy",0)
+    .attr("r", 20)
+    .attr("fill","blue")
+    
+ const topLeft = boundsArea.append("circle")
+    .attr("cx",dimensionsArea.margin.left)
+    .attr("cy",0)
+    .attr("r", 20)
+    .attr("fill","red")
 
+ const bottomLeft = boundsArea.append("circle")
+    .attr("cx",dimensionsArea.margin.left)
+    .attr("cy",dimensionsArea.boundedHeight)
+    .attr("r", 20)
+    .attr("fill","green")  
+   
  const cultureLabel=annoGroup.append("text")
         .classed("culturelabel",true)
         .text("culture")

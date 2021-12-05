@@ -3,23 +3,35 @@ src: url("../assets/MonumentExtended-Black.woff2"); }
 
 html {
   /*font-size: 16px;*/
-  /*font-family: 'Arial', sans-serif;*/
+  font-family: "Work Sans",sans-serif;
 /*width: 1900px;*/
   width: 1900px;
-  background-color: #E8BEAC;
+
+background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,0.53125) 0%, rgba(232,190,172,1) 16%, rgba(232,190,172,1) 75%, rgba(0,212,255,0.17270658263305327) 100%);
+  /*background-color: #E8BEAC;*/
   box-sizing: border-box;
   margin: auto;
   width: 100%;
 }
 
+h3 {
+   font-family: "Arial Black",sans-serif;
+   font-weight: 600;
+   background: -webkit-linear-gradient(left, #f72585, #002642);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  /*stroke: 2;*/
+    /*font-weight: 600;*/
+}
 
- .title.cls-1 {
+ .st-cls-1 {
  /*fill: red;*/
  /*position:fixed;*/
 /*transition-duration: 1s  */
  }
  
-.title.cls-2 {
+.st-cls-2 {
  opacity: 0;
  fill: black
 }
@@ -40,8 +52,8 @@ html {
   display: block;
   justify-content: center;
   align-items: center;
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 25%;
+  margin-right: 25%;
 }
 
 .lead {
@@ -58,7 +70,7 @@ margin-top: 2vh;
 }
 
 .filler {
-  height: 40rem;
+  height: 30rem;
   text-align: center;
 }
 
@@ -91,7 +103,8 @@ margin-top: 2vh;
 }
 
 #scrolly-side .scrolly article .step.is-active {
-  background-color: #E8BEAC;
+  background-color: #F0C8BD;
+  opacity: 0.8;
 }
 
 #scrolly-side .scrolly article .step {
@@ -108,7 +121,7 @@ margin-top: 2vh;
   width: 100%;
   height: 80vh;
   /*background: #969696;*/
-   border: 1px solid black;
+   /*border: 1px solid black;*/
   margin: 0;
   top:25vh;
   left: 0;
@@ -116,7 +129,7 @@ margin-top: 2vh;
 
 #scrolly-side .scrolly figure.sticky .bar-outer {
   position: absolute;
-  top: 40%;
+  top: 30%;
   left: 60%;
   transform: translateY(-50%);
   width: 30%;
