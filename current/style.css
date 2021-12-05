@@ -1,5 +1,64 @@
-.filler {
+@font-face { font-family: "MonumentExtended-Black.woff2"; 
+src: url("../assets/MonumentExtended-Black.woff2"); } 
+
+html {
+  /*font-size: 16px;*/
+  /*font-family: 'Arial', sans-serif;*/
+/*width: 1900px;*/
+  width: 1900px;
+  background-color: #E8BEAC;
+  box-sizing: border-box;
+  margin: auto;
+  width: 100%;
+}
+
+
+ .title.cls-1 {
+ /*fill: red;*/
+ /*position:fixed;*/
+/*transition-duration: 1s  */
+ }
+ 
+.title.cls-2 {
+ opacity: 0;
+ fill: black
+}
+ 
+.enter {
+ opacity: 1;
+ /*transition-duration: 1s  */
+}
+
+
+.sub-title {
   height: 20rem;
+  text-align: center;
+}
+
+.bridge {
+  height: 20rem;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.lead {
+  margin-top: 10%;
+  height: 2rem;
+}
+
+.sub-title span {
+display: block;
+margin-top: 2vh;
+ font-size: 300%;
+ font-family: "MonumentExtended-Black";
+ /*border: 1px solid black;*/
+}
+
+.filler {
+  height: 40rem;
   text-align: center;
 }
 
@@ -7,7 +66,7 @@
   display: flex;
   max-width: 100rem;
   margin: 3rem auto;
-  background-color: #f4f4f4;
+  background-color: #E8BEAC;
   padding: 1rem;
 }
 
@@ -23,7 +82,7 @@
 #scrolly-side .scrolly article .step {
   min-height: 67vh;
   margin-bottom: 1rem;
-  background-color: #5b5b5b;
+  background-color: #E8BEAC;
   transition: background-color 250ms ease-in-out;
 }
 
@@ -32,7 +91,7 @@
 }
 
 #scrolly-side .scrolly article .step.is-active {
-  background-color: #008080;
+  background-color: #E8BEAC;
 }
 
 #scrolly-side .scrolly article .step {
@@ -40,7 +99,7 @@
   padding: 1rem;
   text-align: center;
   font-weight: 400;
-  color: #f4f4f4;
+  color: black;
   
 }
 
@@ -69,7 +128,7 @@
   width: 14%;
   height: 100%;
   transition: width 1s ease-in-out;
-  background-color: #daa520;
+  background-color: #E8BEAC;
 }
 
 .quotes {
@@ -82,3 +141,8 @@
   border: 1px solid black;
     text-align: center;
 }
+
+/*.culturelabel {*/
+/*    transform: translate(-50%, 50%) rotate(45deg);*/
+/*     z-index: 100;*/
+/*}*/
