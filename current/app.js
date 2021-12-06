@@ -68,7 +68,7 @@ async function draw() {
 
     
 //----------------------Load Data
-const msm = await d3.csv("./body_measurement.csv",(d) => {
+const msm = await d3.csv("../data/body_measurement.csv",(d) => {
       d3.autoType(d)  
         return d})
 
@@ -112,14 +112,10 @@ const yScale = d3.scaleOrdinal()
     .domain(bodyParts)
     .range([dimensionsArea.boundedHeight/2-250,dimensionsArea.boundedHeight/2-180,dimensionsArea.boundedHeight/2-110,dimensionsArea.boundedHeight/2-20,dimensionsArea.boundedHeight/2+50])
     
-    
-const areaColorScale = d3.scaleOrdinal()
-    .domain(bodyTypes)
-    .range(['#999999','#666666','#333333','#000000'])
  
 const cultureColorScale = d3.scaleOrdinal()
     .domain(cultureTypes)
-    .range(['#8b0000','#000000'])
+    .range(['#a31592','#000000'])
   
 const progressScale = d3.scaleLinear()
     .domain(d3.extent(msm,periodNumAccessor))
@@ -212,8 +208,8 @@ const areaLeftGenerator = d3.area()
         .text("culture")
         .attr("x",100)
         .attr("y",60)
-    .style("fill", "red")
-    .style("font-family", "Arial Black")
+    .style("fill", "#a31592")
+    .style("font-family", "Work Sans")
     .style("font-size", 12)    
 //*****************************8. Transition Generator
     
@@ -292,18 +288,20 @@ const progressDot =  labelsGroup.selectAll("circle")
 //progress hightlight    
 progressAxis.selectAll("text")
     .style('fill',  i =>
-        (periodNums[i] ==(periodNum+1))? 'red': "black")
+        (periodNums[i] ==(periodNum+1))? "#a31592": "black")
+    .attr("font-family","Work Sans")
+    .attr("font-weight", "600")
 //     .attr('font-size',"10px")
 //     .style("text-anchor", "middle");
 
-
+     
 const rightAnno = rightChartGroup.selectAll("text")
     .data(annoFilter.filter(d => d.culture ==="counter"))
     .join("text")
     .attr("x", d=> xRightScale(measurementAccessor(d))+20)
     .attr("y", d => yScale(partAccessor(d)))
     .text(measurementAccessor)
-    .attr("fill","red") 
+    .attr("fill","#a31592") 
     .attr("text-anchor","middle")
 .attr("alignment-baseline","middle")
 
