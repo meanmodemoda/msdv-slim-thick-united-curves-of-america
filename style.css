@@ -2,7 +2,7 @@
 src: url("./assets/MonumentExtended-Black.woff2"); } 
 
 html {
-  /*font-size: 16px;*/
+  font-size: 16px;
   font-family: "Work Sans",sans-serif;
 /*width: 1900px;*/
   width: 1900px;
