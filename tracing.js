@@ -18,8 +18,8 @@ window.addEventListener("scroll", function () {
   const scrollH = document.documentElement.scrollHeight
   const pixels =  window.pageYOffset-3000;
   const bodyT= document.body.scrollTop
-  const scrollpercentLeft = 2000 / (scrollH-scrollT);
-  const scrollpercentRight = 2050 / (scrollH-scrollT);
+  const scrollpercentLeft = 1500 / (scrollH-scrollT);
+  const scrollpercentRight = 1550 / (scrollH-scrollT);
 //   console.log("bodyT",bodyT)
 // console.log("scrollTop",scrollT)
 // console.log("scrollHeight",scrollH)

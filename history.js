@@ -68,7 +68,7 @@ async function draw() {
 
     
 //----------------------Load Data
-const msm = await d3.csv("../data/body_measurement.csv",(d) => {
+const msm = await d3.csv("./data/body_measurement.csv",(d) => {
       d3.autoType(d)  
         return d})
 
