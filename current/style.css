@@ -18,6 +18,10 @@ b {
   font-size: 1.2rem;
 }
 
+p.footnote {
+  font-size: 0.8rem;
+  font-weight:600;
+}
 h3 {
    font-family:"Work Sans",sans-serif;
    font-weight: 800;
