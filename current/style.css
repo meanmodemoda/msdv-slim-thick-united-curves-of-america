@@ -109,7 +109,7 @@ background: radial-gradient(circle, rgba(232,190,172,0.8239670868347339) 14%, rg
 }
 
 #scrolly-side .scrolly article .step {
-  min-height: 67vh;
+  min-height: 77vh;
   margin-bottom: 1rem;
 background: rgb(232,190,172);
 background: linear-gradient(90deg, rgba(232,190,172,0) 0%, rgba(232,190,172,1) 61%, rgba(232,190,172,0.12368697478991597) 100%);
