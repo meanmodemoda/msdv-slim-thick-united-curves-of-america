@@ -215,10 +215,17 @@ margin-top: 5vh;
 /*}*/
 
 .move h3 {
-
-  font-size: 1.5rem;
+  font-size: 1.8rem;
+  margin: 0.8rem;
 }
 .move p {
   text-align: left;
   font-size: 1.2rem;
+}
+
+.divider {
+   background-color: purple;
+     width: 100%;
+     height: 0.25px;
+     margin: 0 0;
 }
