@@ -213,3 +213,12 @@ margin-top: 5vh;
 /*    transform: translate(-50%, 50%) rotate(45deg);*/
 /*     z-index: 100;*/
 /*}*/
+
+.move h3 {
+
+  font-size: 1.5rem;
+}
+.move p {
+  text-align: left;
+  font-size: 1.2rem;
+}
