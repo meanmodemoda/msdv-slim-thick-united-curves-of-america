@@ -1,8 +1,12 @@
 
 const svgLeft = document.querySelector("#left-sil-line");
 const svgRight = document.querySelector("#right-sil-line");
+
+
 const lengthLeft = svgLeft.getTotalLength();
 const lengthRight = svgRight.getTotalLength();
+
+
 
 // start position of the drawing - normal display pre-animation
 svgLeft.style.strokeDasharray = lengthLeft;
@@ -14,20 +18,28 @@ svgRight.style.strokeDashoffset = lengthRight;
 // offset the svg dash by the same amount as the percentage scrolled
 window.addEventListener("scroll", function () {
 
-  const scrollT = document.documentElement.scrollTop
-  const scrollH = document.documentElement.scrollHeight
-  const pixels =  window.pageYOffset-3000;
-  const scrollpercentLeft = 1500/(scrollH-scrollT); 
-  const scrollpercentRight = 1550/(scrollH-scrollT);
-// console.log("scrollTop",scrollT)
-// console.log("scrollHeight",scrollH)
-// console.log("pct",scrollpercent)
+ const length2 = svgLeft.getBoundingClientRect().height;
+  const totalScrolled = document.documentElement.scrollTop;
+  const totalHeight = document.documentElement.scrollHeight;
+  // const clientHeight = document.documentElement.clientHeight
+
+  // const scrollpercentLeft = 1500/(scrollH-scrollT); 
+  // const scrollpercentRight = 1550/(scrollH-scrollT);
+  
+  const scrollpercentLeft = (totalScrolled-length2)/(totalHeight+2000)
+
+console.log("totalScrolled",totalScrolled)
+console.log("totalHeight",totalHeight)
+console.log(scrollpercentLeft)
+console.log("lengthLeft",lengthLeft)
+console.log("length2",length2)
+
   const drawLeft = lengthLeft * scrollpercentLeft;
-  const drawRight = lengthRight * scrollpercentRight;
+  // const drawRight = lengthRight * scrollpercentRight;
 // console.log("draw",drawLeft)
   // Reverse the drawing (when scrolling upwards)
   svgLeft.style.strokeDashoffset = lengthLeft - drawLeft;
- svgRight.style.strokeDashoffset = lengthRight - drawRight;
+// svgRight.style.strokeDashoffset = lengthRight - drawRight;
 });
 
 

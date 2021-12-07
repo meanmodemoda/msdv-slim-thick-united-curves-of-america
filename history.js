@@ -102,11 +102,11 @@ const periodNums = [1,2,3,4,5,6,7]
 
 const xRightScale = d3.scaleLinear()
     .domain([20,48])
-    .range([dimensionsArea.boundedWidth/3,dimensionsArea.boundedWidth/3+160])
+    .range([180,340])
     
 const xLeftScale = d3.scaleLinear()
     .domain([20,48])
-    .range([dimensionsArea.boundedWidth/3,dimensionsArea.boundedWidth/3-160])
+    .range([180,20])
     
 const yScale = d3.scaleOrdinal()
     .domain(bodyParts)
@@ -119,7 +119,7 @@ const cultureColorScale = d3.scaleOrdinal()
   
 const progressScale = d3.scaleLinear()
     .domain(d3.extent(msm,periodNumAccessor))
-    .range([dimensionsArea.boundedWidth/3-160,dimensionsArea.boundedWidth/3+160])
+    .range([20,340])
     .nice()
 //****************************5. Draw Peripherals
 
@@ -196,21 +196,34 @@ const areaLeftGenerator = d3.area()
 
  const cultureLabel=annoGroup.append("text")
         .classed("culturelabel",true)
-        .text("culture")
-        .attr("x",100)
+        .text("main-culture")
+        .attr("x",20)
         .attr("y",50)
     .style("fill", "black")
-    .style("font-family", "Arial Black")
-    .style("font-size", 12)
+    .style("font-family", "Work Sans")
+    .style("font-size", 16)
+    .attr("font-weight",600)
     
  const counterLabel=annoGroup.append("text")
         .classed("counterlabel",true)
-        .text("culture")
-        .attr("x",100)
-        .attr("y",60)
-    .style("fill", "#a31592")
-    .style("font-family", "Work Sans")
-    .style("font-size", 12)    
+        .text("counter-culture")
+        .attr("x",240)
+        .attr("y",50)
+    .attr("fill", "#a31592")
+    .attr("font-family", "Work Sans")
+    .attr("font-size", 16)
+    .attr("font-weight",600)
+    
+
+const chartLabel=annoGroup.append("text")
+        .classed("chartlabel",true)
+        .text("(body measurement in inches, scale de-linearized)")
+        .attr("x",30)
+        .attr("y",500)
+    .attr("font-family", "Work Sans")
+    .attr("font-size", 12)
+  
+
 //*****************************8. Transition Generator
     
 function drawAreaChart(periodNum) {
@@ -268,9 +281,9 @@ const progressBar = labelsGroup.selectAll("rect")
     .data(sumMsm)
     .join("rect")
     // .transition().duration(600)
-    .attr("x",dimensionsArea.boundedWidth/3-160)
+    .attr("x",20)
     .attr("y",dimensionsArea.boundedHeight/2+100)
-    .attr("width",progressScale(periodNum-1)-40)
+    .attr("width",progressScale(periodNum)-20)
     .attr("height",2)
     .attr("fill", "#000000")
     
@@ -298,12 +311,13 @@ progressAxis.selectAll("text")
 const rightAnno = rightChartGroup.selectAll("text")
     .data(annoFilter.filter(d => d.culture ==="counter"))
     .join("text")
-    .attr("x", d=> xRightScale(measurementAccessor(d))+20)
+    .attr("x", d=> xRightScale(measurementAccessor(d))+25)
     .attr("y", d => yScale(partAccessor(d)))
     .text(measurementAccessor)
     .attr("fill","#a31592") 
     .attr("text-anchor","middle")
 .attr("alignment-baseline","middle")
+.attr("font-weight",600)
 
 const leftAnno = leftChartGroup.selectAll("text")
     .data(annoFilter.filter(d => d.culture ==="main"))
@@ -314,6 +328,7 @@ const leftAnno = leftChartGroup.selectAll("text")
     .attr("fill","black") 
     .attr("text-anchor","middle")
 .attr("alignment-baseline","middle")
+.attr("font-weight",600)
 
 
 

@@ -1,3 +1,5 @@
+const testTag = document.querySelector(".testmove1")
+const testTag2 = document.querySelector(".testmove2")
 const moveTag = document.querySelectorAll(".move")
 const bodyTag = document.querySelector("body")
 const gazeTag = document.querySelector(".gaze")
