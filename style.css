@@ -241,9 +241,9 @@ margin-top: 2rem;
   /* background-color: #3b3b3b; */
   color: #fff;
   /* width: 25%; */
-  /* height: 5rem; */
-  opacity: 0;
-  transition: 500ms ease-in-out;
+  height: 9rem;
+  opacity: 0.1;
+  transition: 250ms ease-in-out;
    /* border: 4px solid red; */
 }
 
@@ -253,7 +253,7 @@ margin-top: 2rem;
   /* height: 2rem; */
   font-size: 1rem;
   opacity: 1;
-  transition:  500ms ease-in-out;
+  transition:  250ms ease-in-out;
 }
 
 
@@ -265,13 +265,15 @@ margin-top: 2rem;
 }  
 
 #gaze article .step h3 {
-  text-align: top;
+  text-align: middle;
+  margin-top: auto;
+  margin-bottom: auto;
  /* margin-top: 1rem; */
 
 }  
 
 .spaceholder {
-  height: 30rem;
+  height: 40rem;
   /* margin-bottom: 200px; */
   /* border: 5px solid orange; */
 }
@@ -287,19 +289,36 @@ div.social {
   flex: 50%;
   /* border: 5px solid orange; */
   color: white;
+  margin-top: auto;
+  margin-bottom: auto;
+  text-align: left;
 }
 
 div.surgical {
   flex: 50%;
   /* border: 1px solid green; */
   color: white;
+  margin-top: auto;
+  margin-bottom: auto;
+  text-align: left;
  }
 
 div.divider {
+   /* text-align: center;
+   vertical-align: middle; */
+   margin-top: auto;
+   margin-bottom: auto;
   /* flex: 80%; */
   /* border: 5px solid orange; */
 }
 
 .step[data-step="2"] {
-  height: 10rem;
+  height: 9rem;
+}
+
+.tracing-line {
+  height: 1000px;
+  float: left;
+  position: abosulte;
+  top:0;
 }
