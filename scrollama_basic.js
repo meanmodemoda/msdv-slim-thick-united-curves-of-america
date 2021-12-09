@@ -1,14 +1,10 @@
-import "intersection-observer";
-// import scrollama from "scrollama"; // or...
-const scrollama = require("scrollama");
 
-
-const gazeScrolly = document.querySelector("#gaze");
-const gazeArticle = gazeScrolly.querySelector("article");
-const moves = article.querySelectorAll(".move");
+const gaze = document.querySelector("#gaze");
+const article = gaze.querySelector("article");
+const step = article.querySelectorAll(".step");
 
 // initialize the scrollama
-const scrollerBasic = scrollama();
+const scroller = scrollama();
 
 // scrollama event handlers
 function handleStepEnter(response) {
@@ -27,25 +23,25 @@ function handleStepExit(response) {
 
 function init() {
     // set random padding for different step heights (not required)
-    moves.forEach(function (move) {
-        let v = 100 + Math.floor((Math.random() * window.innerHeight) / 4);
-        move.style.padding = v + "px 0px";
-    });
+    // step.forEach(function (step) {
+    //     let v = 100 + Math.floor((Math.random() * window.innerHeight) / 10);
+    //     step.style.padding = v + "px 0px";
+    // });
 
     // 1. setup the scroller with the bare-bones options
     // 		this will also initialize trigger observations
     // 2. bind scrollama event handlers (this can be chained like below)
-    scrollerBasic
+    scroller
         .setup({
-            step: "#gaze .svg-group svg article .move",
-            debug: true,
+            step: "#gaze article .step",
+            debug: false,
             offset: 0.5
         })
         .onStepEnter(handleStepEnter)
         .onStepExit(handleStepExit);
 
     // 3. setup resize event
-    window.addEventListener("resize", scrollerBasic.resize);
+    window.addEventListener("resize", scroller.resize);
 }
 
 // kick things off
