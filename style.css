@@ -242,7 +242,7 @@ margin-top: 2rem;
   color: #fff;
   /* width: 25%; */
   height: 9rem;
-  opacity: 0.3;
+  opacity: 0.1;
   transition: 250ms ease-in-out;
    /* border: 4px solid red; */
 }
@@ -312,8 +312,12 @@ div.divider {
   /* border: 5px solid orange; */
 }
 
-.step[data-step="2"] {
-  height: 9rem;
+
+.instagram>.summary{
+  margin-top: 3rem;
+  height: 10rem;
+   /* border: 5px solid orange; */
+   vertical-align: middle; 
 }
 
 .tracing-line {
