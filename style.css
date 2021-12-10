@@ -14,6 +14,7 @@ html {
   width: 100%;
 }
 
+
 .sub-title h3 {
    font-family:"Work Sans",sans-serif;
    font-weight: 800;
@@ -216,10 +217,10 @@ margin-top: 2rem;
   /* width: 1900px; */
   /* position: relative; */
   /* background-position:center; */
-  height: 600rem;
+ height: 600rem;
   background-image: url( ./assets/gaze.svg);
   background-repeat: no-repeat;
-  border: 5px solid yellow;
+  border: 5px solid yellow; 
 }
 
 /* div.side-gaze {
@@ -242,7 +243,7 @@ margin-top: 2rem;
   color: #fff;
   /* width: 25%; */
   height: 9rem;
-  opacity: 0.1;
+  opacity: 0.05;
   transition: 250ms ease-in-out;
    /* border: 4px solid red; */
 }
@@ -325,4 +326,30 @@ div.divider {
   float: left;
   position: abosulte;
   top:0;
+}
+
+.analysis_spaceholder{
+ height: 20rem;
+     /* border: 5px solid orange; */
+}
+
+#gaze_year {
+  font-family: "MonumentExtended-Black";
+  font-size: 3.5rem;
+  color: white;
+  /* color: #000000; */
+}
+
+#social-test {
+  font-size: 3.5rem;
+}
+
+#teen17 {
+  font-family: "MonumentExtended-Black";
+  font-size: 4rem;
+  color: purple;
+}
+
+#analysis h2 {
+  color: white;
 }

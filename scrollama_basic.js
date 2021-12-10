@@ -9,14 +9,14 @@ const scroller = scrollama();
 // scrollama event handlers
 function handleStepEnter(response) {
     // response = { element, direction, index }
-    console.log(response);
+    // console.log(response);
     // add to color to current step
     response.element.classList.add("is-active");
 }
 
 function handleStepExit(response) {
     // response = { element, direction, index }
-    console.log(response);
+    // console.log(response);
     // remove color from current step
     response.element.classList.remove("is-active");
 }
@@ -35,7 +35,7 @@ function init() {
         .setup({
             step: "#gaze article .step",
             debug: false,
-            offset: 0.5
+            offset: 0.4
         })
         .onStepEnter(handleStepEnter)
         .onStepExit(handleStepExit);
