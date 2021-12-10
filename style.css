@@ -353,3 +353,16 @@ div.divider {
 #analysis h2 {
   color: white;
 }
+
+.axisRed line{
+  stroke: red;
+}
+
+.axisRed path{
+  stroke: red;
+}
+
+.axisRed text{
+  fill: red;
+  font-size: 0.5rem;
+}

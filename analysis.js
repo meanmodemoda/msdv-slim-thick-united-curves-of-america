@@ -10,9 +10,9 @@ async function drawAnalysis() {
         height: 800,
         margin: {
             top: 20,
-            right: 20,
+            right: 100,
             bottom: 20,
-            left: 50
+            left: 100
         }
     }
 
@@ -39,9 +39,9 @@ async function drawAnalysis() {
         .style("translate", `transform(${dimensionsLine.margin.left}px, ${dimensionsLine.margin.top}px)`)
 
     const testDot = boundsLine.append("circle")
-        .attr("cx", 0)
-        .attr("cy", 0)
-        .attr("r", 100)
+        .attr("cx", 50)
+        .attr("cy", 50)
+        .attr("r", 20)
         .attr("fill", "red")
 
     // ------------------------------Initial static 
@@ -57,9 +57,16 @@ async function drawAnalysis() {
         return d
     })
 
-    surgery.sort((a, b) => b.year - a.year);
+    const analysis = await d3.csv("./data/analysis.csv", (d) => {
+        d3.autoType(d)
+        return d
+    })
+    surgery.sort((a, b) => a.year - b.year);
+    analysis.sort((a, b) => a.year - b.year)
     // console.table(surgery[0])
     // console.log(surgery[0])
+    console.table(analysis[0])
+    console.log(analysis[0])
 
     const sumSry = d3.group(surgery, d => d.surgery);
     // console.log(sumSry)
@@ -87,14 +94,60 @@ async function drawAnalysis() {
 
     const timeScale = d3.scaleTime()
         .domain(d3.extent(surgery, yearAccessor))
-        .range([dimensionsLine.margin.left, dimensionsLine.boundedWidth])
+        .range([100, 400])
         .nice()
 
     const rateScale = d3.scaleLinear()
-        .domain(d3.extent(surgery, rateAccessor))
-        .range([dimensionsLine.boundedHeight, dimensionsLine.margin.top])
+        .domain([-2, 9])
+        .range([dimensionsLine.boundedHeight / 4, 50])
+        .nice()
+
+    const lineColorScale = d3.scaleOrdinal()
+        .domain(surgeryTypes)
+        .range(['#8b0000', '#8b0000', '#808080', '#808080', '#808080', '#808080', '#808080', '#808080', '#808080'])
 
 
+    //****************************5. Draw Peripherals
+
+    //----------------------Draw Axis Generators
+
+    const timeAxisGenerator = d3.axisBottom()
+        .scale(timeScale)
+
+    const rateAxisGenerator = d3.axisLeft()
+        .scale(rateScale)
+
+    //----------------------Draw Axes
+
+    const timeAxis = boundsLine.append("g")
+        .call(timeAxisGenerator)
+        .style("transform", `translateY(${dimensionsLine.boundedHeight / 4 - 28}px)`)
+        .attr("class", "axisRed")
+
+    const rateAxis = boundsLine.append("g")
+        .call(rateAxisGenerator)
+        .style("transform", `translateX(${dimensionsLine.margin.left}px)`)
+        .attr("class", "axisRed")
+
+    //***************************6. Draw Chart Generators
+
+    const lineGenerator = d3.line()
+        .x(d => timeScale(yearAccessor(d)))
+        .y(d => rateScale(rateAccessor(d)))
+        .curve(d3.curveCardinal)
+    // .curve(d3.curveCatmullRom.alpha(0.9))
+
+
+    const lineChart = boundsLine.selectAll(".path")
+        .data(sumSry)
+        // .attr("class", "path")
+        .join("path")
+        .transition()
+        .attr("d", d => lineGenerator(d[1]))
+        .attr("stroke", d => lineColorScale(d[0]))
+        .attr("stroke-width", 1)
+        .attr("fill", "none")
+        .attr("opacity", 1)
 
 
 } drawAnalysis()
