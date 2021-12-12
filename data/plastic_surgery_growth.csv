@@ -1,82 +1,82 @@
-﻿surgery,year,rate,count,note
-Breast augmentation,2020,-0.33,193073,Pandemic dip
-Buttock surgeries,2020,5.89,25874,Pandemic dip
-Cheek implant,2020,7.52,108189,Pandemic dip
-Chin augmentation,2020,1.35,43900,Pandemic dip
-Facelift,2020,0.86,234374,Pandemic dip
-Lip augmentation,2020,0.36,34236,Pandemic dip
-Liposuction,2020,0.04,211067,Pandemic dip
-Nose reshaping,2020,0.45,352555,Pandemic dip
-Tummy tuck,2020,-0.08,97988,Pandemic dip
-Breast augmentation,2019,0,287085,BBL was first reported performed on teenagers
-Buttock surgeries,2019,7.78,32991,BBL was first reported performed on teenagers
-Cheek implant,2019,8.27,117720,BBL was first reported performed on teenagers
-Chin augmentation,2019,1.39,44603,BBL was first reported performed on teenagers
-Facelift,2019,1.07,261987,BBL was first reported performed on teenagers
-Lip augmentation,2019,0.8,45240,BBL was first reported performed on teenagers
-Liposuction,2019,0.31,265209,BBL was first reported performed on teenagers
-Nose reshaping,2019,0.49,362299,BBL was first reported performed on teenagers
-Tummy tuck,2019,0.11,118210,BBL was first reported performed on teenagers
-Breast augmentation,2018,0.1,313735,
-Buttock surgeries,2018,6.95,29869,
-Cheek implant,2018,0.13,14369,
-Chin augmentation,2018,-0.12,16400,
-Facelift,2018,-0.04,121531,
-Lip augmentation,2018,0.23,30859,
-Liposuction,2018,0.28,258558,
-Nose reshaping,2018,-0.12,213780,
-Tummy tuck,2018,0.22,130081,
-Breast augmentation,2017,0.05,300378,
-Buttock surgeries,2017,6.04,26428,
-Cheek implant,2017,0.12,14277,
-Chin augmentation,2017,-0.13,16136,
-Facelift,2017,0,125697,
-Lip augmentation,2017,0.19,29797,
-Liposuction,2017,0.22,246354,
-Nose reshaping,2017,-0.1,218924,
-Tummy tuck,2017,0.22,129753,
-Breast augmentation,2016,0.01,290467,
-Buttock surgeries,2016,5.85,25739,
-Cheek implant,2016,0.04,13197,
-Chin augmentation,2016,-0.1,16688,
-Facelift,2016,0.04,131106,
-Lip augmentation,2016,0.13,28430,
-Liposuction,2016,0.16,235237,
-Nose reshaping,2016,-0.08,223018,
-Tummy tuck,2016,0.2,127633,
-Breast augmentation,2015,-0.02,279143,
-Buttock surgeries,2015,4.86,22012,
-Cheek implant,2015,0,12668,
-Chin augmentation,2015,-0.06,17451,
-Facelift,2015,0,125711,
-Lip augmentation,2015,0.09,27449,
-Liposuction,2015,0.1,222051,
-Nose reshaping,2015,-0.1,217979,
-Tummy tuck,2015,0.2,127967,
-Breast augmentation,2014,0,286254,
-Buttock surgeries,2014,3.49,16873,The Year of Rear
-Cheek implant,2014,-0.04,12199,The Year of Rear
-Chin augmentation,2014,-0.03,18136,The Year of Rear
-Facelift,2014,0.02,128266,The Year of Rear
-Lip augmentation,2014,0.04,26025,The Year of Rear
-Liposuction,2014,0.04,210552,The Year of Rear
-Nose reshaping,2014,-0.11,217124,The Year of Rear
-Tummy tuck,2014,-0.84,17158,The Year of Rear
-Breast augmentation,2013,0.01,290224,BBL was first introduced
-Buttock surgeries,2013,2.56,13373,BBL was first introduced
-Cheek implant,2013,-0.05,12004,BBL was first introduced
-Chin augmentation,2013,0.02,19108,BBL was first introduced
-Facelift,2013,0.06,133320,BBL was first introduced
-Lip augmentation,2013,0,25156,BBL was first introduced
-Liposuction,2013,-0.01,199817,BBL was first introduced
-Nose reshaping,2013,-0.09,221053,BBL was first introduced
-Tummy tuck,2013,0.05,111986,BBL was first introduced
-Breast augmentation,2012,0,286274,
-Buttock surgeries,2012,0,3756,
-Cheek implant,2012,0,12698,
-Chin augmentation,2012,0,18645,
-Facelift,2012,0,126320,
-Lip augmentation,2012,0,25144,
-Liposuction,2012,0,202128,
-Nose reshaping,2012,0,242684,
-Tummy tuck,2012,0,106628,
+﻿periodnum,surgery,year,rate,count,note
+1,Breast augmentation,2012,0,286274,
+1,Buttock surgeries,2012,0,3756,
+1,Cheek implant,2012,0,12698,
+1,Chin augmentation,2012,0,18645,
+1,Facelift,2012,0,126320,
+1,Lip augmentation,2012,0,25144,
+1,Liposuction,2012,0,202128,
+1,Nose reshaping,2012,0,242684,
+1,Tummy tuck,2012,0,106628,
+2,Breast augmentation,2013,0.01,290224,BBL was first introduced
+2,Buttock surgeries,2013,2.56,13373,BBL was first introduced
+2,Cheek implant,2013,-0.05,12004,BBL was first introduced
+2,Chin augmentation,2013,0.02,19108,BBL was first introduced
+2,Facelift,2013,0.06,133320,BBL was first introduced
+2,Lip augmentation,2013,0,25156,BBL was first introduced
+2,Liposuction,2013,-0.01,199817,BBL was first introduced
+2,Nose reshaping,2013,-0.09,221053,BBL was first introduced
+2,Tummy tuck,2013,0.05,111986,BBL was first introduced
+3,Breast augmentation,2014,0,286254,
+3,Buttock surgeries,2014,3.49,16873,The Year of Rear
+3,Cheek implant,2014,-0.04,12199,The Year of Rear
+3,Chin augmentation,2014,-0.03,18136,The Year of Rear
+3,Facelift,2014,0.02,128266,The Year of Rear
+3,Lip augmentation,2014,0.04,26025,The Year of Rear
+3,Liposuction,2014,0.04,210552,The Year of Rear
+3,Nose reshaping,2014,-0.11,217124,The Year of Rear
+3,Tummy tuck,2014,-0.84,17158,The Year of Rear
+4,Breast augmentation,2015,-0.02,279143,
+4,Buttock surgeries,2015,4.86,22012,
+4,Cheek implant,2015,0,12668,
+4,Chin augmentation,2015,-0.06,17451,
+4,Facelift,2015,0,125711,
+4,Lip augmentation,2015,0.09,27449,
+4,Liposuction,2015,0.1,222051,
+4,Nose reshaping,2015,-0.1,217979,
+4,Tummy tuck,2015,0.2,127967,
+5,Breast augmentation,2016,0.01,290467,
+5,Buttock surgeries,2016,5.85,25739,
+5,Cheek implant,2016,0.04,13197,
+5,Chin augmentation,2016,-0.1,16688,
+5,Facelift,2016,0.04,131106,
+5,Lip augmentation,2016,0.13,28430,
+5,Liposuction,2016,0.16,235237,
+5,Nose reshaping,2016,-0.08,223018,
+5,Tummy tuck,2016,0.2,127633,
+6,Breast augmentation,2017,0.05,300378,
+6,Buttock surgeries,2017,6.04,26428,
+6,Cheek implant,2017,0.12,14277,
+6,Chin augmentation,2017,-0.13,16136,
+6,Facelift,2017,0,125697,
+6,Lip augmentation,2017,0.19,29797,
+6,Liposuction,2017,0.22,246354,
+6,Nose reshaping,2017,-0.1,218924,
+6,Tummy tuck,2017,0.22,129753,
+7,Breast augmentation,2018,0.1,313735,
+7,Buttock surgeries,2018,6.95,29869,
+7,Cheek implant,2018,0.13,14369,
+7,Chin augmentation,2018,-0.12,16400,
+7,Facelift,2018,-0.04,121531,
+7,Lip augmentation,2018,0.23,30859,
+7,Liposuction,2018,0.28,258558,
+7,Nose reshaping,2018,-0.12,213780,
+7,Tummy tuck,2018,0.22,130081,
+8,Breast augmentation,2019,0,287085,BBL was first reported performed on teenagers
+8,Buttock surgeries,2019,7.78,32991,BBL was first reported performed on teenagers
+8,Cheek implant,2019,8.27,117720,BBL was first reported performed on teenagers
+8,Chin augmentation,2019,1.39,44603,BBL was first reported performed on teenagers
+8,Facelift,2019,1.07,261987,BBL was first reported performed on teenagers
+8,Lip augmentation,2019,0.8,45240,BBL was first reported performed on teenagers
+8,Liposuction,2019,0.31,265209,BBL was first reported performed on teenagers
+8,Nose reshaping,2019,0.49,362299,BBL was first reported performed on teenagers
+8,Tummy tuck,2019,0.11,118210,BBL was first reported performed on teenagers
+9,Breast augmentation,2020,-0.33,193073,Pandemic dip
+9,Buttock surgeries,2020,5.89,25874,Pandemic dip
+9,Cheek implant,2020,7.52,108189,Pandemic dip
+9,Chin augmentation,2020,1.35,43900,Pandemic dip
+9,Facelift,2020,0.86,234374,Pandemic dip
+9,Lip augmentation,2020,0.36,34236,Pandemic dip
+9,Liposuction,2020,0.04,211067,Pandemic dip
+9,Nose reshaping,2020,0.45,352555,Pandemic dip
+9,Tummy tuck,2020,-0.08,97988,Pandemic dip

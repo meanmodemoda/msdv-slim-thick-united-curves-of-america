@@ -1,55 +1,55 @@
-﻿party,year,category,unit,value
-Kylie IG,2012,Instagram Followers,million,2
-Kylie IG,2013,Instagram Followers,million,8
-Kylie IG,2014,Instagram Followers,million,15
-Kylie IG,2015,Instagram Followers,million,46
-Kylie IG,2016,Instagram Followers,million,80
-Kylie IG,2017,Instagram Followers,million,100
-Kylie IG,2018,Instagram Followers,million,108
-Kylie IG,2019,Instagram Followers,million,175
-Kylie IG,2020,Instagram Followers,million,285
-Kim IG,2012,Instagram Followers,million,6
-Kim IG,2013,Instagram Followers,million,14
-Kim IG,2014,Instagram Followers,million,22
-Kim IG,2015,Instagram Followers,million,44
-Kim IG,2016,Instagram Followers,million,87
-Kim IG,2017,Instagram Followers,million,105
-Kim IG,2018,Instagram Followers,million,123
-Kim IG,2019,Instagram Followers,million,154
-Kim IG,2020,Instagram Followers,million,266
-Kylie Networth,2012,Networth,million,1
-Kylie Networth,2013,Networth,million,2
-Kylie Networth,2014,Networth,million,4
-Kylie Networth,2015,Networth,million,7
-Kylie Networth,2016,Networth,million,10
-Kylie Networth,2017,Networth,million,50
-Kylie Networth,2018,Networth,million,200
-Kylie Networth,2019,Networth,million,300
-Kylie Networth,2020,Networth,million,700
-Kim Networth,2012,Networth,million,30
-Kim Networth,2013,Networth,million,40
-Kim Networth,2014,Networth,million,62
-Kim Networth,2015,Networth,million,85
-Kim Networth,2016,Networth,million,120
-Kim Networth,2017,Networth,million,150
-Kim Networth,2018,Networth,million,225
-Kim Networth,2019,Networth,million,300
-Kim Networth,2020,Networth,million,900
-US Plastic Surgery,2012,Spending,billion,11
-US Plastic Surgery,2013,Spending,billion,12.6
-US Plastic Surgery,2014,Spending,billion,12.9
-US Plastic Surgery,2015,Spending,billion,13.3
-US Plastic Surgery,2016,Spending,billion,16.4
-US Plastic Surgery,2017,Spending,billion,16.7
-US Plastic Surgery,2018,Spending,billion,16.5
-US Plastic Surgery,2019,Spending,billion,23.7
-US Plastic Surgery,2020,Spending,billion,20.2
-Instagram,2012,Ad Revenue,billion,0
-Instagram,2013,Ad Revenue,billion,0
-Instagram,2014,Ad Revenue,billion,0.3
-Instagram,2015,Ad Revenue,billion,0.6
-Instagram,2016,Ad Revenue,billion,1.8
-Instagram,2017,Ad Revenue,billion,4.1
-Instagram,2018,Ad Revenue,billion,9.8
-Instagram,2019,Ad Revenue,billion,20
-Instagram,2020,Ad Revenue,billion,24
+﻿periodnum,party,year,category,unit,value
+1,Kylie IG,2012,Instagram Followers,million,2
+1,Kim IG,2012,Instagram Followers,million,6
+1,Kylie Networth,2012,Networth,million,1
+1,Kim Networth,2012,Networth,million,30
+1,US Plastic Surgery,2012,Spending,billion,11
+1,Instagram,2012,Ad Revenue,billion,0
+2,Kylie IG,2013,Instagram Followers,million,8
+2,Kim IG,2013,Instagram Followers,million,14
+2,Kylie Networth,2013,Networth,million,2
+2,Kim Networth,2013,Networth,million,40
+2,US Plastic Surgery,2013,Spending,billion,12.6
+2,Instagram,2013,Ad Revenue,billion,0
+3,Kylie IG,2014,Instagram Followers,million,15
+3,Kim IG,2014,Instagram Followers,million,22
+3,Kylie Networth,2014,Networth,million,4
+3,Kim Networth,2014,Networth,million,62
+3,US Plastic Surgery,2014,Spending,billion,12.9
+3,Instagram,2014,Ad Revenue,billion,0.3
+4,Kylie IG,2015,Instagram Followers,million,46
+4,Kim IG,2015,Instagram Followers,million,44
+4,Kylie Networth,2015,Networth,million,7
+4,Kim Networth,2015,Networth,million,85
+4,US Plastic Surgery,2015,Spending,billion,13.3
+4,Instagram,2015,Ad Revenue,billion,0.6
+5,Kylie IG,2016,Instagram Followers,million,80
+5,Kim IG,2016,Instagram Followers,million,87
+5,Kylie Networth,2016,Networth,million,10
+5,Kim Networth,2016,Networth,million,120
+5,US Plastic Surgery,2016,Spending,billion,16.4
+5,Instagram,2016,Ad Revenue,billion,1.8
+6,Kylie IG,2017,Instagram Followers,million,100
+6,Kim IG,2017,Instagram Followers,million,105
+6,Kylie Networth,2017,Networth,million,50
+6,Kim Networth,2017,Networth,million,150
+6,US Plastic Surgery,2017,Spending,billion,16.7
+6,Instagram,2017,Ad Revenue,billion,4.1
+7,Kylie IG,2018,Instagram Followers,million,108
+7,Kim IG,2018,Instagram Followers,million,123
+7,Kylie Networth,2018,Networth,million,200
+7,Kim Networth,2018,Networth,million,225
+7,US Plastic Surgery,2018,Spending,billion,16.5
+7,Instagram,2018,Ad Revenue,billion,9.8
+8,Kylie IG,2019,Instagram Followers,million,175
+8,Kim IG,2019,Instagram Followers,million,154
+8,Kylie Networth,2019,Networth,million,300
+8,Kim Networth,2019,Networth,million,300
+8,US Plastic Surgery,2019,Spending,billion,23.7
+8,Instagram,2019,Ad Revenue,billion,20
+9,Kylie IG,2020,Instagram Followers,million,285
+9,Kim IG,2020,Instagram Followers,million,266
+9,Kylie Networth,2020,Networth,million,700
+9,Kim Networth,2020,Networth,million,900
+9,US Plastic Surgery,2020,Spending,billion,20.2
+9,Instagram,2020,Ad Revenue,billion,24

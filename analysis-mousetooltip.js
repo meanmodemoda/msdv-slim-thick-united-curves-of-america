@@ -52,7 +52,8 @@ async function drawAnalysis() {
     const lineChartGroup = boundsLine.append("g")
         .classed("lineChart", true)
 
-
+    const compChartGroup = boundsLine.append("g")
+        .classed("lineCompChart", true)
 
     const labelsGroup = boundsLine.append("g")
         .classed("labels", true)
@@ -66,14 +67,6 @@ async function drawAnalysis() {
 
     const tooltipGroup = tooltip.append("g")
 
-    const dotBilGroup = boundsLine.append("g")
-        .classed("dotBilChart", true)
-
-    const dotMilGroup = boundsLine.append("g")
-        .classed("dotMilChart", true)
-
-    const dotSryGroup = boundsLine.append("g")
-        .classed("dotSryChart", true)
     //**************************3. Load Data and Create Accessors
 
     //----------------------Load Data
@@ -117,8 +110,7 @@ async function drawAnalysis() {
     const rateAccessor = d => d.rate;
     // console.log(rateAccessor(surgery[0]))
     const countAccessor = d => d.count;
-    //periodnum
-    const periodNumAccessor = d => d.periodnum;
+
     //category
     const categoryAccessor = d => d.category;
     const valueAccessor = d => d.value;
@@ -382,36 +374,7 @@ async function drawAnalysis() {
         tooltip.style('display', 'none')
     }
 
-    //Draw Inst Dots
 
-    function drawReference(periodNum) {
-        const dotBilChart = dotBilGroup.selectAll("circle")
-            .data(billions.filter(d => d.periodnum === periodNum))
-            .join("circle")
-            .attr("cx", d => timeScale(yearAccessor(d)))
-            .attr("cy", d => bilScale(valueAccessor(d)))
-            .attr("r", 2)
-            .attr("fill", "white")
-            .attr("opacity", 1)
-
-        const dotMilChart = dotMilGroup.selectAll("circle")
-            .data(millions.filter(d => d.periodnum === periodNum))
-            .join("circle")
-            .attr("cx", d => timeScale(yearAccessor(d)))
-            .attr("cy", d => milScale(valueAccessor(d)))
-            .attr("r", 2)
-            .attr("fill", "white")
-            .attr("opacity", 1)
-
-        const dotSryChart = dotSryGroup.selectAll("circle")
-            .data(surgery.filter(d => d.periodnum === periodNum))
-            .join("circle")
-            .attr("cx", d => timeScale(yearAccessor(d)))
-            .attr("cy", d => rateScale(rateAccessor(d)))
-            .attr("r", 2)
-            .attr("fill", "white")
-            .attr("opacity", 1)
-    }
 
     //---------------------------Draw Ordinal Scale Slider    
     //using d3=simple-slider package, note syntax slightly different from d3.js
@@ -422,7 +385,7 @@ async function drawAnalysis() {
         .tickFormat((d, i) => yearAnalysis[i])
         .step(1)
         .default(1)
-        .width(180)
+        .width(200)
         .displayValue(false)
         .fill("#000000")
         .handle(
@@ -440,13 +403,7 @@ async function drawAnalysis() {
         .call(sliderGenerator);
 
 
-    // function drawLines() {
-
-    //     dotChart.style("opacity",1)
-    // }
-    sliderGenerator.on('onchange', (value) => {
-        drawReference(value);
-    })
-
+    // sliderGenerator.on('onchange', (value) => {
+    //     drawLines(value);
 
 } drawAnalysis()
