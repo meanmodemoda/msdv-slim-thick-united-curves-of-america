@@ -1,8 +1,15 @@
-@font-face { font-family: "MonumentExtended-Black","RightGrotesk-WideMedium","ObjectSans-Heavy"; 
-src: url("./assets/MonumentExtended-Black.woff2") format("woff2"),
-  url("./assets/MonumentExtended-Black.woff") format("woff"),
-  url("./assets/RightGrotesk-WideMedium.woff") format("woff"),
-  url("./assets/ObjectSans-Heavy.woff") format("woff") } 
+@font-face { font-family: "MonumentExtended-Black"; 
+src: url("./assets/MonumentExtended-Black.woff") format("woff");
+} 
+
+@font-face { font-family: "RightGrotesk-WideMedium"; 
+  src: url("./assets/RightGrotesk-WideMedium.woff") format("woff");
+  /* font-stretch: 125% 180%; */
+  } 
+
+  @font-face { font-family: "ObjectSans-Heavy"; 
+    src: url("./assets/ObjectSans-Heavy.woff") format("woff");
+    } 
 
 
 html {
@@ -18,8 +25,8 @@ html {
 
 
 .sub-title h3 {
-   font-family:"Work Sans",sans-serif;
-   font-weight: 800;
+   font-family:"RightGrotesk-WideMedium",sans-serif;
+   /* font-weight: 800; */
    background: -webkit-linear-gradient(left, #f72585, #002642);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -27,6 +34,7 @@ html {
   /*stroke: 2;*/
     /*font-weight: 600;*/
     margin-top: 4rem;
+    font-size: 1.5rem;
 }
 
 p.footnote {
