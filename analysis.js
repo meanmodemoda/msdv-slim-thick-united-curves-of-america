@@ -38,6 +38,9 @@ async function drawAnalysis() {
     const boundsLine = wrapperLine.append("g")
         .style("translate", `transform(${dimensionsLine.margin.left}px, ${dimensionsLine.margin.top}px)`)
 
+
+    const tooltip = d3.select("#tooltip")
+
     const testDot = boundsLine.append("circle")
         .attr("cx", 50)
         .attr("cy", 50)
@@ -55,6 +58,12 @@ async function drawAnalysis() {
     const labelsGroup = boundsLine.append("g")
         .classed("labels", true)
 
+    const tooltipDot = boundsLine.append("circle")
+        .attr("r", 2)
+        .attr("fill", "#fc8781")
+        .attr("stroke-width", 2)
+        .style("opacity", 0)
+        .style("pointer-events", "none")
     //**************************3. Load Data and Create Accessors
 
     //----------------------Load Data
@@ -84,6 +93,8 @@ async function drawAnalysis() {
     const sumBil = d3.group(billions, d => d.party);
     // console.log(sumMil)
     // console.log(sumBil)
+
+    const billionsIG = billions.filter(d => d.party === "Instagram")
     //--------------------Create Accessors
 
     //surgeryType
@@ -195,18 +206,19 @@ async function drawAnalysis() {
     const lineGenerator = d3.line()
         .x(d => timeScale(yearAccessor(d)))
         .y(d => rateScale(rateAccessor(d)))
-        .curve(d3.curveCardinal)
-    // .curve(d3.curveCatmullRom.alpha(0.9))
+        // .curve(d3.curveCardinal)
+        .curve(d3.curveCatmullRom.alpha(0.9))
 
     const lineMilGenerator = d3.line()
         .x(d => timeScale(yearAccessor(d)))
         .y(d => milScale(valueAccessor(d)))
-        .curve(d3.curveCardinal)
+    // .curve(d3.curveCardinal)
 
     const lineBilGenerator = d3.line()
         .x(d => timeScale(yearAccessor(d)))
         .y(d => bilScale(valueAccessor(d)))
-        .curve(d3.curveCardinal)
+    // .curve(d3.curveCardinal)
+    // .curve(d3.curveCatmullRom.alpha(0.2))
 
     //***************************7. Draw Charts
     const lineChart = boundsLine.selectAll(".path")
@@ -307,6 +319,36 @@ async function drawAnalysis() {
     //     .style("font-size", 14)
     //     .style("font-family", "Arial Black")
     //     .raise()
+
+    //Tooltip
+
+    const listeningRect = boundsLine.append("rect")
+        .attr("width", 500)
+        .attr("height", 920)
+        .style("opacity", 0)
+        .on("touchmouse mousemove", callback)
+    // .on("mouseleave", function () { })
+
+    function callback(e) {
+        const mousePos = d3.pointer(e, this)
+        const year = timeScale.invert(mousePos[0])
+        //Custom Bisector - left, center, right
+        const bisector = d3.bisector(yearAccessor).left
+        const index = bisector(billionsIG, year)
+
+        const yValue = valueAccessor(billionsIG[index])
+        console.log(yValue)
+        console.log(year)
+        //Update Image
+        tooltipDot.style('opacity', 1)
+            .attr('cx', timeScale(year))
+            .attr('cy', bilScale(yValue))
+            .raise()
+    }
+
+
+
+
 
 
 } drawAnalysis()

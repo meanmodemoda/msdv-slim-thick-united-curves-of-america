@@ -7,6 +7,10 @@ src: url("./assets/MonumentExtended-Black.woff") format("woff");
   /* font-stretch: 125% 180%; */
   } 
 
+  @font-face { font-family: "RightGrotesk-SpatialRegular"; 
+    src: url("./assets/RightGrotesk-SpatialRegular.woff") format("woff");
+    /* font-stretch: 125% 180%; */
+    } 
   @font-face { font-family: "ObjectSans-Heavy"; 
     src: url("./assets/ObjectSans-Heavy.woff") format("woff");
     } 
@@ -25,7 +29,7 @@ html {
 
 
 .sub-title h3 {
-   font-family:"RightGrotesk-WideMedium",sans-serif;
+   font-family:"ObjectSans-Heavy",sans-serif;
    /* font-weight: 800; */
    background: -webkit-linear-gradient(left, #f72585, #002642);
     -webkit-background-clip: text;
@@ -34,7 +38,7 @@ html {
   /*stroke: 2;*/
     /*font-weight: 600;*/
     margin-top: 4rem;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 p.footnote {
@@ -151,8 +155,8 @@ background: linear-gradient(90deg, rgba(232,190,172,0) 0%, rgba(240,176,149,0.56
   /*background: #969696;*/
    /*border: 1px solid black;*/
   margin: 0;
-  top: 10rem;
-  left: 0;
+  top: 8rem;
+  left: 2rem;
 }
 
 .intro img {
@@ -164,7 +168,7 @@ background: linear-gradient(90deg, rgba(232,190,172,0) 0%, rgba(240,176,149,0.56
   position: absolute;
   top: 15%;
   left: 50%;
-  transform: translateY(-20%);
+  transform: translateY(-30%);
   width: 35%;
   height: 10rem;
   text-align: center;
