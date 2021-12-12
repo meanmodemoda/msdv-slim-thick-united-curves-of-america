@@ -8,7 +8,7 @@ src: url("./assets/MonumentExtended-Black.woff2") format("woff2"),
 html {
   font-size: 16px;
   font-family: "Work Sans",sans-serif;
-  max-width: 1900px;
+  width: 1900px;
   background: rgb(40,1,85);
   background: linear-gradient(90deg, rgba(40,1,85,0.4066001400560224) 0%, rgba(232,190,172,0.8239670868347339) 14%, rgba(232,190,172,1) 72%, rgba(232,190,172,1) 87%, rgba(232,190,172,0.4514180672268907) 100%);
   box-sizing: border-box;
@@ -276,7 +276,7 @@ margin-top: 2rem;
 }  
 
 .spaceholder {
-  height: 40rem;
+  height: 30rem;
   /* margin-bottom: 200px; */
   /* border: 5px solid orange; */
 }
@@ -367,4 +367,36 @@ div.divider {
 .axisRed text{
   fill: white;
   font-size: 0.5rem;
+}
+
+/* Moving Eyes */
+div.face {
+  position: absolute;
+}
+
+div.iris-left {
+  position: relative;
+  top: 18rem;
+  left: 26rem;
+}
+
+div.iris-right {
+  position: relative;
+  top: 9.4rem;
+  left: 70rem;
+}
+
+div.iris div {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  background-color: black;
+  border-radius: 18px;
+  transform: translate(-50%, -50%);
+}
+
+.spaceholder1 {
+  height: 15rem;
 }
