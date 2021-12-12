@@ -52,19 +52,8 @@ async function drawAnalysis() {
     const lineChartGroup = boundsLine.append("g")
         .classed("lineChart", true)
 
-
-
     const labelsGroup = boundsLine.append("g")
         .classed("labels", true)
-
-    const tooltipDot = boundsLine.append("circle")
-        .attr("r", 2)
-        .attr("fill", "#fc8781")
-        .attr("stroke-width", 2)
-        .style("opacity", 0)
-        .style("pointer-events", "none")
-
-    const tooltipGroup = tooltip.append("g")
 
     const dotBilGroup = boundsLine.append("g")
         .classed("dotBilChart", true)
@@ -74,6 +63,10 @@ async function drawAnalysis() {
 
     const dotSryGroup = boundsLine.append("g")
         .classed("dotSryChart", true)
+
+    const foreignGroup = labelsGroup.append("svg")
+    // .attr("width", 960)
+    // .attr("height", 500);
     //**************************3. Load Data and Create Accessors
 
     //----------------------Load Data
@@ -141,18 +134,18 @@ async function drawAnalysis() {
 
     const milScale = d3.scaleLinear()
         .domain(d3.extent(millions, valueAccessor))
-        .range([172, 70])
+        .range([150, 70])
         .nice()
 
     const rateScale = d3.scaleLinear()
         .domain([-2, 9])
-        .range([300, 192])
+        .range([250, 170])
         .nice()
 
 
     const bilScale = d3.scaleLinear()
         .domain(d3.extent(billions, valueAccessor))
-        .range([420, 320])
+        .range([340, 270])
         .nice()
 
 
@@ -197,11 +190,10 @@ async function drawAnalysis() {
         .style("transform", `translateX(320px)`)
         .attr("class", "axisRed")
 
-    const timeRateAxis = boundsLine.append("g")
-        .call(timeRateAxisGenerator)
-        .style("transform", `translateY(30px)`)
-        .attr("class", "axisRed")
-
+    // const timeRateAxis = boundsLine.append("g")
+    //     .call(timeRateAxisGenerator)
+    //     .style("transform", `translateY(30px)`)
+    //     .attr("class", "axisRed")
 
     const milAxis = boundsLine.append("g")
         .call(milAxisGenerator)
@@ -218,18 +210,18 @@ async function drawAnalysis() {
     const lineGenerator = d3.line()
         .x(d => timeScale(yearAccessor(d)))
         .y(d => rateScale(rateAccessor(d)))
-        // .curve(d3.curveCardinal)
-        .curve(d3.curveCatmullRom.alpha(0.9))
+        .curve(d3.curveCardinal)
+    // .curve(d3.curveCatmullRom.alpha(0.9))
 
     const lineMilGenerator = d3.line()
         .x(d => timeScale(yearAccessor(d)))
         .y(d => milScale(valueAccessor(d)))
-    // .curve(d3.curveCardinal)
+        .curve(d3.curveCardinal)
 
     const lineBilGenerator = d3.line()
         .x(d => timeScale(yearAccessor(d)))
         .y(d => bilScale(valueAccessor(d)))
-    // .curve(d3.curveCardinal)
+        .curve(d3.curveCardinal)
     // .curve(d3.curveCatmullRom.alpha(0.2))
 
     //***************************7. Draw Charts
@@ -241,7 +233,7 @@ async function drawAnalysis() {
         // .duration(600)
         .attr("d", d => lineGenerator(d[1]))
         .attr("stroke", d => lineColorScale(d[0]))
-        .attr("stroke-width", 0.5)
+        .attr("stroke-width", 0.8)
         .attr("fill", "none")
         .attr("opacity", 1)
 
@@ -254,7 +246,7 @@ async function drawAnalysis() {
         // .duration(600)
         .attr("d", d => lineMilGenerator(d[1]))
         .attr("stroke", d => partyColorScale(d[0]))
-        .attr("stroke-width", 0.5)
+        .attr("stroke-width", 0.8)
         .attr("fill", "none")
         .attr("opacity", 1)
 
@@ -266,7 +258,7 @@ async function drawAnalysis() {
         // .duration(600)
         .attr("d", d => lineBilGenerator(d[1]))
         .attr("stroke", d => partyColorScale(d[0]))
-        .attr("stroke-width", 0.5)
+        .attr("stroke-width", 0.8)
         .attr("fill", "none")
         .attr("opacity", 1)
 
@@ -277,49 +269,45 @@ async function drawAnalysis() {
 
     const labelGroups = labelsGroup.selectAll("g")
         .data(labels)
-        .enter()
-        .append("g")
+        .join("g")
 
+    const foreignGaze = labelGroups.append("foreignObject")
+        .attr("x", 100)
+        .attr("y", 50)
+        .attr("width", 150)
+        .attr("height", 400)
+        .append("xhtml:div")
+        .style("font", "0.5rem 'Helvetica Neue'")
+        .style("color", "white")
+        .html("<h1>The Gaze</h1><p>A trend line of estimated Kim and Kylie's Instagram followers and their networth in millions ($).");
 
-    const gazeLabel = labelGroups.append("text")
-        .attr("x", 150)
-        .attr("y", 70)
-        .text("The Gaze")
+    const foreignSry = labelGroups.append("foreignObject")
+        .attr("x", 100)
+        .attr("y", 170)
+        .attr("width", 150)
+        .attr("height", 400)
+        .append("xhtml:div")
+        .style("font", "0.5rem 'Helvetica Neue'")
+        .style("color", "white")
+        .html("<h1>The Surgery</h1><p>A trend line of annual growth rate vs 2012 of key plastic surgeries performed in America.");
+
+    const foreignMoney = labelGroups.append("foreignObject")
+        .attr("x", 100)
+        .attr("y", 300)
+        .attr("width", 150)
+        .attr("height", 400)
+        .append("xhtml:div")
+        .style("font", "0.5rem 'Helvetica Neue'")
+        .style("color", "white")
+        .html("<h1>The Money</h1><p>A trend line of estimated Instagram annal ad revenue and reported US plastic surgery spending in billions ($).");
+
+    const chartLabels = labelGroups.append("text")
+        .attr("x", 600)
+        .attr("y", 200)
+        .text("Hello World")
         .style("fill", "white")
         .style("font-family", "Arial Black")
         .style("font-size", 12)
-
-    const surgeryLabel = labelGroups.append("text")
-        .attr("x", 150)
-        .attr("y", 190)
-        .text("The Surgery")
-        .style("fill", "white")
-        .style("font-family", "Arial Black")
-        .style("font-size", 12)
-
-    const moneyLabel = labelGroups.append("text")
-        .attr("x", 150)
-        .attr("y", 320)
-        .text("The Money")
-        .style("fill", "white")
-        .style("font-family", "Arial Black")
-        .style("font-size", 12)
-
-    const test = labelGroups.append().html("The Money2")
-        .attr("x", 150)
-        .attr("y", 420)
-        .text("The Money")
-        .style("fill", "white")
-        .style("font-family", "Arial Black")
-        .style("font-size", 12)
-
-    // const chartLabels = labelGroups.append("text")
-    //     .attr("x", 150)
-    //     .attr("y", (d, i) => i * 120 + 30)
-    //     .text(d => d)
-    //     .style("fill", "white")
-    //     .style("font-family", "Arial Black")
-    //     .style("font-size", 12)
     //------------------Draw Title
 
     // ctr.append("text")
@@ -332,57 +320,9 @@ async function drawAnalysis() {
     //     .style("font-family", "Arial Black")
     //     .raise()
 
-    //Tooltip
 
-    const listeningRect = boundsLine.append("rect")
-        .attr("x", 320)
-        .attr("width", 500)
-        .attr("height", 920)
-        .style("opacity", 0)
-        .on("touchmouse mousemove", callback)
-        .on("mouseleave", removeTooltip)
 
-    function callback(e) {
-        const mousePos = d3.pointer(e, this)
-        const year = timeScale.invert(mousePos[0])
-        //Custom Bisector - left, center, right
-        const bisector = d3.bisector(yearAccessor).left
-        const index = bisector(billionsIG, year)
-
-        const yValue = valueAccessor(billionsIG[index])
-        console.log(yValue)
-        console.log(year)
-        //Update Image
-        tooltipDot.style('opacity', 1)
-            .attr('cx', timeScale(year))
-            .attr('cy', bilScale(yValue))
-            .raise()
-
-        tooltip.style('display', 'block')
-            .style('top', '200px')
-            .style('left', '200px')
-            .style("fill", "white")
-            .style("font-family", "Arial Black")
-            .style("font-size", 12)
-            .style("border", "2 solid white")
-
-        tooltipGroup.select('.value').append("text")
-            .text(`Hello World`)
-
-        const dateFormatter = d3.timeFormat("%Y")
-        tooltip.select('.year')
-            .text(`$${dateFormatter(timeScale(year))}`)
-            .style("fill", "white")
-            .style("font-family", "Arial Black")
-            .style("font-size", 12)
-    }
-
-    function removeTooltip(e) {
-        tooltipDot.style('opacity', 0)
-        tooltip.style('display', 'none')
-    }
-
-    //Draw Inst Dots
+    //Draw Refrence Dots
 
     function drawReference(periodNum) {
         const dotBilChart = dotBilGroup.selectAll("circle")
@@ -436,14 +376,11 @@ async function drawAnalysis() {
         // .attr('width', 400)
         // .attr('height', 100)
         //note this is different from CSS, d3 standard `translate` syntax, `px` is omitted
-        .attr('transform', `translate(320,450)`)
+        .attr('transform', `translate(320,380)`)
         .call(sliderGenerator);
 
 
-    // function drawLines() {
 
-    //     dotChart.style("opacity",1)
-    // }
     sliderGenerator.on('onchange', (value) => {
         drawReference(value);
     })
