@@ -52,9 +52,6 @@ async function drawAnalysis() {
     const compChartGroup = boundsLine.append("g")
         .classed("lineCompChart", true)
 
-    const labelsGroup = boundsLine.append("g")
-        .classed("labels", true)
-
     //**************************3. Load Data and Create Accessors
 
     //----------------------Load Data
@@ -82,8 +79,8 @@ async function drawAnalysis() {
     const billions = analysis.filter(d => d.unit === "billion")
     const sumMil = d3.group(millions, d => d.party);
     const sumBil = d3.group(billions, d => d.party);
-    // console.log(sumMil)
-    // console.log(sumBil)
+    console.log(sumMil)
+    console.log(sumBil)
     //--------------------Create Accessors
 
     //surgeryType
@@ -104,81 +101,73 @@ async function drawAnalysis() {
 
     //set up Arrays manually so I can control the order;
     const surgeryTypes = ["Breast augmentation", "Buttock surgeries", "Cheek implant", "Chin augmentation", "Facelift", "Lip augmentation", "Liposuction", "Nose reshaping", "Tummy tuck"]
+    const unit = ["million", "billion"]
     const categories = ["Instagram Followers", "Networth", "Spending", "Ad Revenue"]
-    const parties = ["Kylie IG", "Kim IG", "Kylie Networth", "Kim Networth", "US Plastic Surgery", "Instagram"]
+    const parties = ["Kylie IG", "Kim IG", "Kylie Networth", "Kim Networth"]
     //*************************4. Create Scale  
-
 
 
     const timeScale = d3.scaleTime()
         .domain(d3.extent(surgery, yearAccessor))
-        .range([320, 500])
-    // .nice()
-
-
-    const milScale = d3.scaleLinear()
-        .domain(d3.extent(millions, valueAccessor))
-        .range([172, 70])
+        .range([100, 280])
         .nice()
 
     const rateScale = d3.scaleLinear()
         .domain([-2, 9])
-        .range([300, 192])
+        .range([dimensionsLine.boundedHeight / 4, 50])
         .nice()
-
-
-    const bilScale = d3.scaleLinear()
-        .domain(d3.extent(billions, valueAccessor))
-        .range([420, 320])
-        .nice()
-
 
     const lineColorScale = d3.scaleOrdinal()
         .domain(surgeryTypes)
         .range(['#8b0000', '#8b0000', '#808080', '#808080', '#808080', '#808080', '#808080', '#808080', '#808080'])
 
+
+    const milScale = d3.scaleLinear()
+        .domain(d3.extent(millions, valueAccessor))
+        .range([dimensionsLine.boundedHeight / 4 - 28, 50])
+        .nice()
+
+    const bilScale = d3.scaleLinear()
+        .domain(d3.extent(billions, valueAccessor))
+        .range([dimensionsLine.boundedHeight / 4 - 28, 50])
+        .nice()
+
     const partyColorScale = d3.scaleOrdinal()
         .domain(parties)
-        .range(['#11ae7a', '#808080', '#cbd438', '#8b0000', '#8b0000', '#808080'])
-
-
+        .range(['#11ae7a', '#808080', '#cbd438', '#8b0000'])
 
     //****************************5. Draw Peripherals
 
     //----------------------Draw Axis Generators
 
-    const timeRateAxisGenerator = d3.axisBottom()
+    const timeAxisGenerator = d3.axisBottom()
         .scale(timeScale)
-        .ticks(5)
-
-    const timeMilAxisGenerator = d3.axisBottom()
-        .scale(timeScale)
-        .ticks(4)
 
     const rateAxisGenerator = d3.axisLeft()
         .scale(rateScale)
-        .ticks(4)
 
     const milAxisGenerator = d3.axisLeft()
         .scale(milScale)
-        .ticks(4)
 
-    const bilAxisGenerator = d3.axisLeft()
+    const bilAxisGenerator = d3.axisRight()
         .scale(bilScale)
-        .ticks(4)
 
     //----------------------Draw Axes
 
+    const timeAxis = boundsLine.append("g")
+        .call(timeAxisGenerator)
+        .style("transform", `translateY(${dimensionsLine.boundedHeight / 4 - 28}px)`)
+        .attr("class", "axisRed")
+
     const rateAxis = boundsLine.append("g")
         .call(rateAxisGenerator)
-        .style("transform", `translateX(320px)`)
+        .style("transform", `translateX(100px)`)
         .attr("class", "axisRed")
 
-    const timeRateAxis = boundsLine.append("g")
-        .call(timeRateAxisGenerator)
-        .style("transform", `translateY(30px)`)
+    const timeDupeAxis = boundsLine.append("g")
+        .call(timeAxisGenerator)
+        .style("transform", `translate(220px,${dimensionsLine.boundedHeight / 4 - 28}px)`)
         .attr("class", "axisRed")
-
 
     const milAxis = boundsLine.append("g")
         .call(milAxisGenerator)
@@ -187,7 +176,7 @@ async function drawAnalysis() {
 
     const bilAxis = boundsLine.append("g")
         .call(bilAxisGenerator)
-        .style("transform", `translateX(320px)`)
+        .style("transform", `translateX(${dimensionsLine.boundedWidth - 100}px)`)
         .attr("class", "axisRed")
 
     //***************************6. Draw Chart Generators
@@ -208,16 +197,14 @@ async function drawAnalysis() {
         .y(d => bilScale(valueAccessor(d)))
         .curve(d3.curveCardinal)
 
-    //***************************7. Draw Charts
     const lineChart = boundsLine.selectAll(".path")
         .data(sumSry)
         // .attr("class", "path")
         .join("path")
-        // .transition()
-        // .duration(600)
+        .transition()
         .attr("d", d => lineGenerator(d[1]))
         .attr("stroke", d => lineColorScale(d[0]))
-        .attr("stroke-width", 0.5)
+        .attr("stroke-width", 1)
         .attr("fill", "none")
         .attr("opacity", 1)
 
@@ -226,87 +213,12 @@ async function drawAnalysis() {
         .data(sumMil)
         // .attr("class", "path")
         .join("path")
-        // .transition()
-        // .duration(600)
+        .transition()
         .attr("d", d => lineMilGenerator(d[1]))
         .attr("stroke", d => partyColorScale(d[0]))
-        .attr("stroke-width", 0.5)
+        .attr("stroke-width", 1)
         .attr("fill", "none")
         .attr("opacity", 1)
-
-    const lineBilChart = boundsLine.selectAll(".path")
-        .data(sumBil)
-        // .attr("class", "path")
-        .join("path")
-        // .transition()
-        // .duration(600)
-        .attr("d", d => lineBilGenerator(d[1]))
-        .attr("stroke", d => partyColorScale(d[0]))
-        .attr("stroke-width", 0.5)
-        .attr("fill", "none")
-        .attr("opacity", 1)
-
-    //***************************8. Draw Chart Peripherals
-    //------------------Draw Labels
-    //for precision positioning, avoided loop, hardcoded positioning
-    const labels = ["The Gaze", "The Surgery", "The Money"]
-
-    const labelGroups = labelsGroup.selectAll("g")
-        .data(labels)
-        .enter()
-        .append("g")
-
-
-    const gazeLabel = labelGroups.append("text")
-        .attr("x", 150)
-        .attr("y", 70)
-        .text("The Gaze")
-        .style("fill", "white")
-        .style("font-family", "Arial Black")
-        .style("font-size", 12)
-
-    const surgeryLabel = labelGroups.append("text")
-        .attr("x", 150)
-        .attr("y", 190)
-        .text("The Surgery")
-        .style("fill", "white")
-        .style("font-family", "Arial Black")
-        .style("font-size", 12)
-
-    const moneyLabel = labelGroups.append("text")
-        .attr("x", 150)
-        .attr("y", 320)
-        .text("The Money")
-        .style("fill", "white")
-        .style("font-family", "Arial Black")
-        .style("font-size", 12)
-
-    const test = labelGroups.append().html("The Money2")
-        .attr("x", 150)
-        .attr("y", 420)
-        .text("The Money")
-        .style("fill", "white")
-        .style("font-family", "Arial Black")
-        .style("font-size", 12)
-
-    // const chartLabels = labelGroups.append("text")
-    //     .attr("x", 150)
-    //     .attr("y", (d, i) => i * 120 + 30)
-    //     .text(d => d)
-    //     .style("fill", "white")
-    //     .style("font-family", "Arial Black")
-    //     .style("font-size", 12)
-    //------------------Draw Title
-
-    // ctr.append("text")
-    //     .attr("x", dimensions.ctrWidth / 2 + 50)
-    //     .attr("y", dimensions.topMargin - 20)
-    //     .attr("text-anchor", "middle")
-    //     .text("NYC Air Quality by Borough Over Time (2009 - 2018)")
-    //     .style("fill", "black")
-    //     .style("font-size", 14)
-    //     .style("font-family", "Arial Black")
-    //     .raise()
 
 
 } drawAnalysis()

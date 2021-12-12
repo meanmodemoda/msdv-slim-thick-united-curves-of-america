@@ -1,6 +1,8 @@
-@font-face { font-family: "MonumentExtended-Black"; 
+@font-face { font-family: "MonumentExtended-Black","RightGrotesk-WideMedium","ObjectSans-Heavy"; 
 src: url("./assets/MonumentExtended-Black.woff2") format("woff2"),
-  url("./assets/MonumentExtended-Black.woff") format("woff") } 
+  url("./assets/MonumentExtended-Black.woff") format("woff"),
+  url("./assets/RightGrotesk-WideMedium.woff") format("woff"),
+  url("./assets/ObjectSans-Heavy.woff") format("woff") } 
 
 
 html {
@@ -334,7 +336,7 @@ div.divider {
 }
 
 #gaze_year {
-  font-family: "MonumentExtended-Black";
+  font-family: "ObjectSans-Heavy";
   font-size: 3.5rem;
   color: white;
   /* color: #000000; */
@@ -355,14 +357,14 @@ div.divider {
 }
 
 .axisRed line{
-  stroke: red;
+  stroke: white;
 }
 
 .axisRed path{
-  stroke: red;
+  stroke: white;
 }
 
 .axisRed text{
-  fill: red;
+  fill: white;
   font-size: 0.5rem;
 }
