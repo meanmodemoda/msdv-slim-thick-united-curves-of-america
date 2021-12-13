@@ -64,6 +64,9 @@ async function drawAnalysis() {
     const dotSryGroup = boundsLine.append("g")
         .classed("dotSryChart", true)
 
+    const lineRefGroup = boundsLine.append("g")
+        .classed("lineRefGroup", true)
+
     const foreignGroup = labelsGroup.append("svg")
     // .attr("width", 960)
     // .attr("height", 500);
@@ -115,7 +118,8 @@ async function drawAnalysis() {
     //category
     const categoryAccessor = d => d.category;
     const valueAccessor = d => d.value;
-
+    //note accessor
+    const noteAccessor = d => d.note;
 
     //set up Arrays manually so I can control the order;
     const surgeryTypes = ["Breast augmentation", "Buttock surgeries", "Cheek implant", "Chin augmentation", "Facelift", "Lip augmentation", "Liposuction", "Nose reshaping", "Tummy tuck"]
@@ -325,6 +329,17 @@ async function drawAnalysis() {
     //Draw Refrence Dots
 
     function drawReference(periodNum) {
+
+        const lineRefChart = lineRefGroup.selectAll("rect")
+            .data(surgery.filter(d => d.periodnum === periodNum))
+            .join("rect")
+            .attr("x", d => timeScale(yearAccessor(d)))
+            .attr("y", 70)
+            .attr("width", 0.25)
+            .attr("height", 270)
+            .attr("fill", "white")
+            .attr("opacity", 0.5)
+
         const dotBilChart = dotBilGroup.selectAll("circle")
             .data(billions.filter(d => d.periodnum === periodNum))
             .join("circle")
