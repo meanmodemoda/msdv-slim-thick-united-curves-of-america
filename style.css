@@ -232,8 +232,11 @@ margin-top: 2rem;
   /* position: relative; */
   background-position:center;
  /* height: 600rem; */
- /* width: 100%; */
+ /* height: calc(2.70s*100vw);
+ width: 100vw; */
   background-image: url( ./assets/gaze.svg);
+  background-size: contain;
+  background-color: green;
   background-repeat: no-repeat;
   border: 5px solid yellow; 
 }
@@ -320,12 +323,12 @@ div.surgical {
  }
 
 div.divider {
-   /* text-align: center;
-   vertical-align: middle; */
+   text-align: center; 
+   /* vertical-align: middle; */
    margin-top: auto;
    margin-bottom: auto;
   /* flex: 80%; */
-  /* border: 5px solid orange; */
+  border: 5px solid orange;
 }
 
 
@@ -405,7 +408,7 @@ div.iris div {
   left: 0;
   width: 50px;
   height: 50px;
-  background-color: black;
+  background-color: red;
   border-radius: 25px;
   transform: translate(-50%, -50%);
 }
@@ -413,3 +416,12 @@ div.iris div {
 .spaceholder1 {
   height: 15rem;
 }
+
+/* #tooltip {
+  position: relative;
+  top: 20rem;
+  left: 61rem;
+  width: 20%;
+   border: 5px solid orange;
+   text-align: center;
+} */

@@ -35,11 +35,24 @@ async function drawAnalysis() {
         // .attr("height", dimensionsArea.height)
         .attr("viewBox", `0 0 ${dimensionsLine.height} ${dimensionsLine.width}`)
 
+    const tooltip = d3.select('#tooltip')
+
+    // tooltip.html('<div><b>hello world</b></div>')
+    //     .style("color", "green")
+    // .style('top', 500 + 'px')
+    // .style('left', 800 + 'px')
+
+    // tooltip.select('.year')
+    //     .html('<div><b>2020</b></div>')
+    //     .attr("color", "yellow")
+    // // .style('top', 200 + 'px')
+    // // .style('left', 400 + 'px')
+    // tooltip.select('.year')
+    //     .text(`Hello World`)
+    //   
+
     const boundsLine = wrapperLine.append("g")
         .style("translate", `transform(${dimensionsLine.margin.left}px, ${dimensionsLine.margin.top}px)`)
-
-
-    const tooltip = d3.select("#tooltip")
 
     const testDot = boundsLine.append("circle")
         .attr("cx", 50)
@@ -51,6 +64,14 @@ async function drawAnalysis() {
 
     const lineChartGroup = boundsLine.append("g")
         .classed("lineChart", true)
+
+    const tooltipGroup = boundsLine.append("g")
+        .classed("tooltipGroup", true)
+
+    const tooltipSurgery = boundsLine.append("g")
+
+    const tooltipMil = boundsLine.append("g")
+    const tooltipBil = boundsLine.append("g")
 
     const labelsGroup = boundsLine.append("g")
         .classed("labels", true)
@@ -67,9 +88,12 @@ async function drawAnalysis() {
     const lineRefGroup = boundsLine.append("g")
         .classed("lineRefGroup", true)
 
+
+
     const foreignGroup = labelsGroup.append("svg")
     // .attr("width", 960)
     // .attr("height", 500);
+
     //**************************3. Load Data and Create Accessors
 
     //----------------------Load Data
@@ -124,6 +148,8 @@ async function drawAnalysis() {
     //set up Arrays manually so I can control the order;
     const surgeryTypes = ["Breast augmentation", "Buttock surgeries", "Cheek implant", "Chin augmentation", "Facelift", "Lip augmentation", "Liposuction", "Nose reshaping", "Tummy tuck"]
     const categories = ["Instagram Followers", "Networth", "Spending", "Ad Revenue"]
+    const gazeType = ["Kylie IG", "Kim IG", "Kylie Networth", "Kim Networth"]
+    const moneyType = ["US Plastic Surgery", "Instagram"]
     const parties = ["Kylie IG", "Kim IG", "Kylie Networth", "Kim Networth", "US Plastic Surgery", "Instagram"]
     const yearAnalysis = [2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020]
     //*************************4. Create Scale  
@@ -266,6 +292,8 @@ async function drawAnalysis() {
         .attr("fill", "none")
         .attr("opacity", 1)
 
+
+
     //***************************8. Draw Chart Peripherals
     //------------------Draw Labels
     //for precision positioning, avoided loop, hardcoded positioning
@@ -305,13 +333,60 @@ async function drawAnalysis() {
         .style("color", "white")
         .html("<h1>The Money</h1><p>A trend line of estimated Instagram annal ad revenue and reported US plastic surgery spending in billions ($).");
 
-    const chartLabels = labelGroups.append("text")
-        .attr("x", 600)
-        .attr("y", 200)
-        .text("Hello World")
+    //Draw Tooltip
+    const tooltipBox = tooltipGroup.append('rect')
+        .attr("x", 550)
+        .attr("y", 70)
+        .attr('width', 150)
+        .attr('height', 270)
+        .style('opacity', 1)
         .style("fill", "white")
-        .style("font-family", "Arial Black")
-        .style("font-size", 12)
+
+    const tooltipMilHeader = tooltipGroup.append('g')
+        .selectAll("text")
+        .data(gazeType)
+        .join("text")
+        .attr("x", 560)
+        .attr("y", (d, i) => i * 10 + 70)
+        .text(d => d)
+        .style("fill", "red")
+        .style("font-family", "Arial")
+        .style("font-size", 8)
+        .raise()
+
+    const tooltipSryHeader = tooltipGroup.append('g')
+        .selectAll("text")
+        .data(surgeryTypes)
+        .join("text")
+        .attr("x", 560)
+        .attr("y", (d, i) => i * 10 + 180)
+        .text(d => d)
+        .style("fill", "red")
+        .style("font-family", "Arial")
+        .style("font-size", 8)
+        .raise()
+
+    const tooltipSryHeader2 = tooltipGroup.append('text')
+        .attr("x", 560)
+        .attr("y", 165)
+        .text("Annual Growth Rate vs 2012")
+        .style("fill", "red")
+        .style("font-family", "Arial")
+        .style("font-size", 8)
+        .raise()
+
+    const tooltipBilHeader = tooltipGroup.append('g')
+        .selectAll("text")
+        .data(moneyType)
+        .join("text")
+        .attr("x", 560)
+        .attr("y", (d, i) => i * 10 + 300)
+        .text(d => d)
+        .style("fill", "red")
+        .style("font-family", "Arial")
+        .style("font-size", 8)
+        .raise()
+
     //------------------Draw Title
 
     // ctr.append("text")
@@ -325,20 +400,42 @@ async function drawAnalysis() {
     //     .raise()
 
 
-
     //Draw Refrence Dots
 
     function drawReference(periodNum) {
 
+        const sryFiltered = surgery.filter(d => d.periodnum === periodNum)
+        const milFiltered = millions.filter(d => d.periodnum === periodNum)
+        const bilFiltered = billions.filter(d => d.periodnum === periodNum)
+
+        let tipContent = ``;
+
+        tipContent += `<div>`;
+        sryFiltered.map(d => {
+            tipContent += `${d.year} vs 2012 ${d.rate}`
+        })
+        tipContent += `</div>`;
+
+
         const lineRefChart = lineRefGroup.selectAll("rect")
-            .data(surgery.filter(d => d.periodnum === periodNum))
+            .data(sryFiltered)
             .join("rect")
             .attr("x", d => timeScale(yearAccessor(d)))
             .attr("y", 70)
             .attr("width", 0.25)
             .attr("height", 270)
             .attr("fill", "white")
-            .attr("opacity", 0.5)
+            .attr("opacity", noteAccessor === undefined ? 0.3 : 0.5)
+
+        const lineRefLabel = lineRefGroup.selectAll("text")
+            .data(sryFiltered)
+            .join("text")
+            .attr("x", d => timeScale(yearAccessor(d)))
+            .attr("y", 50)
+            .text(noteAccessor)
+            .style("fill", "white")
+            .style("font-family", "Arial Black")
+            .style("font-size", 8)
 
         const dotBilChart = dotBilGroup.selectAll("circle")
             .data(billions.filter(d => d.periodnum === periodNum))
@@ -348,6 +445,7 @@ async function drawAnalysis() {
             .attr("r", 2)
             .attr("fill", "white")
             .attr("opacity", 1)
+            .raise()
 
         const dotMilChart = dotMilGroup.selectAll("circle")
             .data(millions.filter(d => d.periodnum === periodNum))
@@ -357,16 +455,58 @@ async function drawAnalysis() {
             .attr("r", 2)
             .attr("fill", "white")
             .attr("opacity", 1)
-
+            .raise()
         const dotSryChart = dotSryGroup.selectAll("circle")
-            .data(surgery.filter(d => d.periodnum === periodNum))
+            .data(sryFiltered)
             .join("circle")
             .attr("cx", d => timeScale(yearAccessor(d)))
             .attr("cy", d => rateScale(rateAccessor(d)))
             .attr("r", 2)
             .attr("fill", "white")
             .attr("opacity", 1)
+            .raise()
+
+        const tooltipMilContent = tooltipMil.selectAll("text")
+            .data(milFiltered)
+            .join("text")
+            .attr("x", 660)
+            .attr("y", (d, i) => i * 10 + 70)
+            .text(d => d.category === "Networth" ? `$${d.value} mil dollars` : `${d.value} mil followers`)
+            .style("fill", "red")
+            .style("font-family", "Arial")
+            .style("font-size", 8)
+            .style("text-anchor", "left")
+
+
+
+        const formatter = d3.format(".0%")
+        const tooltipSryContent = tooltipSurgery.selectAll("text")
+            .data(sryFiltered)
+            .join("text")
+            .attr("x", 660)
+            .attr("y", (d, i) => i * 10 + 180)
+            .text(d => formatter(rateAccessor(d)))
+            .style("fill", "red")
+            .style("font-family", "Arial")
+            .style("font-size", 8)
+            .style("text-anchor", "left")
+
+
+        const tooltipbilContent = tooltipBil.selectAll("text")
+            .data(bilFiltered)
+            .join("text")
+            .attr("x", 660)
+            .attr("y", (d, i) => i * 10 + 300)
+            .text(d => `$${d.value} bil dollars`)
+            .style("fill", "red")
+            .style("font-family", "Arial")
+            .style("font-size", 8)
+            .style("text-anchor", "left")
+
     }
+
+    drawReference(1)
+
 
     //---------------------------Draw Ordinal Scale Slider    
     //using d3=simple-slider package, note syntax slightly different from d3.js
@@ -396,7 +536,7 @@ async function drawAnalysis() {
 
 
 
-    sliderGenerator.on('onchange', (value) => {
+    sliderGenerator.on('onchange', (value = 1) => {
         drawReference(value);
     })
 
