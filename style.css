@@ -80,9 +80,10 @@ p.footnote {
 }
 
 .sub-title {
-  margin-top: 10rem;
+  margin-top: 20rem;
   height: 20rem;
   text-align: center;
+    /* background-color: green; */
 }
 
 .sub-title p {
@@ -287,6 +288,7 @@ margin-top: 2rem;
      width: 100%;
      height: 0.25px;
      margin: 0 0;
+     /* border: 5px solid pink; */
 } 
 
 
@@ -300,7 +302,7 @@ margin-top: 2rem;
   background-image: url( ./assets/gaze.svg);
   background-size: cover;
   background-repeat: no-repeat;
-  border: 5px solid yellow; 
+  /* border: 5px solid yellow;  */
 }
 
 /* div.side-gaze {
@@ -356,7 +358,7 @@ margin-top: 2rem;
 .spaceholder {
   height: 20rem;
   /* margin-bottom: 200px; */
-  border: 5px solid orange;
+  /* border: 5px solid orange; */
 }
 
 .summary {
@@ -364,10 +366,16 @@ margin-top: 2rem;
   width: 80%;
   margin: 0 auto;
   margin-bottom: 0;
-  border: 5px solid green;
+  /* border: 5px solid green; */
 }
-.social>h4 {
-  border: 5px solid green;
+.social>h4  {
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+.surgical>h4
+{
+  font-size: 1.3rem;
+  font-weight: 800;
 }
 div.social {
   flex: 50%;
@@ -416,21 +424,16 @@ div.divider {
 }
 
 #gaze_year {
-  font-family: "ObjectSans-Heavy";
-  font-size: 3.5rem;
+  font-family: "RightGrotesk-SpatialBlack";
+  font-size: 4rem;
   color: white;
   /* color: #000000; */
 }
 
 #social-font {
+  font-family: "RightGrotesk-WideMedium";
   font-size: 3.5rem;
   margin-top: 0rem; 
-}
-
-#teen17 {
-  font-family: "MonumentExtended-Black";
-  font-size: 4rem;
-  color: purple;
 }
 
 #analysis h2 {

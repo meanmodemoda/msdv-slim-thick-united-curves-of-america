@@ -10,7 +10,8 @@ async function draw2007() {
         .attr("cx", 150)
         .attr("cy", 50)
         .attr("r", 45)
-        .attr("fill", "blue")
+        .attr("fill", "#ac7ddf")
+        .style("opacity", 0.8)
 
     const boobJobsAnno = svg2007.append("rect")
         .attr("x", 150)
@@ -29,7 +30,7 @@ async function draw2007() {
         .attr("cx", 150)
         .attr("cy", 50)
         .attr("r", 5)
-        .attr("fill", "red")
+        .attr("fill", "Black")
 
     const buttJobsAnno = svg2007.append("rect")
         .attr("x", 0)
@@ -47,13 +48,13 @@ async function draw2007() {
     //*************Draw 2007
 
     const svg2020 = d3.select("#chart2020").append("svg")
-    svg2020.attr("viewBox", `0 0 300 400`)
+    svg2020.attr("viewBox", `0 0 300 160`)
 
     const breastStat = svg2020.append("rect")
         .attr("y", 100)
         .attr("width", 60)
         .attr("height", 10)
-        .attr("fill", "green")
+        .attr("fill", "#ac7ddf")
 
     const breastGrowth = svg2020.append("text")
         .attr("x", 30)
@@ -67,7 +68,7 @@ async function draw2007() {
         .attr("y", 40)
         .attr("width", 50)
         .attr("height", 60)
-        .attr("fill", "green")
+        .attr("fill", "#8aa10e")
 
 
     const buttGrowth = svg2020.append("text")
@@ -82,7 +83,7 @@ async function draw2007() {
         .attr("y", 30)
         .attr("width", 50)
         .attr("height", 70)
-        .attr("fill", "green")
+        .attr("fill", "white")
 
     const cheekGrowth = svg2020.append("text")
         .attr("x", 140)
