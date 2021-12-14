@@ -357,7 +357,7 @@ async function drawAnalysis() {
         .style("font", "0.5rem 'Open Sans'")
         .style("color", "#E8BEAC")
         .style("line-height", "12px")
-        .html("<h1 style='font-weight: 800'>The Money</h1><p style='font-size: 8px; color: white;'>A trend line of estimated Instagram annal ad revenue and reported US plastic surgery spending in billions ($).");
+        .html("<h1 style='font-weight: 800'>The Money</h1><p style='font-size: 8px; color: white;'>A trend line of estimated Instagram annual ad revenue and reported US plastic surgery spending in billions ($).");
 
     //Draw Tooltip
     const tooltipBox = tooltipGroup.append('rect')
