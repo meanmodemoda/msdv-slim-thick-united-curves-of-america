@@ -54,11 +54,11 @@ async function drawAnalysis() {
     const boundsLine = wrapperLine.append("g")
         .style("translate", `transform(${dimensionsLine.margin.left}px, ${dimensionsLine.margin.top}px)`)
 
-    const testDot = boundsLine.append("circle")
-        .attr("cx", 50)
-        .attr("cy", 50)
-        .attr("r", 20)
-        .attr("fill", "red")
+    // const testDot = boundsLine.append("circle")
+    //     .attr("cx", 50)
+    //     .attr("cy", 50)
+    //     .attr("r", 20)
+    //     .attr("fill", "red")
 
     // ------------------------------Initial static 
 
@@ -148,9 +148,9 @@ async function drawAnalysis() {
     //set up Arrays manually so I can control the order;
     const surgeryTypes = ["Breast augmentation", "Buttock surgeries", "Cheek implant", "Chin augmentation", "Facelift", "Lip augmentation", "Liposuction", "Nose reshaping", "Tummy tuck"]
     const categories = ["Instagram Followers", "Networth", "Spending", "Ad Revenue"]
-    const gazeType = ["Kim's Instagram", "Kim's Networth", "Kylie's Instagram", "Kylie's Networth"]
+    const gazeType = ["Kylie's Instagram", "Kim's Instagram", "Kylie's Networth", "Kim's Networth"]
     const moneyType = ["US Plastic Surgery", "Instagram"]
-    const parties = ["Kylie IG", "Kim IG", "Kylie Networth", "Kim Networth", "US Plastic Surgery", "Instagram"]
+    const parties = ["Kylie's Instagram", "Kim's Instagram", "Kylie Networth", "Kim Networth", "US Plastic Surgery", "Instagram"]
     const yearAnalysis = [2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020]
     //*************************4. Create Scale  
 
@@ -181,11 +181,11 @@ async function drawAnalysis() {
 
     const lineColorScale = d3.scaleOrdinal()
         .domain(surgeryTypes)
-        .range(['#8b0000', '#8b0000', '#808080', '#808080', '#808080', '#808080', '#808080', '#808080', '#808080'])
+        .range(['#ac7ddf', '#8aa10e', '#FFFFFF', '#808080', '#808080', '#808080', '#808080', '#808080', '#808080'])
 
     const partyColorScale = d3.scaleOrdinal()
         .domain(parties)
-        .range(['#11ae7a', '#808080', '#cbd438', '#8b0000', '#8b0000', '#808080'])
+        .range(['#ac7ddf', '#FFFFFF', '#ac7ddf', '#FFFFFF', '#FFFFFF', '#ac7ddf'])
 
 
 
@@ -201,9 +201,11 @@ async function drawAnalysis() {
         .scale(timeScale)
         .ticks(4)
 
+    // const axisFormatter = d3.format(".0%")
     const rateAxisGenerator = d3.axisLeft()
         .scale(rateScale)
         .ticks(4)
+    // .tickFormat(axisFormatter(rateAccessor))
 
     const milAxisGenerator = d3.axisLeft()
         .scale(milScale)
@@ -330,10 +332,10 @@ async function drawAnalysis() {
         .attr("width", 150)
         .attr("height", 400)
         .append("xhtml:div")
-        .style("font", "0.5rem 'ObjectSans-Regular'")
-        .style("color", "white")
+        .style("font", "0.5rem 'Open Sans'")
+        .style("color", "#E8BEAC")
         .style("line-height", "12px")
-        .html("<h1>The Gaze</h1><p>A trend line of estimated Kim and Kylie's Instagram followers and their networth in millions ($).");
+        .html("<h1 style='font-weight: 800'>The Gaze</h1><p style='font-size: 8px; color: white;'>A trend line of estimated Kim and Kylie's Instagram followers and their networth in millions (count/$).");
 
     const foreignSry = labelGroups.append("foreignObject")
         .attr("x", 100)
@@ -341,10 +343,10 @@ async function drawAnalysis() {
         .attr("width", 150)
         .attr("height", 400)
         .append("xhtml:div")
-        .style("font", "0.5rem 'ObjectSans-Regular'")
-        .style("color", "white")
+        .style("font", "0.5rem 'Open Sans'")
+        .style("color", "#E8BEAC")
         .style("line-height", "12px")
-        .html("<h1>The Surgery</h1><p>A trend line of annual growth rate vs 2012 of key plastic surgeries performed in America.");
+        .html("<h1 style='font-weight: 800'>The Surgery</h1><p style='font-size: 8px; color: white;'>A trend line of annual growth rate vs 2012 of key plastic surgeries performed in America.");
 
     const foreignMoney = labelGroups.append("foreignObject")
         .attr("x", 100)
@@ -352,10 +354,10 @@ async function drawAnalysis() {
         .attr("width", 150)
         .attr("height", 400)
         .append("xhtml:div")
-        .style("font", "0.5rem 'ObjectSans-Regular'")
-        .style("color", "white")
+        .style("font", "0.5rem 'Open Sans'")
+        .style("color", "#E8BEAC")
         .style("line-height", "12px")
-        .html("<h1>The Money</h1><p>A trend line of estimated Instagram annal ad revenue and reported US plastic surgery spending in billions ($).");
+        .html("<h1 style='font-weight: 800'>The Money</h1><p style='font-size: 8px; color: white;'>A trend line of estimated Instagram annal ad revenue and reported US plastic surgery spending in billions ($).");
 
     //Draw Tooltip
     const tooltipBox = tooltipGroup.append('rect')
@@ -364,7 +366,7 @@ async function drawAnalysis() {
         .attr('width', 190)
         .attr('height', 280)
         .classed('tooltipBox', true)
-        .attr("fill", "white")
+        .attr("fill", "#E8BEAC")
         .attr("rx", 2)
 
     const tooltipMilHeader = tooltipGroup.append('g')
@@ -374,8 +376,8 @@ async function drawAnalysis() {
         .attr("x", 560)
         .attr("y", (d, i) => i * 10 + 80)
         .text(d => d)
-        .style("fill", "red")
-        .style("font-family", "ObjectSans-Regular")
+        .style("fill", d => partyColorScale(d))
+        .style("font-family", "Open Sans")
         .style("font-size", 8)
         .raise()
 
@@ -386,8 +388,8 @@ async function drawAnalysis() {
         .attr("x", 560)
         .attr("y", (d, i) => i * 10 + 180)
         .text(d => d)
-        .style("fill", "red")
-        .style("font-family", "ObjectSans-Regular")
+        .style("fill", d => lineColorScale(d))
+        .style("font-family", "Open Sans")
         .style("font-size", 8)
         .raise()
 
@@ -399,8 +401,8 @@ async function drawAnalysis() {
         .attr("x", 560)
         .attr("y", (d, i) => i * 10 + 290)
         .text(d => d)
-        .style("fill", "red")
-        .style("font-family", "ObjectSans-Regular")
+        .style("fill", d => partyColorScale(d))
+        .style("font-family", "Open Sans")
         .style("font-size", 8)
         .raise()
 
@@ -441,9 +443,10 @@ async function drawAnalysis() {
             .attr("x", d => timeScale(yearAccessor(d)))
             .attr("y", 50)
             .text(noteAccessor)
-            .style("fill", "white")
-            .style("font-family", "ObjectSans-Bold")
+            .style("fill", "#e8beac")
+            .style("font-family", "Open Sans")
             .style("font-size", 10)
+
 
         const dotBilChart = dotBilGroup.selectAll("circle")
             .data(billions.filter(d => d.periodnum === periodNum))
@@ -480,9 +483,10 @@ async function drawAnalysis() {
             .attr("x", 660)
             .attr("y", (d, i) => i * 10 + 80)
             .text(d => d.category === "Networth" ? `$${d.value} mil dollars` : `${d.value} mil followers`)
-            .style("fill", "red")
-            .style("font-family", "ObjectSans-Regular")
+            .style("fill", "black")
+            .style("font-family", "Open Sans")
             .style("font-size", 8)
+            .style("font-weight", 700)
             .style("text-anchor", "left")
 
 
@@ -494,9 +498,10 @@ async function drawAnalysis() {
             .attr("x", 660)
             .attr("y", (d, i) => i * 10 + 180)
             .text(d => formatter(rateAccessor(d)))
-            .style("fill", "red")
-            .style("font-family", "ObjectSans-Regular")
+            .style("fill", "black")
+            .style("font-family", "Open Sans")
             .style("font-size", 8)
+            .style("font-weight", 700)
             .style("text-anchor", "left")
 
 
@@ -506,9 +511,10 @@ async function drawAnalysis() {
             .attr("x", 660)
             .attr("y", (d, i) => i * 10 + 290)
             .text(d => `$${d.value} bil dollars`)
-            .style("fill", "red")
-            .style("font-family", "ObjectSans-Regular")
+            .style("fill", "black")
+            .style("font-family", "Open Sans")
             .style("font-size", 8)
+            .style("font-weight", 700)
             .style("text-anchor", "left")
 
     }
@@ -527,7 +533,7 @@ async function drawAnalysis() {
         .default(1)
         .width(180)
         .displayValue(false)
-        .fill("#000000")
+        .fill("#e8beac")
         .handle(
             d3.symbol()
                 .type(d3.symbolCircle)

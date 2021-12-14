@@ -265,7 +265,7 @@ background: linear-gradient(90deg, rgba(232,190,172,0) 0%, rgba(240,176,149,0.56
 .tina {
 display: block;
 margin-top: 2rem;
- font-size: 1.5rem;
+ font-size: 2rem;
  font-family: "MonumentExtended-Black";
  /*border: 1px solid black;*/
 }
@@ -277,11 +277,13 @@ margin-top: 2rem;
 #gazemoney {
   font-weight: 800;
   margin-bottom: 10%;
+  font-size: 1rem;
 }
 
 #bridge_text {
  text-align: left;
  margin-bottom: 1rem;
+ font-size: 1rem;
 }
 .divider {
    /* background-color: purple; */
@@ -300,7 +302,7 @@ margin-top: 2rem;
  /* height: calc(2.70s*100vw); */
 /* width: 100vw; */
   background-image: url( ./assets/gaze.svg);
-  background-size: cover;
+  /* background-size: cover; */
   background-repeat: no-repeat;
   /* border: 5px solid yellow;  */
 }
@@ -477,7 +479,7 @@ div.iris div {
   left: 0;
   width: 50px;
   height: 50px;
-  background-color: red;
+  background-color: black;
   border-radius: 25px;
   transform: translate(-50%, -50%);
 }
@@ -514,7 +516,7 @@ margin-bottom: 0;
 
 .slider text {
   font-size: 0.45rem;
-  font-family: "ObjectSans-Regular";
+  font-family: "Open Sans";
 }
 
 .tooltipBox{
@@ -522,8 +524,23 @@ margin-bottom: 0;
   background: linear-gradient(90deg, rgba(162,14,227,0) 0%, rgba(202,116,195,0.5648634453781513) 12%, rgba(212,141,187,0.7441351540616247) 22%, rgba(255,255,255,0.6292892156862745) 45%, rgba(232,190,172,0.39959733893557425) 73%, rgba(217,153,183,0.4023984593837535) 87%, rgba(209,132,190,0.11668417366946782) 100%);
 }
 
-foreignObject h1 {
-  font-family: "RightGrotesk-WideMedium";
-  font-size: 0.8rem;
-  font-color:
+
+
+#analysis_spaceholder  {
+  height: 10rem;
+  margin-top: 10rem;
+  margin-left: 4rem;
+  font-size: 2rem;
+ text-align:middle;
+  font-family: "MonumentExtended-Black";
+  color: #E8BEAC;
+    /* border: 5px solid green; */
+
+    /* background-color: pink; */
+}
+
+
+#analysis {
+  /* border: 5px solid orange; */
+
 }
