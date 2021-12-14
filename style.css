@@ -20,21 +20,9 @@ src: url("./assets/MonumentExtended-Black.woff") format("woff");
     } 
 
     @font-face { font-family: "RightGrotesk-SpatialBlack"; 
-      src: url("./assets/RightGrotesk-SpatialRegular.ttf") format("ttf");
+      src: url("./assets/RightGrotesk-SpatialBlack.woff") format("woff");
       /* font-stretch: 125% 180%; */
       } 
-
-  @font-face { font-family: "ObjectSans-Heavy"; 
-    src: url("./assets/ObjectSans-Heavy.woff") format("woff");
-    } 
-  
-  @font-face { font-family: "ObjectSans-Regular"; 
-      src: url("./assets/ObjectSans-Regular.woff") format("woff");
-      } 
-
-@font-face { font-family: "ObjectSans-Bold"; 
-        src: url("./assets/ObjectSans-Bold.woff") format("woff");
-        } 
 
 html {
   font-size: 16px;
