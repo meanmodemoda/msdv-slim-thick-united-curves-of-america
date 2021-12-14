@@ -359,6 +359,7 @@ margin-top: 2rem;
 
 .spaceholder {
   height: 20rem;
+  opacity: 0;
   /* margin-bottom: 200px; */
   /* border: 5px solid orange; */
 }
@@ -486,6 +487,7 @@ div.iris div {
 
 .spaceholder1 {
   height: 15rem;
+  opacity: 0;
 }
 
 /* #tooltip {
