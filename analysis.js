@@ -148,7 +148,7 @@ async function drawAnalysis() {
     //set up Arrays manually so I can control the order;
     const surgeryTypes = ["Breast augmentation", "Buttock surgeries", "Cheek implant", "Chin augmentation", "Facelift", "Lip augmentation", "Liposuction", "Nose reshaping", "Tummy tuck"]
     const categories = ["Instagram Followers", "Networth", "Spending", "Ad Revenue"]
-    const gazeType = ["Kylie IG", "Kim IG", "Kylie Networth", "Kim Networth"]
+    const gazeType = ["Kim's Instagram", "Kim's Networth", "Kylie's Instagram", "Kylie's Networth"]
     const moneyType = ["US Plastic Surgery", "Instagram"]
     const parties = ["Kylie IG", "Kim IG", "Kylie Networth", "Kim Networth", "US Plastic Surgery", "Instagram"]
     const yearAnalysis = [2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020]
@@ -217,8 +217,8 @@ async function drawAnalysis() {
 
     const rateAxis = boundsLine.append("g")
         .call(rateAxisGenerator)
-        .style("transform", `translateX(320px)`)
-        .attr("class", "axisRed")
+        .style("transform", `translateX(310px)`)
+        .attr("class", "axisAnalysis")
 
     // const timeRateAxis = boundsLine.append("g")
     //     .call(timeRateAxisGenerator)
@@ -227,14 +227,35 @@ async function drawAnalysis() {
 
     const milAxis = boundsLine.append("g")
         .call(milAxisGenerator)
-        .style("transform", `translateX(320px)`)
-        .attr("class", "axisRed")
+        .style("transform", `translateX(310px)`)
+        .attr("class", "axisAnalysis")
 
     const bilAxis = boundsLine.append("g")
         .call(bilAxisGenerator)
-        .style("transform", `translateX(320px)`)
-        .attr("class", "axisRed")
+        .style("transform", `translateX(310px)`)
+        .attr("class", "axisAnalysis")
 
+    rateAxis.select(".domain").remove();
+    milAxis.select(".domain").remove();
+    bilAxis.select(".domain").remove();
+
+    rateAxis.selectAll(".tick line")
+        .attr("stroke", "#E04836")
+        .attr("stroke-width", "0.5")
+        .attr("stroke-height", "1")
+        .attr("opacity", ".6");
+
+    milAxis.selectAll(".tick line")
+        .attr("stroke", "#E04836")
+        .attr("stroke-width", "0.5")
+        .attr("stroke-height", "1")
+        .attr("opacity", ".6");
+
+    bilAxis.selectAll(".tick line")
+        .attr("stroke", "#E04836")
+        .attr("stroke-width", "0.5")
+        .attr("stroke-height", "1")
+        .attr("opacity", ".6");
     //***************************6. Draw Chart Generators
 
     const lineGenerator = d3.line()
@@ -305,12 +326,13 @@ async function drawAnalysis() {
 
     const foreignGaze = labelGroups.append("foreignObject")
         .attr("x", 100)
-        .attr("y", 50)
+        .attr("y", 60)
         .attr("width", 150)
         .attr("height", 400)
         .append("xhtml:div")
-        .style("font", "0.5rem 'Helvetica Neue'")
+        .style("font", "0.5rem 'ObjectSans-Regular'")
         .style("color", "white")
+        .style("line-height", "12px")
         .html("<h1>The Gaze</h1><p>A trend line of estimated Kim and Kylie's Instagram followers and their networth in millions ($).");
 
     const foreignSry = labelGroups.append("foreignObject")
@@ -319,38 +341,41 @@ async function drawAnalysis() {
         .attr("width", 150)
         .attr("height", 400)
         .append("xhtml:div")
-        .style("font", "0.5rem 'Helvetica Neue'")
+        .style("font", "0.5rem 'ObjectSans-Regular'")
         .style("color", "white")
+        .style("line-height", "12px")
         .html("<h1>The Surgery</h1><p>A trend line of annual growth rate vs 2012 of key plastic surgeries performed in America.");
 
     const foreignMoney = labelGroups.append("foreignObject")
         .attr("x", 100)
-        .attr("y", 300)
+        .attr("y", 270)
         .attr("width", 150)
         .attr("height", 400)
         .append("xhtml:div")
-        .style("font", "0.5rem 'Helvetica Neue'")
+        .style("font", "0.5rem 'ObjectSans-Regular'")
         .style("color", "white")
+        .style("line-height", "12px")
         .html("<h1>The Money</h1><p>A trend line of estimated Instagram annal ad revenue and reported US plastic surgery spending in billions ($).");
 
     //Draw Tooltip
     const tooltipBox = tooltipGroup.append('rect')
         .attr("x", 550)
-        .attr("y", 70)
-        .attr('width', 150)
-        .attr('height', 270)
-        .style('opacity', 1)
-        .style("fill", "white")
+        .attr("y", 60)
+        .attr('width', 190)
+        .attr('height', 280)
+        .classed('tooltipBox', true)
+        .attr("fill", "white")
+        .attr("rx", 2)
 
     const tooltipMilHeader = tooltipGroup.append('g')
         .selectAll("text")
         .data(gazeType)
         .join("text")
         .attr("x", 560)
-        .attr("y", (d, i) => i * 10 + 70)
+        .attr("y", (d, i) => i * 10 + 80)
         .text(d => d)
         .style("fill", "red")
-        .style("font-family", "Arial")
+        .style("font-family", "ObjectSans-Regular")
         .style("font-size", 8)
         .raise()
 
@@ -362,28 +387,20 @@ async function drawAnalysis() {
         .attr("y", (d, i) => i * 10 + 180)
         .text(d => d)
         .style("fill", "red")
-        .style("font-family", "Arial")
+        .style("font-family", "ObjectSans-Regular")
         .style("font-size", 8)
         .raise()
 
-    const tooltipSryHeader2 = tooltipGroup.append('text')
-        .attr("x", 560)
-        .attr("y", 165)
-        .text("Annual Growth Rate vs 2012")
-        .style("fill", "red")
-        .style("font-family", "Arial")
-        .style("font-size", 8)
-        .raise()
 
     const tooltipBilHeader = tooltipGroup.append('g')
         .selectAll("text")
         .data(moneyType)
         .join("text")
         .attr("x", 560)
-        .attr("y", (d, i) => i * 10 + 300)
+        .attr("y", (d, i) => i * 10 + 290)
         .text(d => d)
         .style("fill", "red")
-        .style("font-family", "Arial")
+        .style("font-family", "ObjectSans-Regular")
         .style("font-size", 8)
         .raise()
 
@@ -408,24 +425,15 @@ async function drawAnalysis() {
         const milFiltered = millions.filter(d => d.periodnum === periodNum)
         const bilFiltered = billions.filter(d => d.periodnum === periodNum)
 
-        let tipContent = ``;
-
-        tipContent += `<div>`;
-        sryFiltered.map(d => {
-            tipContent += `${d.year} vs 2012 ${d.rate}`
-        })
-        tipContent += `</div>`;
-
-
         const lineRefChart = lineRefGroup.selectAll("rect")
             .data(sryFiltered)
             .join("rect")
             .attr("x", d => timeScale(yearAccessor(d)))
             .attr("y", 70)
-            .attr("width", 0.25)
+            .attr("width", 0.2)
             .attr("height", 270)
             .attr("fill", "white")
-            .attr("opacity", noteAccessor === undefined ? 0.3 : 0.5)
+            .attr("opacity", "0.3")
 
         const lineRefLabel = lineRefGroup.selectAll("text")
             .data(sryFiltered)
@@ -434,8 +442,8 @@ async function drawAnalysis() {
             .attr("y", 50)
             .text(noteAccessor)
             .style("fill", "white")
-            .style("font-family", "Arial Black")
-            .style("font-size", 8)
+            .style("font-family", "ObjectSans-Bold")
+            .style("font-size", 10)
 
         const dotBilChart = dotBilGroup.selectAll("circle")
             .data(billions.filter(d => d.periodnum === periodNum))
@@ -470,10 +478,10 @@ async function drawAnalysis() {
             .data(milFiltered)
             .join("text")
             .attr("x", 660)
-            .attr("y", (d, i) => i * 10 + 70)
+            .attr("y", (d, i) => i * 10 + 80)
             .text(d => d.category === "Networth" ? `$${d.value} mil dollars` : `${d.value} mil followers`)
             .style("fill", "red")
-            .style("font-family", "Arial")
+            .style("font-family", "ObjectSans-Regular")
             .style("font-size", 8)
             .style("text-anchor", "left")
 
@@ -487,7 +495,7 @@ async function drawAnalysis() {
             .attr("y", (d, i) => i * 10 + 180)
             .text(d => formatter(rateAccessor(d)))
             .style("fill", "red")
-            .style("font-family", "Arial")
+            .style("font-family", "ObjectSans-Regular")
             .style("font-size", 8)
             .style("text-anchor", "left")
 
@@ -496,10 +504,10 @@ async function drawAnalysis() {
             .data(bilFiltered)
             .join("text")
             .attr("x", 660)
-            .attr("y", (d, i) => i * 10 + 300)
+            .attr("y", (d, i) => i * 10 + 290)
             .text(d => `$${d.value} bil dollars`)
             .style("fill", "red")
-            .style("font-family", "Arial")
+            .style("font-family", "ObjectSans-Regular")
             .style("font-size", 8)
             .style("text-anchor", "left")
 
@@ -531,7 +539,7 @@ async function drawAnalysis() {
         // .attr('width', 400)
         // .attr('height', 100)
         //note this is different from CSS, d3 standard `translate` syntax, `px` is omitted
-        .attr('transform', `translate(320,380)`)
+        .attr('transform', `translate(320,360)`)
         .call(sliderGenerator);
 
 

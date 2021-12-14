@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Secular+One&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,800;1,400;1,500;1,600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&family=Lato:wght@400&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="./style.css" />
   <!--<link rel="stylesheet" href="./d3.slider.css" />  -->
@@ -18,7 +18,7 @@
 
 <body>
 
-  <section class='filler title'>
+  <section id="filler_title" class='filler title'>
     <header class="header">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1602.35 630.16">
         <defs>
@@ -55,59 +55,35 @@
             <path class="title st-cls-1"
               d="M1307.6,405h141.48V568.8h3.24c.72,0,1.31-.54,1.8-1.62a8.49,8.49,0,0,0,.72-3.42V405h141.48V554.4q0,22-14.76,36.72t-37.8,14.76h-94.68V675H1307.6Zm147.6,216h-20.52V592.2h162V675H1455.2Z"
               transform="translate(0 -45)" />
-
-
-            <path class="title st-cls-2"
-              d="M0,265.12H83.88q3.24,0,3.24-4.68v-1.08H0V98.08Q0,74,14.58,59.56t40.14-14.4H170.28V204.64H88.92V93.4H86.4q-1.44,0-2.34,2a10.79,10.79,0,0,0-.9,4.5V210.4h87.12v51.84q0,24.12-14.22,38.52t-39.42,14.4H0Z"
-              transform="translate(0 -45)" />
-            <path class="title st-cls-2" d="M190.43,45.16H529.91V166.43h5.76V87.14h338v117H190.43Z"
-              transform="translate(0 -45)" />
-            <path class="title st-cls-2" d="M901.43,45.16h446.4v159H901.43Z" transform="translate(0 -45)" />
-            <path class="title st-cls-2"
-              d="M1367.27,45.16h235.08v270H1526V93.4h-5.76V315.16h-70.56V93.4H1444V315.16h-76.68Z"
-              transform="translate(0 -45)" />
-            <path class="title st-cls-2"
-              d="M.36,405.16H83.52v18h87.12v49H83.52V626.56h3.24q1.08,0,1.8-1.62a8.33,8.33,0,0,0,.72-3.42V477.88h81.36V623.32q0,22-14.76,36.9t-37.8,14.94H.36Z"
-              transform="translate(0 -45)" />
-            <path class="title st-cls-2" d="M534.76,641.9H529v33.26H189.52v-126H529V612h5.76V549.16H874.6v126H534.76Z"
-              transform="translate(0 -45)" />
-            <path class="title st-cls-2" d="M893.31,549.16h261.36v126H893.31Z" transform="translate(0 -45)" />
-            <path class="title st-cls-2"
-              d="M1189.82,555.88q14.22-6.72,39.42-6.72h118.44v76.27h-83.16V571.67H1262a3.1,3.1,0,0,0-2.34.93,2.91,2.91,0,0,0-.9,2.1v77.78h2.52a3.31,3.31,0,0,0,2.34-.84,2.65,2.65,0,0,0,.9-2V628.12h83.16v22.35q0,11.25-14.22,18t-39.78,6.72H1175.6V573.86Q1175.6,562.6,1189.82,555.88Z"
-              transform="translate(0 -45)" />
-            <path class="title st-cls-2"
-              d="M1380.83,405.16h103v167.4h4a2.6,2.6,0,0,0,2.23-1.62,7,7,0,0,0,.89-3.42V405.16h103V556.72q0,22-18.28,36.72t-46.84,14.76h-45.05v67h-103Zm110.61,216H1466v-28.8h128.46v82.8h-103Z"
-              transform="translate(0 -45)" />
-
           </g>
         </g>
       </svg>
-      <div class="sub-title">
-        <span>The United Curves</span><span>of America</span>
-        <h3>How A Stubborn Counter Culture Finally “Took Over” The Narrative</h3>
-        <br>
-        <p>made with a thick heart and a slim attitude<br></p>
-        <p>by Zhao Yang - Dec 2021</p>
-      </div>
     </header>
   </section>
+  <div class="sub-title">
+    <span>The United Curves</span><span>of America</span>
+    <h3>How A Stubborn Counter Culture Finally “Took Over” The Narrative</h3>
+    <br>
+    <p>made with a thick heart and a slim attitude<br></p>
+    <p>by Zhao Yang - Dec 2021</p>
+  </div>
   <!--</section>-->
-  <section class="intro bridge">
+  <div id="intro_bridge" class="intro bridge">
     <div class="intro">
-      <img src="./assets/Kim_Draft.png" alt="Kim">
-      <p>Slim Thick is an uncommon female body type that consists of a flat stomach, toned thighs, and large booties,
+      <p id="intro_text">Slim Thick is an uncommon female body type that consists of a flat stomach, toned thighs, and
+        large booties,
         originated from a voluptuous body form celebrated as a counter culture over 5 decades ago when Playboy founder
         Hugh Hefner declared the
-        "36-24-36" ideal female body measurement.
+        "36-24-36" as the ideal female body measurement.
         The alternative body type has since out lived the 70s Androgyny and 90s Heroine Chic, and was
         eventually transformed and popularized by the Kardashian family in conjunction with the rise and dominance of
         social
         media.</p>
     </div>
-    <p class="lead">Let's go back briefly in time through photos and lyrics and see how the counter culture dodged
+    <p class="lead">Let's go back briefly in time and see how the counter culture dodged
       decades of peddulum swings and mutated into the ideal body type
       of our time.</p>
-  </section>
+  </div>
 
   <section id='scrolly-side'>
 
@@ -116,6 +92,7 @@
       <article>
         <div class='step' data-width='14%' data-index='1'>
           <h2>1950s Hour Glass</h2>
+          <div class="stepbar"><span></span></div>
           <h4>36-24-36</h4>
           <p>Playboy first quantified and coined the measurement in inches of "36-24-36” as the ideal female body
             type.</p>
@@ -124,6 +101,7 @@
         </div>
         <div class='step' data-width='28%' data-index='2'>
           <h2>1960s Androgyny</h2>
+          <div class="stepbar"><span></span></div>
           <h4>32-23-32</h4>
           <p>The swinging 60s ironned down the curves, dragging along a girlish trimmed line.</p>
           <img src="./assets/Twiggy.jpg" alt="Twiggy Poster" width=220px>
@@ -131,6 +109,7 @@
         </div>
         <div class='step' data-width='42%' data-index='3'>
           <h2>1970s Disco Diva</h2>
+          <div class="stepbar"><span></span></div>
           <h4>32-23-32</h4>
           <p>Slenderness persisted with more skin for show at the 70s disco ballrooms.</p>
           <img src="./assets/Elsa.jpg" alt="Elsa Bunny Photo" width=220px>
@@ -138,6 +117,7 @@
         </div>
         <div class='step' data-width='56%' data-index='4'>
           <h2>1980s Fitness Queen</h2>
+          <div class="stepbar"><span></span></div>
           <h4>36-25-35</h4>
           <p>Fitness craze and glorified calorie burns of the 80s brought back some angularized curves.</p>
           <img src="./assets/Fonda.jpg" alt="Jane Fonda" width=220px>
@@ -145,6 +125,7 @@
         </div>
         <div class='step' data-width='70%' data-index='5'>
           <h2>1990s Heroine Chic</h2>
+          <div class="stepbar"><span></span></div>
           <h4>34-24-34</h4>
           <p>Peddulum swong back to Herine Chic<br>in the mids of 90s grunge.</p>
           <img src="./assets/Moss.jpg" alt="Kate Moss" width=220px>
@@ -152,6 +133,7 @@
         </div>
         <div class='step' data-width='84%' data-index='6'>
           <h2>2000s Pelvic Clique</h2>
+          <div class="stepbar"><span></span></div>
           <h4>36-24-34</h4>
           <p>“Juddering hip bones”, toned abs and thigh gaps, the manicured millennial curve (or the lack of it) set
             the
@@ -162,6 +144,7 @@
         </div>
         <div class='step' data-width='100%' data-index='7'>
           <h2>2010s Slim Thick</h2>
+          <div class="stepbar"><span></span></div>
           <h4>36-24-40</h4>
           <img src="./assets/Kardashian_by_Foxadhd.gif" alt="Artwork by @FOXADHD" width=220px>
           <p class="footnote">Artwork by @FOXADHD</p>
@@ -181,8 +164,9 @@
         <div id="chart">
           <div class='bar-outer' id="bar-outer">
             <div>
-              <h4>“Counter-Measurement”<br>Heard in Songs</h4>
+              <h4 id="counter_h4">“Counter-Measurement”<br>Heard in Songs</h4>
             </div>
+
             <div class='quotes' data-index="1">
               <p><b>“ </b>She's 36 in the bust<br>28 in the waist<br>44 in the hips<br>she got real crazy legs<b>
                   ”</b></p>
@@ -239,19 +223,16 @@
   </section>
 
   <section class='filler bridge'>
-    <h2>
-      Not Anymore Tina Fay!
-    </h2>
-    <br>
-    <p>First Comes The Gaze Then Comes The Money.</p>
-    <p>Thanks to the invention of Brazilian Butt Lift (BBL), a type of invasive plastic surgery that injects ones own
+
+    <p id="gazemoney"> Not anymore Tina Fay! First the Gaze then the Money.</p>
+    <p id="bridge_text">Thanks to the invention of Brazilian Butt Lift (BBL), a type of invasive plastic surgery that
+      injects ones own
       fat into their butt, and growing normality of plastic
       surgery endorsed by social media, achieving the Kim Kardashian look is readily available for those who have
       means,
-      as demonstrated by the growing lookalike of the Kardashaian sisters. Just open up Instagram, it will give you an
-      infinite scroll of Slim Thick models, a sneakpeek of Metaverse's toys aisle.</p>
-    <br>
-    <p>Next, we trace the key moments that have collectively shaped the curves of our time.</p>
+      as demonstrated by the infinite scroll of Instagram Slim Thick models, a sneakpeek of Metaverse's toys aisle.
+      <br><br>Next, we trace the key moments that have collectively shaped the curves of our time.
+    </p>
   </section>
 
   <section id="scrolly-basic">
@@ -279,10 +260,9 @@
               <h3 id="gaze_year">2007</h3>
             </div>
             <div class="surgical">
-              <h4>Butt Implants and Lifts</h4>
-              <p>BBL was not a thing yet. About 4k butt implants and butt lifts were performed annually in America
-                compared
-                to 350k boob jobs.</p>
+              <h4>BBLs Were Not Yet A Thing.</h4>
+              <p>4k butt lift or augmentations were performed annually, 1/88th of total breast augumentations performed.
+              </p>
               <div id="chart2007"></div>
             </div>
           </div>
@@ -292,7 +272,7 @@
 
           <div class="summary">
             <div class="social">
-              <h4 id="social-test">Instagram was born.</h4>
+              <h4 id="social-font">Instagram was born.</h4>
             </div>
             <div class="divider">
               <h3 id="gaze_year">2010</h3>
@@ -363,7 +343,7 @@
               <h3 id="gaze_year">2015</h3>
             </div>
             <div class="surgical">
-              <h4>BBL On The Rise</h4>
+              <h4>Butt Augmentations On The Rise</h4>
               <p>ASPS reported that some type of butt procedure was performed every 30 minutes
                 globally. </p>
             </div>
@@ -392,8 +372,8 @@
               <h3 id="gaze_year">2019</h3>
             </div>
             <div class="surgical">
-              <h4>Teens & BBL</h4>
-              <p>ASPS started publishing stats on BBL performed on teenagers. 17 procedures were recorded.
+              <img src="./assets/17teens.svg" alt="17 Teens" width=320px>
+              <p>ASPS started publishing stats on BBL performed on teenagers. 17 procedures were recorded that year.
               </p>
             </div>
           </div>
@@ -402,9 +382,11 @@
         <div class="step" data-step="9">
 
           <div class="summary">
-            <div class="social">
-              <h4>Eclipse</h4>
-              <p>Kylie Jenner eclipsed Kim in Instagram followers, both amassing over 170 million followers at the
+            <div class="social" id="social_170m">
+              <img src="./assets/170m.svg" alt="170 Million Followers" width=320px>
+              <p id="social_170mtext">Kylie Jenner eclipsed Kim in Instagram followers, both amassing over 170
+                million
+                followers at the
                 time
                 of the eclipse.</p>
             </div>
@@ -414,11 +396,7 @@
 
             <div class="surgical">
               <h4>2nd Fastest Growing Procedure</h4>
-              <p>BBL grew by 530% since it was
-                introduced in 2013, with 22k procedures performed.<br> <br>108k cheek implants were performed, making
-                it
-                the
-                fastest growing procedure, up 1,226%.</p>
+              <p>Butt plastic surgeries grew by 589% since 2012, with 22k procedures performed annually.</p>
               <div id="chart2020"></div>
             </div>
           </div>
@@ -436,8 +414,12 @@
         <div class="unit"></div>
       </div>
 
-      <div class="step" data-step="9">
-        <div style="color: white; width: 60%">The culture of our time smells more and more like mall perfumes that are
+      <div class="conclusion">
+        <div style="color: white; width: 60%"> As a resident alien who have lived in this country close to a decade, I
+          often feel it is only as united when it comes to the Karadashians curves.
+          No matter which directions the peddulum swings, a woman's body has always been subject to the centuries' old
+          male gaze and capital exploitation.
+          The culture of our time smells more and more like mall perfumes that are
           stingy with
           imagination,
           often a last minute touch

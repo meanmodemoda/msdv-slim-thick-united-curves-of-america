@@ -2,6 +2,13 @@
 src: url("./assets/MonumentExtended-Black.woff") format("woff");
 } 
 
+@font-face { font-family: "MonumentExtended-Bold"; 
+  src: url("./assets/MonumentExtended-Bold.woff") format("woff");
+  } 
+
+  @font-face { font-family: "MonumentExtended-Regular"; 
+    src: url("./assets/MonumentExtended-Regular.woff") format("woff");
+    } 
 @font-face { font-family: "RightGrotesk-WideMedium"; 
   src: url("./assets/RightGrotesk-WideMedium.woff") format("woff");
   /* font-stretch: 125% 180%; */
@@ -11,14 +18,27 @@ src: url("./assets/MonumentExtended-Black.woff") format("woff");
     src: url("./assets/RightGrotesk-SpatialRegular.woff") format("woff");
     /* font-stretch: 125% 180%; */
     } 
+
+    @font-face { font-family: "RightGrotesk-SpatialBlack"; 
+      src: url("./assets/RightGrotesk-SpatialRegular.ttf") format("ttf");
+      /* font-stretch: 125% 180%; */
+      } 
+
   @font-face { font-family: "ObjectSans-Heavy"; 
     src: url("./assets/ObjectSans-Heavy.woff") format("woff");
     } 
+  
+  @font-face { font-family: "ObjectSans-Regular"; 
+      src: url("./assets/ObjectSans-Regular.woff") format("woff");
+      } 
 
+@font-face { font-family: "ObjectSans-Bold"; 
+        src: url("./assets/ObjectSans-Bold.woff") format("woff");
+        } 
 
 html {
   font-size: 16px;
-  font-family: "Work Sans",sans-serif;
+  font-family: "Open Sans",sans-serif;
   max-width: 1900px;
   background: rgb(40,1,85);
   background: linear-gradient(90deg, rgba(40,1,85,0.4066001400560224) 0%, rgba(232,190,172,0.8239670868347339) 14%, rgba(232,190,172,1) 72%, rgba(232,190,172,1) 87%, rgba(232,190,172,0.4514180672268907) 100%);
@@ -27,38 +47,40 @@ html {
   width: 100%;
 }
 
-
 .sub-title h3 {
-   font-family:"ObjectSans-Heavy",sans-serif;
+   font-family:"Open Sans",sans-serif;
    /* font-weight: 800; */
-   background: -webkit-linear-gradient(left, #f72585, #002642);
+   background: -webkit-linear-gradient(left, #7d3bc7, #8aa10e);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     /*margin-top: 10vh;*/
   /*stroke: 2;*/
-    /*font-weight: 600;*/
+    font-weight: 800;
     margin-top: 4rem;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
 }
 
+p {
+  font-size: 1rem;
+
+}
 p.footnote {
   font-size: 0.8rem;
   font-weight:600;
 }
 
+#filler_title {
+  display: block;
+  /* background-color: blue; */
+}
 
- .st-cls-1 {
- /*fill: red;*/
- /*position:fixed;*/
-/*transition-duration: 1s  */
- }
- 
-.st-cls-2 {
- opacity: 0;
- fill: black
+#intro_bridge {
+  display: block;
+  /* background-color: green; */
 }
 
 .sub-title {
+  margin-top: 10rem;
   height: 20rem;
   text-align: center;
 }
@@ -80,6 +102,7 @@ p.footnote {
 .lead {
   margin-top: 10%;
   height: 2rem;
+  font-size: 1rem;
 }
 
 .sub-title span {
@@ -91,8 +114,15 @@ margin-top: 4rem;
  /*border: 1px solid black;*/
 }
 
+#intro_text {
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-align: left;
+}
+
+
 .filler {
-  height: 30rem;
+  height: 20rem;
   text-align: center;
 }
 
@@ -104,6 +134,15 @@ margin-top: 4rem;
 background: rgb(232,190,172);
 background: radial-gradient(circle, rgba(232,190,172,0.8239670868347339) 14%, rgba(232,190,172,0.5102415966386555) 69%, rgba(232,190,172,0) 100%);
   padding: 1rem;
+}
+
+h2 {
+  font-family: "MonumentExtended-Black";
+  font-size: 1.5rem;
+  background: rgb(125,59,199);
+background: linear-gradient(90deg, rgba(125,59,199,1) 0%, rgba(64,30,101,1) 0%, rgba(0,0,0,1) 100%, rgba(230,136,96,1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 #scrolly-side .scrolly > * {
@@ -124,10 +163,17 @@ background: linear-gradient(90deg, rgba(232,190,172,0) 0%, rgba(232,190,172,1) 6
 }
 
 #scrolly-side .scrolly article .step h4 {
-   background: -webkit-linear-gradient(left, #f72585, #002642);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+   color: black;
+    font-weight: 800;
+    font-size: 1.2rem;
 }
+/* .stepbar {
+  height: 0.5px;
+  width: 80%;
+  margin: 0 auto;
+  background: rgb(125,59,199);
+  background: linear-gradient(90deg, rgba(125,59,199,1) 0%, rgba(138,161,14,1) 100%);
+} */
 
 #scrolly-side .scrolly article .step:last-of-type {
   margin-bottom: 0;
@@ -157,6 +203,12 @@ background: linear-gradient(90deg, rgba(232,190,172,0) 0%, rgba(240,176,149,0.56
   margin: 0;
   top: 8rem;
   left: 2rem;
+}
+
+#counter_h4 {
+  font-family: "Open Sans";
+  font-size: 1.2rem; 
+  font-weight: 800; 
 }
 
 .intro img {
@@ -199,11 +251,14 @@ background: linear-gradient(90deg, rgba(232,190,172,0) 0%, rgba(240,176,149,0.56
   text-align: center;
   background-color: white;
   /*border-radius: 8px;*/
-  line-height: 1.2rem;
+  line-height: 1.3rem;
 }
 
 .quotes h3 {
-  font-size: 0.9rem;
+  font-size: 1rem;
+  background: -webkit-linear-gradient(left, #7d3bc7, #8aa10e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .tina {
@@ -218,7 +273,15 @@ margin-top: 2rem;
 /*     z-index: 100;*/
 /*}*/
 
+#gazemoney {
+  font-weight: 800;
+  margin-bottom: 10%;
+}
 
+#bridge_text {
+ text-align: left;
+ margin-bottom: 1rem;
+}
 .divider {
    /* background-color: purple; */
      width: 100%;
@@ -230,13 +293,12 @@ margin-top: 2rem;
  #scrolly-basic {
   /* width: 1900px; */
   /* position: relative; */
-  background-position:center;
+  /* background-position:center; */
  /* height: 600rem; */
- /* height: calc(2.70s*100vw);
- width: 100vw; */
+ /* height: calc(2.70s*100vw); */
+/* width: 100vw; */
   background-image: url( ./assets/gaze.svg);
-  background-size: contain;
-  background-color: green;
+  background-size: cover;
   background-repeat: no-repeat;
   border: 5px solid yellow; 
 }
@@ -292,9 +354,9 @@ margin-top: 2rem;
 }  
 
 .spaceholder {
-  height: 30rem;
+  height: 20rem;
   /* margin-bottom: 200px; */
-  /* border: 5px solid orange; */
+  border: 5px solid orange;
 }
 
 .summary {
@@ -302,14 +364,17 @@ margin-top: 2rem;
   width: 80%;
   margin: 0 auto;
   margin-bottom: 0;
-
+  border: 5px solid green;
+}
+.social>h4 {
+  border: 5px solid green;
 }
 div.social {
   flex: 50%;
   /* border: 5px solid orange; */
   color: white;
-  margin-top: auto;
-  margin-bottom: auto;
+  margin-top: 0.5rem;
+  /* margin-bottom: auto; */
   text-align: left;
 }
 
@@ -317,26 +382,25 @@ div.surgical {
   flex: 50%;
   /* border: 1px solid green; */
   color: white;
-  margin-top: auto;
-  margin-bottom: auto;
+  margin-top: 0.5rem;
+  /* margin-bottom: auto; */
   text-align: left;
  }
 
 div.divider {
    text-align: center; 
-   /* vertical-align: middle; */
-   margin-top: auto;
-   margin-bottom: auto;
+   margin-top: 3rem;
+   /* margin-bottom: auto; */
   /* flex: 80%; */
-  border: 5px solid orange;
+  /* border: 5px solid orange; */
 }
 
 
 .instagram>.summary{
-  margin-top: 3rem;
+  margin-top: 0rem;
   height: 10rem;
    /* border: 5px solid orange; */
-   vertical-align: middle; 
+   /* vertical-align: middle;  */
 }
 
 .tracing-line {
@@ -358,8 +422,9 @@ div.divider {
   /* color: #000000; */
 }
 
-#social-test {
+#social-font {
   font-size: 3.5rem;
+  margin-top: 0rem; 
 }
 
 #teen17 {
@@ -372,15 +437,16 @@ div.divider {
   color: white;
 }
 
-.axisRed line{
+.axisAnalysis line{
   stroke: white;
 }
 
-.axisRed path{
+.axisAnalysis path{
   stroke: white;
 }
 
-.axisRed text{
+
+.axisAnalysis text{
   fill: white;
   font-size: 0.5rem;
 }
@@ -425,3 +491,36 @@ div.iris div {
    border: 5px solid orange;
    text-align: center;
 } */
+
+#social_170m img{
+margin-bottom: 0;
+}
+
+#social_170mtext {
+  /* border: 5px solid orange; */
+  margin-top: -0.5rem;
+}
+
+.anno_2020 {
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg); 
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -sand-transform: rotate(45deg);
+  transform: rotate(45deg);}
+
+.slider text {
+  font-size: 0.45rem;
+  font-family: "ObjectSans-Regular";
+}
+
+.tooltipBox{
+  background: rgb(162,14,227);
+  background: linear-gradient(90deg, rgba(162,14,227,0) 0%, rgba(202,116,195,0.5648634453781513) 12%, rgba(212,141,187,0.7441351540616247) 22%, rgba(255,255,255,0.6292892156862745) 45%, rgba(232,190,172,0.39959733893557425) 73%, rgba(217,153,183,0.4023984593837535) 87%, rgba(209,132,190,0.11668417366946782) 100%);
+}
+
+foreignObject h1 {
+  font-family: "RightGrotesk-WideMedium";
+  font-size: 0.8rem;
+  font-color:
+}
