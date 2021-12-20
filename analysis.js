@@ -70,7 +70,11 @@ async function drawAnalysis() {
 
     const tooltipSurgery = boundsLine.append("g")
 
-    const tooltipMil = boundsLine.append("g")
+    const tooltipSryCount = boundsLine.append("g")
+
+    const tooltipMilIG = boundsLine.append("g")
+    const tooltipMilNW = boundsLine.append("g")
+
     const tooltipBil = boundsLine.append("g")
 
     const labelsGroup = boundsLine.append("g")
@@ -88,7 +92,8 @@ async function drawAnalysis() {
     const lineRefGroup = boundsLine.append("g")
         .classed("lineRefGroup", true)
 
-
+    const annotationGroup = boundsLine.append("g")
+        .classed("annoGroup", true)
 
     const foreignGroup = labelsGroup.append("svg")
     // .attr("width", 960)
@@ -108,7 +113,7 @@ async function drawAnalysis() {
     })
 
     surgery.sort((a, b) => a.year - b.year);
-    analysis.sort((a, b) => a.year - b.year)
+    analysis.sort((a, b) => a.year - b.year);
     // console.table(surgery[0])
     // console.log(surgery[0])
     // console.table(analysis[0])
@@ -118,15 +123,22 @@ async function drawAnalysis() {
     // console.log(sumSry)
 
     const millions = analysis.filter(d => d.unit === "million");
+    const millionsNew = analysis.filter(d => d.unit === "million");
     const billions = analysis.filter(d => d.unit === "billion")
-    const sumMil = d3.group(millions, d => d.party);
+    const millionsIG = millions.filter(d => d.category === "Instagram Followers");
+    const millionsNW = millions.filter(d => d.category === "Networth");
+    const sumMilIG = d3.group(millionsIG, d => d.party);
+    const sumMilNW = d3.group(millionsNW, d => d.party);
     const sumBil = d3.group(billions, d => d.party);
+
+
     // console.log(sumMil)
     // console.log(sumBil)
 
     const billionsIG = billions.filter(d => d.party === "Instagram")
     //--------------------Create Accessors
-
+    const pctFormatter = d3.format(".0%")
+    const numFormatter = d3.format(".2s")
     //surgeryType
     const surgeryAccessor = d => d.surgery;
     //surgeryYear
@@ -137,6 +149,8 @@ async function drawAnalysis() {
     const rateAccessor = d => d.rate;
     // console.log(rateAccessor(surgery[0]))
     const countAccessor = d => d.count;
+
+    console.log(numFormatter(countAccessor(surgery[0])))
     //periodnum
     const periodNumAccessor = d => d.periodnum;
     //category
@@ -144,13 +158,15 @@ async function drawAnalysis() {
     const valueAccessor = d => d.value;
     //note accessor
     const noteAccessor = d => d.note;
+    //party accessor
+    const partyAccessor = d => d.party;
 
     //set up Arrays manually so I can control the order;
     const surgeryTypes = ["Breast augmentation", "Buttock surgeries", "Cheek implant", "Chin augmentation", "Facelift", "Lip augmentation", "Liposuction", "Nose reshaping", "Tummy tuck"]
     const categories = ["Instagram Followers", "Networth", "Spending", "Ad Revenue"]
-    const gazeType = ["Kylie's Instagram", "Kim's Instagram", "Kylie's Networth", "Kim's Networth"]
-    const moneyType = ["US Plastic Surgery", "Instagram"]
-    const parties = ["Kylie's Instagram", "Kim's Instagram", "Kylie Networth", "Kim Networth", "US Plastic Surgery", "Instagram"]
+    const milType = ["Kim's Instagram", "Kylie's Instagram", "Kim's Networth", "Kylie's Networth"]
+    const partyType = ["Kylie", "Kim"]
+    const bilType = ["US Plastic Surgery", "Instagram"]
     const yearAnalysis = [2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020]
     //*************************4. Create Scale  
 
@@ -178,16 +194,21 @@ async function drawAnalysis() {
         .range([340, 270])
         .nice()
 
-
+    //const surgeryTypes = ["Breast augmentation", "Buttock surgeries", "Cheek implant", "Chin augmentation", "Facelift", "Lip augmentation", "Liposuction", "Nose reshaping", "Tummy tuck"]
     const lineColorScale = d3.scaleOrdinal()
         .domain(surgeryTypes)
         .range(['#ac7ddf', '#8aa10e', '#FFFFFF', '#808080', '#808080', '#808080', '#808080', '#808080', '#808080'])
 
-    const partyColorScale = d3.scaleOrdinal()
-        .domain(parties)
-        .range(['#ac7ddf', '#FFFFFF', '#ac7ddf', '#FFFFFF', '#FFFFFF', '#ac7ddf'])
+    //const milType = ["Kim's Instagram", "Kylie's Instagram", "Kim's Networth","Kylie's Networth"]
 
+    const milColorScale = d3.scaleOrdinal()
+        .domain(partyType)
+        .range(['#6667ab', '#8aa10e'])
 
+    //const bilType = ["US Plastic Surgery", "Instagram"]       
+    const bilColorScale = d3.scaleOrdinal()
+        .domain(bilType)
+        .range(['#6667ab', '#8aa10e'])
 
     //****************************5. Draw Peripherals
 
@@ -205,15 +226,20 @@ async function drawAnalysis() {
     const rateAxisGenerator = d3.axisLeft()
         .scale(rateScale)
         .ticks(4)
-    // .tickFormat(axisFormatter(rateAccessor))
+        .tickFormat(pctFormatter)
+        .tickSize(-2)
 
     const milAxisGenerator = d3.axisLeft()
         .scale(milScale)
         .ticks(4)
+        .tickFormat((d, i) => `${d} mil`)
+        .tickSize(-2);
 
     const bilAxisGenerator = d3.axisLeft()
         .scale(bilScale)
         .ticks(4)
+        .tickSize(-2)
+        .tickFormat((d, i) => `$${d} bil`);
 
     //----------------------Draw Axes
 
@@ -291,14 +317,28 @@ async function drawAnalysis() {
         .attr("opacity", 1)
 
 
-    const lineMilChart = boundsLine.selectAll(".path")
-        .data(sumMil)
+    const lineMilNWChart = boundsLine.selectAll(".path")
+        .data(sumMilNW)
         // .attr("class", "path")
         .join("path")
         // .transition()
         // .duration(600)
         .attr("d", d => lineMilGenerator(d[1]))
-        .attr("stroke", d => partyColorScale(d[0]))
+        .attr("stroke", d => milColorScale(d[0]))
+        .style("stroke-dasharray", ("3, 2"))
+        .attr("stroke-width", 0.8)
+        .attr("fill", "none")
+        .attr("opacity", 1)
+
+    const lineMilChart = boundsLine.selectAll(".path")
+        .data(sumMilIG)
+        // .attr("class", "path")
+        .join("path")
+        // .transition()
+        // .duration(600)
+        .attr("d", d => lineMilGenerator(d[1]))
+        .attr("stroke", d => milColorScale(d[0]))
+        // .style(d => d.category === "Instagram Followers" ? "stroke-dasharray" : "stroke")
         .attr("stroke-width", 0.8)
         .attr("fill", "none")
         .attr("opacity", 1)
@@ -310,7 +350,7 @@ async function drawAnalysis() {
         // .transition()
         // .duration(600)
         .attr("d", d => lineBilGenerator(d[1]))
-        .attr("stroke", d => partyColorScale(d[0]))
+        .attr("stroke", d => bilColorScale(d[0]))
         .attr("stroke-width", 0.8)
         .attr("fill", "none")
         .attr("opacity", 1)
@@ -369,42 +409,182 @@ async function drawAnalysis() {
         .attr("fill", "#E8BEAC")
         .attr("rx", 2)
 
+    const milHeader = tooltipGroup.append('text')
+        .text("Influencers")
+        .attr("x", 560)
+        .attr("y", 85)
+        .style("fill", "black")
+        .style("font-family", "Open Sans")
+        .style("font-size", 7)
+        .style("font-weight", 800)
+
+
+    const igHeader = tooltipGroup.append('text')
+        .text("Followers")
+        .attr("x", 630)
+        .attr("y", 85)
+        .style("fill", "black")
+        .style("font-family", "Open Sans")
+        .style("font-size", 7)
+        .style("font-weight", 800)
+
+    const nwHeader = tooltipGroup.append('text')
+        .text("Net Worth")
+        .attr("x", 680)
+        .attr("y", 85)
+        .style("fill", "black")
+        .style("font-family", "Open Sans")
+        .style("font-size", 7)
+        .style("font-weight", 800)
+
+    const milDivider = tooltipGroup.append('rect')
+        .attr("x", 560)
+        .attr("y", 87)
+        .attr("width", 168)
+        .attr("height", 0.25)
+        .style("fill", "black")
+
     const tooltipMilHeader = tooltipGroup.append('g')
         .selectAll("text")
-        .data(gazeType)
+        .data(partyType)
         .join("text")
         .attr("x", 560)
-        .attr("y", (d, i) => i * 10 + 80)
+        .attr("y", (d, i) => i * 9 + 100)
         .text(d => d)
-        .style("fill", d => partyColorScale(d))
+        .style("fill", d => bilColorScale(d))
         .style("font-family", "Open Sans")
-        .style("font-size", 8)
+        .style("font-size", 7)
+        .style("font-weight", 700)
         .raise()
+
+    const sryHeader = tooltipGroup.append('text')
+        .text("Plastic Surgeries in US")
+        .attr("x", 560)
+        .attr("y", 165)
+        .style("fill", "black")
+        .style("font-family", "Open Sans")
+        .style("font-size", 7)
+        .style("font-weight", 800)
+
+
+    const countHeader = tooltipGroup.append('text')
+        .text("Count")
+        .attr("x", 660)
+        .attr("y", 165)
+        .style("fill", "black")
+        .style("font-family", "Open Sans")
+        .style("font-size", 7)
+        .style("font-weight", 800)
+
+    const sryCount = tooltipGroup.append('text')
+        .text("vs 2012")
+        .attr("x", 700)
+        .attr("y", 165)
+        .style("fill", "black")
+        .style("font-family", "Open Sans")
+        .style("font-size", 7)
+        .style("font-weight", 800)
+
+    const sryDivider = tooltipGroup.append('rect')
+        .attr("x", 560)
+        .attr("y", 168)
+        .attr("width", 168)
+        .attr("height", 0.25)
+        .style("fill", "black")
+
 
     const tooltipSryHeader = tooltipGroup.append('g')
         .selectAll("text")
         .data(surgeryTypes)
         .join("text")
         .attr("x", 560)
-        .attr("y", (d, i) => i * 10 + 180)
+        .attr("y", (d, i) => i * 9 + 180)
         .text(d => d)
         .style("fill", d => lineColorScale(d))
         .style("font-family", "Open Sans")
-        .style("font-size", 8)
-        .raise()
+        .style("font-size", 7)
+        .style("font-weight", 700)
 
 
     const tooltipBilHeader = tooltipGroup.append('g')
         .selectAll("text")
-        .data(moneyType)
+        .data(bilType)
         .join("text")
         .attr("x", 560)
-        .attr("y", (d, i) => i * 10 + 290)
+        .attr("y", (d, i) => i * 9 + 300)
         .text(d => d)
-        .style("fill", d => partyColorScale(d))
+        .style("fill", d => bilColorScale(d))
         .style("font-family", "Open Sans")
-        .style("font-size", 8)
+        .style("font-size", 7)
+        .style("font-weight", 700)
         .raise()
+
+    const bilBiz = tooltipGroup.append('text')
+        .text("Businesses")
+        .attr("x", 560)
+        .attr("y", 285)
+        .style("fill", "black")
+        .style("font-family", "Open Sans")
+        .style("font-size", 7)
+        .style("font-weight", 700)
+
+    const bilHeader = tooltipGroup.append('text')
+        .text("Annual Revenue")
+        .attr("x", 660)
+        .attr("y", 285)
+        .style("fill", "black")
+        .style("font-family", "Open Sans")
+        .style("font-size", 7)
+        .style("font-weight", 700)
+
+    const bilDivider = tooltipGroup.append('rect')
+        .attr("x", 560)
+        .attr("y", 288)
+        .attr("width", 168)
+        .attr("height", 0.25)
+        .style("fill", "black")
+
+    //-------------------Draw Annotation
+
+
+    const dashAnno = annotationGroup.append("line")
+        .attr("x1", 330)
+        .attr("x2", 350)
+        .attr("y1", 70)
+        .attr("y2", 70)
+        .style("stroke", "grey")
+        .style("stroke-dasharray", ("3, 2"))
+        .attr("stroke-width", 0.6)
+
+    const dashAnnoText = annotationGroup.append("text")
+        .text("Net Worth")
+        .attr("x", 355)
+        .attr("y", 70)
+        .style("fill", "#A9A9A9")
+        .style("font-family", "Open Sans")
+        .style("font-size", 6)
+        .style("font-weight", 500)
+        .style("alignment-baseline", "middle")
+
+    const lineAnno = annotationGroup.append("line")
+        .attr("x1", 330)
+        .attr("x2", 350)
+        .attr("y1", 80)
+        .attr("y2", 80)
+        .style("stroke", "grey")
+        .attr("stroke-width", 0.6)
+
+    const lineAnnoText = annotationGroup.append("text")
+        .text("IG Followers")
+        .attr("x", 355)
+        .attr("y", 80)
+        .style("fill", "#A9A9A9")
+        .style("font-family", "Open Sans")
+        .style("font-size", 6)
+        .style("font-weight", 500)
+        .style("alignment-baseline", "middle")
+
+
 
     //------------------Draw Title
 
@@ -423,9 +603,13 @@ async function drawAnalysis() {
 
     function drawReference(periodNum) {
 
-        const sryFiltered = surgery.filter(d => d.periodnum === periodNum)
-        const milFiltered = millions.filter(d => d.periodnum === periodNum)
-        const bilFiltered = billions.filter(d => d.periodnum === periodNum)
+        const sryFiltered = surgery.filter(d => d.periodnum === periodNum);
+        const milFiltered = millions.filter(d => d.periodnum === periodNum);
+        const igMil = milFiltered.filter(d => d.category === "Instagram Followers");
+        const nwMil = milFiltered.filter(d => d.category === "Networth");
+        const igGroup = d3.group(igMil, d => d.party)
+        // console.log(igGroup)
+        const bilFiltered = billions.filter(d => d.periodnum === periodNum);
 
         const lineRefChart = lineRefGroup.selectAll("rect")
             .data(sryFiltered)
@@ -443,20 +627,9 @@ async function drawAnalysis() {
             .attr("x", d => timeScale(yearAccessor(d)))
             .attr("y", 50)
             .text(noteAccessor)
-            .style("fill", "#e8beac")
+            .style("fill", "#E8BEAC")
             .style("font-family", "Open Sans")
             .style("font-size", 10)
-
-
-        const dotBilChart = dotBilGroup.selectAll("circle")
-            .data(billions.filter(d => d.periodnum === periodNum))
-            .join("circle")
-            .attr("cx", d => timeScale(yearAccessor(d)))
-            .attr("cy", d => bilScale(valueAccessor(d)))
-            .attr("r", 2)
-            .attr("fill", "white")
-            .attr("opacity", 1)
-            .raise()
 
         const dotMilChart = dotMilGroup.selectAll("circle")
             .data(millions.filter(d => d.periodnum === periodNum))
@@ -464,44 +637,78 @@ async function drawAnalysis() {
             .attr("cx", d => timeScale(yearAccessor(d)))
             .attr("cy", d => milScale(valueAccessor(d)))
             .attr("r", 2)
-            .attr("fill", "white")
+            .attr("fill", d => milColorScale(partyAccessor(d)))
             .attr("opacity", 1)
             .raise()
+
+        const dotBilChart = dotBilGroup.selectAll("circle")
+            .data(billions.filter(d => d.periodnum === periodNum))
+            .join("circle")
+            .attr("cx", d => timeScale(yearAccessor(d)))
+            .attr("cy", d => bilScale(valueAccessor(d)))
+            .attr("r", 2)
+            .attr("fill", d => milColorScale(partyAccessor(d)))
+            .attr("opacity", 1)
+            .raise()
+
+
         const dotSryChart = dotSryGroup.selectAll("circle")
             .data(sryFiltered)
             .join("circle")
             .attr("cx", d => timeScale(yearAccessor(d)))
             .attr("cy", d => rateScale(rateAccessor(d)))
             .attr("r", 2)
-            .attr("fill", "white")
+            .attr("fill", d => lineColorScale(surgeryAccessor(d)))
             .attr("opacity", 1)
             .raise()
 
-        const tooltipMilContent = tooltipMil.selectAll("text")
-            .data(milFiltered)
+        const tooltipsMilIG = tooltipMilIG.selectAll("text")
+            .data(igMil)
             .join("text")
-            .attr("x", 660)
-            .attr("y", (d, i) => i * 10 + 80)
-            .text(d => d.category === "Networth" ? `$${d.value} mil dollars` : `${d.value} mil followers`)
+            .attr("x", 630)
+            .attr("y", (d, i) => i * 9 + 100)
+            .text(d => `${d.value} mil`)
             .style("fill", "black")
             .style("font-family", "Open Sans")
-            .style("font-size", 8)
-            .style("font-weight", 700)
+            .style("font-size", 7)
+            .style("font-weight", 500)
             .style("text-anchor", "left")
 
+        const tooltipsMilNetworth = tooltipMilNW.selectAll("text")
+            .data(nwMil)
+            .join("text")
+            .attr("x", 680)
+            .attr("y", (d, i) => i * 9 + 100)
+            .text(d => `$${d.value} mil dollars`)
+            .style("fill", "black")
+            .style("font-family", "Open Sans")
+            .style("font-size", 7)
+            .style("font-weight", 500)
+            .style("text-anchor", "left")
 
-
-        const formatter = d3.format(".0%")
-        const tooltipSryContent = tooltipSurgery.selectAll("text")
+        const tooltipCount = tooltipSryCount.selectAll("text")
             .data(sryFiltered)
             .join("text")
             .attr("x", 660)
-            .attr("y", (d, i) => i * 10 + 180)
-            .text(d => formatter(rateAccessor(d)))
+            .attr("y", (d, i) => i * 9 + 180)
+            .text(d => numFormatter(countAccessor(d)))
             .style("fill", "black")
             .style("font-family", "Open Sans")
-            .style("font-size", 8)
-            .style("font-weight", 700)
+            .style("font-size", 7)
+            .style("font-weight", 500)
+            .style("text-anchor", "left")
+
+
+        const tooltipSryContent = tooltipSurgery.selectAll("text")
+            .data(sryFiltered)
+            .join("text")
+            .attr("x", 700)
+            .attr("y", (d, i) => i * 9 + 180)
+            .text(d => pctFormatter(rateAccessor(d)))
+            .style("fill", "black")
+            .style("font-family", "Open Sans")
+            .style("font-size", 7)
+            .style("font-weight", 500)
             .style("text-anchor", "left")
 
 
@@ -509,12 +716,12 @@ async function drawAnalysis() {
             .data(bilFiltered)
             .join("text")
             .attr("x", 660)
-            .attr("y", (d, i) => i * 10 + 290)
+            .attr("y", (d, i) => i * 9 + 300)
             .text(d => `$${d.value} bil dollars`)
             .style("fill", "black")
             .style("font-family", "Open Sans")
-            .style("font-size", 8)
-            .style("font-weight", 700)
+            .style("font-size", 7)
+            .style("font-weight", 500)
             .style("text-anchor", "left")
 
     }

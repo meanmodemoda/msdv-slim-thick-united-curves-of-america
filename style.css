@@ -432,17 +432,18 @@ div.divider {
 }
 
 .axisAnalysis line{
-  stroke: white;
+  stroke: #808080;
 }
 
 .axisAnalysis path{
-  stroke: white;
+  stroke: #808080;
 }
 
 
 .axisAnalysis text{
-  fill: white;
-  font-size: 0.5rem;
+  fill: #A9A9A9;
+  font-size: 0.4rem;
+  font-family: "Open Sans";
 }
 
 /* Moving Eyes */
