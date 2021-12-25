@@ -208,7 +208,7 @@ background: linear-gradient(90deg, rgba(125,59,199,1) 0%, rgba(64,30,101,1) 0%, 
 
 #scrolly-side .scrolly figure.sticky .bar-outer {
   position: absolute;
-  top: 10%;
+  top: 11%;
   left: 50%;
   transform: translateY(-50%);
   width: 45%;

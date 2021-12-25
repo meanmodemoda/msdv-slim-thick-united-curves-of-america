@@ -249,7 +249,7 @@ async function draw() {
             .attr("y", 60)
             .style("fill", "black")
             .style("font-family", "Open Sans")
-            .style("font-size", 16)
+            .style("font-size", 14)
             .attr("font-weight", 700)
 
         const counterLabel = counterCultureLabel.selectAll("text")
@@ -261,7 +261,7 @@ async function draw() {
             .attr("y", 60)
             .style("fill", "#7d3bc7")
             .style("font-family", "Open Sans")
-            .style("font-size", 16)
+            .style("font-size", 14)
             .attr("font-weight", 700)
 
 
