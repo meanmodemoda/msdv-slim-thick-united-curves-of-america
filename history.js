@@ -204,7 +204,7 @@ async function draw() {
     const chartLabel = annoGroup.append("text")
         .classed("chartlabel", true)
         .text("(body measurement in inches, scale de-linearized)")
-        .attr("x", 30)
+        .attr("x", 40)
         .attr("y", 500)
         .attr("font-family", "Open Sans")
         .attr("font-size", 12)
