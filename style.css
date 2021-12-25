@@ -53,6 +53,7 @@ p {
 
 }
 p.footnote {
+  margin-top: 0;
   font-size: 0.8rem;
   font-weight:600;
 }
@@ -237,6 +238,7 @@ background: linear-gradient(90deg, rgba(125,59,199,1) 0%, rgba(64,30,101,1) 0%, 
 }
 
 .lyrics {
+  margin-top: 5%;
   font-weight: 400;
   margin-left: 16%;
   margin-right: 16%;
@@ -262,6 +264,7 @@ background: linear-gradient(90deg, rgba(125,59,199,1) 0%, rgba(64,30,101,1) 0%, 
 .quotes h4 {
   font-weight: 700;
   font-size: 1rem;
+  color: #7d3bc7;
   margin-bottom: 0;
 }
 
@@ -554,7 +557,7 @@ margin-bottom: 0;
 
 p.bracket  {
   margin-top: 0;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 }
 
 #nodata {
