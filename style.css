@@ -233,7 +233,7 @@ background: linear-gradient(90deg, rgba(125,59,199,1) 0%, rgba(64,30,101,1) 0%, 
   position: absolute;
   width: 100%;
   text-align: center;
-  transition: 600ms;
+  transition: 300ms;
   /* transition-delay: 300ms; */
 }
 
