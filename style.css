@@ -84,8 +84,8 @@ p.footnote {
   display: block;
   justify-content: center;
   align-items: center;
-  margin-left: 25%;
-  margin-right: 25%;
+  margin-left: 30%;
+  margin-right: 30%;
 }
 
 .lead {
@@ -146,15 +146,16 @@ background: linear-gradient(90deg, rgba(125,59,199,1) 0%, rgba(64,30,101,1) 0%, 
 #scrolly-side .scrolly article .step {
   min-height:30rem;
   margin-bottom: 1rem;
-background: rgb(232,190,172);
-background: linear-gradient(90deg, rgba(232,190,172,0) 0%, rgba(232,190,172,1) 61%, rgba(232,190,172,0.12368697478991597) 100%);
+/* background: rgb(232,190,172); */
+/* background: linear-gradient(90deg, rgba(232,190,172,0) 0%, rgba(232,190,172,1) 61%, rgba(232,190,172,0.12368697478991597) 100%); */
   transition: background-color 250ms ease-in-out;
 }
 
 #scrolly-side .scrolly article .step h4 {
    color: black;
-    font-weight: 800;
-    font-size: 1.2rem;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 0;
 }
 /* .stepbar {
   height: 0.5px;
@@ -165,12 +166,12 @@ background: linear-gradient(90deg, rgba(232,190,172,0) 0%, rgba(232,190,172,1) 6
 } */
 
 #scrolly-side .scrolly article .step:last-of-type {
-  margin-bottom: 0;
+  margin-bottom: 10%;
 }
 
 #scrolly-side .scrolly article .step.is-active {
-background: rgb(232,190,172);
-background: linear-gradient(90deg, rgba(232,190,172,0) 0%, rgba(240,176,149,0.5662640056022409) 61%, rgba(232,190,172,0.12368697478991597) 100%);
+/* background: rgb(232,190,172); */
+/* background: linear-gradient(90deg, rgba(232,190,172,0) 0%, rgba(240,176,149,0.5662640056022409) 61%, rgba(232,190,172,0.12368697478991597) 100%); */
   opacity: 0.8;
 }
 
@@ -195,9 +196,9 @@ background: linear-gradient(90deg, rgba(232,190,172,0) 0%, rgba(240,176,149,0.56
 }
 
 #counter_h4 {
-  font-family: "Open Sans";
+  font-family: "MonumentExtended-Black";
   font-size: 1.2rem; 
-  font-weight: 800; 
+  margin-left: 15%
 }
 
 .intro img {
@@ -207,10 +208,10 @@ background: linear-gradient(90deg, rgba(232,190,172,0) 0%, rgba(240,176,149,0.56
 
 #scrolly-side .scrolly figure.sticky .bar-outer {
   position: absolute;
-  top: 15%;
+  top: 10%;
   left: 50%;
-  transform: translateY(-30%);
-  width: 35%;
+  transform: translateY(-50%);
+  width: 45%;
   height: 10rem;
   text-align: center;
    /*border: 1px solid black;*/
@@ -218,36 +219,49 @@ background: linear-gradient(90deg, rgba(232,190,172,0) 0%, rgba(240,176,149,0.56
   /*opacity: 0.5;*/
 }
 
-#scrolly-side .scrolly figure.sticky .bar-inner {
+/* #scrolly-side .scrolly figure.sticky .bar-inner { */
   /*width: 30%;*/
-  height: 100%;
-  transition: width 1s ease-in-out;
+  /* height: 100%; */
+  /* transition: width 1s ease-in-out; */
   /*background-color: white;*/
   /*opacity: 0;*/
-}
+/* } */
 
 .quotes {
   position: absolute;
-  width: 80%;
-  /*top: 5%;*/
-  left: 10%;
-  /*opacity: 0;*/
-  font-size: 0.9rem;
+  width: 100%;
+  text-align: center;
+  transition: 500ms;
+  transition-delay: 300ms;
+}
+
+.lyrics {
   font-weight: 400;
-  /*margin-left: 20%;*/
-  margin-right: 20%;
+  margin-left: 16%;
+  margin-right: 16%;
+  /* width: 55%; */
   border: 3px solid black;
   text-align: center;
   background-color: white;
   /*border-radius: 8px;*/
   line-height: 1.3rem;
+  font-size: 0.7rem;
 }
 
 .quotes h3 {
-  font-size: 1rem;
-  background: -webkit-linear-gradient(left, #7d3bc7, #8aa10e);
+  font-family: "MonumentExtended-Black";
+  font-size: 1.5rem;
+  background: rgb(125,59,199);
+background: linear-gradient(90deg, rgba(125,59,199,1) 0%, rgba(64,30,101,1) 0%, rgba(0,0,0,1) 100%, rgba(230,136,96,1) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+
+}
+
+.quotes h4 {
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 0;
 }
 
 .tina {
@@ -534,4 +548,14 @@ margin-bottom: 0;
 #analysis {
   /* border: 5px solid orange; */
 
+}
+
+
+p.bracket  {
+  margin-top: 0;
+  font-size: 0.9rem;
+}
+
+#nodata {
+  top: 10rem;
 }

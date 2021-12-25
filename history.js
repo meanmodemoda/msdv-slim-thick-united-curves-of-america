@@ -63,6 +63,12 @@ async function draw() {
     const annoGroup = boundsArea.append("g")
         .classed("anno", true)
 
+    const mainCultureLabel = boundsArea.append("g")
+        .classed("mainculturelabel", true)
+
+
+    const counterCultureLabel = boundsArea.append("g")
+        .classed("counterculturelabel", true)
 
     //**************************3. Load Data and Create Accessors
 
@@ -195,27 +201,6 @@ async function draw() {
         .curve(d3.curveCardinal)
 
 
-    const cultureLabel = annoGroup.append("text")
-        .classed("culturelabel", true)
-        .text("Main-Culture")
-        .attr("x", 20)
-        .attr("y", 60)
-        .style("fill", "black")
-        .style("font-family", "Open Sans")
-        .style("font-size", 16)
-        .attr("font-weight", 800)
-
-    const counterLabel = annoGroup.append("text")
-        .classed("counterlabel", true)
-        .text("Counter-Culture")
-        .attr("x", 240)
-        .attr("y", 60)
-        .attr("fill", "#7d3bc7")
-        .attr("font-family", "Open Sans")
-        .attr("font-size", 16)
-        .attr("font-weight", 800)
-
-
     const chartLabel = annoGroup.append("text")
         .classed("chartlabel", true)
         .text("(body measurement in inches, scale de-linearized)")
@@ -252,6 +237,34 @@ async function draw() {
             if (cultureTypes == "counter") return 0.5;
             else return 1;
         }
+        //--------------------Draw Culture Labels
+
+        const cultureLabel = mainCultureLabel.selectAll("text")
+            .data(msmFilter.filter(d => cultureAccessor(d) == "main"
+            ))
+            // .classed("culturelabel", true)
+            .join("text")
+            .text(d => iconAccessor(d))
+            .attr("x", 20)
+            .attr("y", 60)
+            .style("fill", "black")
+            .style("font-family", "Open Sans")
+            .style("font-size", 16)
+            .attr("font-weight", 700)
+
+        const counterLabel = counterCultureLabel.selectAll("text")
+            .data(msmFilter.filter(d => cultureAccessor(d) == "counter"
+            ))
+            .join("text")
+            .text(d => iconAccessor(d))
+            .attr("x", 240)
+            .attr("y", 60)
+            .style("fill", "#7d3bc7")
+            .style("font-family", "Open Sans")
+            .style("font-size", 16)
+            .attr("font-weight", 700)
+
+
         //--------------------Draw areaChart
         const rightContour = rightChartGroup.selectAll("path")
             .data(sumMsm)
@@ -300,11 +313,11 @@ async function draw() {
             .attr("stroke-width", 2)
 
         //progress hightlight    
-        progressAxis.selectAll("text")
-            .style('fill', i =>
-                (periodNums[i] == (periodNum + 1)) ? "#8aa10e" : "black")
-            .attr("font-family", "Open Sans")
-            .attr("font-weight", "600")
+        // progressAxis.selectAll("text")
+        //     .style('fill', i =>
+        //         (periodNums[i] == (periodNum + 1)) ? "#8aa10e" : "black")
+        //     .attr("font-family", "Open Sans")
+        //     .attr("font-weight", "600")
         //     .attr('font-size',"10px")
         //     .style("text-anchor", "middle");
 
