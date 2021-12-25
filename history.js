@@ -256,7 +256,7 @@ async function draw() {
             .data(msmFilter.filter(d => cultureAccessor(d) == "counter"
             ))
             .join("text")
-            .text(d => iconAccessor(d))
+            .text(d => d.icon === "Missy Elliott" ? `${d.icon}` : `"${d.icon}"`)
             .attr("x", 240)
             .attr("y", 60)
             .style("fill", "#7d3bc7")

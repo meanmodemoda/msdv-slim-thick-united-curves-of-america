@@ -1,49 +1,49 @@
 periodNum,period,type,culture,icon,part,measurement
-1,1950s,Hour Glass,counter,Baby Got Legs,bust,36
-1,1950s,Hour Glass,counter,Baby Got Legs,abdomen,34
-1,1950s,Hour Glass,counter,Baby Got Legs,waist,28
-1,1950s,Hour Glass,counter,Baby Got Legs,hip,40
-1,1950s,Hour Glass,counter,Baby Got Legs,butt,44
+1,1950s,Hour Glass,counter,"Baby Got Legs",bust,36
+1,1950s,Hour Glass,counter,"Baby Got Legs",abdomen,34
+1,1950s,Hour Glass,counter,"Baby Got Legs",waist,28
+1,1950s,Hour Glass,counter,"Baby Got Legs",hip,40
+1,1950s,Hour Glass,counter,"Baby Got Legs",butt,44
 1,1950s,Hour Glass,main,Marilyn Monroe,bust,36
 1,1950s,Hour Glass,main,Marilyn Monroe,abdomen,34
 1,1950s,Hour Glass,main,Marilyn Monroe,waist,24
 1,1950s,Hour Glass,main,Marilyn Monroe,hip,32
 1,1950s,Hour Glass,main,Marilyn Monroe,butt,34
-2,1960s,Androgyny,counter,Baby Sight-to-See,bust,39
-2,1960s,Androgyny,counter,Baby Sight-to-See,abdomen,34
-2,1960s,Androgyny,counter,Baby Sight-to-See,waist,21
-2,1960s,Androgyny,counter,Baby Sight-to-See,hip,42
-2,1960s,Androgyny,counter,Baby Sight-to-See,butt,46
+2,1960s,Androgyny,counter,"Baby Got Magic",bust,39
+2,1960s,Androgyny,counter,"Baby Got Magic",abdomen,34
+2,1960s,Androgyny,counter,"Baby Got Magic",waist,21
+2,1960s,Androgyny,counter,"Baby Got Magic",hip,42
+2,1960s,Androgyny,counter,"Baby Got Magic",butt,46
 2,1960s,Androgyny,main,Twiggy,bust,30
 2,1960s,Androgyny,main,Twiggy,abdomen,28
 2,1960s,Androgyny,main,Twiggy,waist,23
 2,1960s,Androgyny,main,Twiggy,hip,30
 2,1960s,Androgyny,main,Twiggy,butt,32
-3,1970s,Disco Diva,counter,Switchboard Susan,bust,38
-3,1970s,Disco Diva,counter,Switchboard Susan,abdomen,36
-3,1970s,Disco Diva,counter,Switchboard Susan,waist,27
-3,1970s,Disco Diva,counter,Switchboard Susan,hip,36
-3,1970s,Disco Diva,counter,Switchboard Susan,butt,38
+3,1970s,Disco Diva,counter,"Switchboard Susan",bust,38
+3,1970s,Disco Diva,counter,"Switchboard Susan",abdomen,36
+3,1970s,Disco Diva,counter,"Switchboard Susan",waist,27
+3,1970s,Disco Diva,counter,"Switchboard Susan",hip,36
+3,1970s,Disco Diva,counter,"Switchboard Susan",butt,38
 3,1970s,Disco Diva,main,Elsa Peretti,bust,32
 3,1970s,Disco Diva,main,Elsa Peretti,abdomen,30
 3,1970s,Disco Diva,main,Elsa Peretti,waist,23
 3,1970s,Disco Diva,main,Elsa Peretti,hip,32
 3,1970s,Disco Diva,main,Elsa Peretti,butt,34
-4,1980s,Fitness Craze,counter,Baby Got Pie,bust,38
-4,1980s,Fitness Craze,counter,Baby Got Pie,abdomen,36
-4,1980s,Fitness Craze,counter,Baby Got Pie,waist,28
-4,1980s,Fitness Craze,counter,Baby Got Pie,hip,36
-4,1980s,Fitness Craze,counter,Baby Got Pie,butt,38
+4,1980s,Fitness Craze,counter,"Baby Got Pie",bust,38
+4,1980s,Fitness Craze,counter,"Baby Got Pie",abdomen,36
+4,1980s,Fitness Craze,counter,"Baby Got Pie",waist,28
+4,1980s,Fitness Craze,counter,"Baby Got Pie",hip,36
+4,1980s,Fitness Craze,counter,"Baby Got Pie",butt,38
 4,1980s,Fitness Craze,main,Jane Fonda,bust,36
 4,1980s,Fitness Craze,main,Jane Fonda,abdomen,34
 4,1980s,Fitness Craze,main,Jane Fonda,waist,25
 4,1980s,Fitness Craze,main,Jane Fonda,hip,33
 4,1980s,Fitness Craze,main,Jane Fonda,butt,35
-5,1990s,Heroine Chic,counter,Bonita Applebum,bust,38
-5,1990s,Heroine Chic,counter,Bonita Applebum,abdomen,36
-5,1990s,Heroine Chic,counter,Bonita Applebum,waist,24
-5,1990s,Heroine Chic,counter,Bonita Applebum,hip,36
-5,1990s,Heroine Chic,counter,Bonita Applebum,butt,37
+5,1990s,Heroine Chic,counter,"Bonita Applebum",bust,38
+5,1990s,Heroine Chic,counter,"Bonita Applebum",abdomen,36
+5,1990s,Heroine Chic,counter,"Bonita Applebum",waist,24
+5,1990s,Heroine Chic,counter,"Bonita Applebum",hip,36
+5,1990s,Heroine Chic,counter,"Bonita Applebum",butt,37
 5,1990s,Heroine Chic,main,Kate Moss,bust,32
 5,1990s,Heroine Chic,main,Kate Moss,abdomen,30
 5,1990s,Heroine Chic,main,Kate Moss,waist,24
@@ -64,8 +64,8 @@ periodNum,period,type,culture,icon,part,measurement
 7,2010s+,Slim Thick,main,Kim Kardashian,waist,26
 7,2010s+,Slim Thick,main,Kim Kardashian,hip,38
 7,2010s+,Slim Thick,main,Kim Kardashian,butt,41
-7,2010s+,Slim Thick,counter,Baby Got Dime,bust,36
-7,2010s+,Slim Thick,counter,Baby Got Dime,abdomen,34
-7,2010s+,Slim Thick,counter,Baby Got Dime,waist,24
-7,2010s+,Slim Thick,counter,Baby Got Dime,hip,38
-7,2010s+,Slim Thick,counter,Baby Got Dime,butt,40
+7,2010s+,Slim Thick,counter,"Baby Got Dime",bust,36
+7,2010s+,Slim Thick,counter,"Baby Got Dime",abdomen,34
+7,2010s+,Slim Thick,counter,"Baby Got Dime",waist,24
+7,2010s+,Slim Thick,counter,"Baby Got Dime",hip,38
+7,2010s+,Slim Thick,counter,"Baby Got Dime",butt,40
