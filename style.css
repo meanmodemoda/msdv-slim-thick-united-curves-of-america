@@ -189,11 +189,11 @@ background: linear-gradient(90deg, rgba(125,59,199,1) 0%, rgba(64,30,101,1) 0%, 
 #scrolly-side .scrolly figure.sticky {
   position: sticky;
   width: 100%;
-  height: 50rem;
+  height: 40rem;
   /*background: #969696;*/
    /*border: 1px solid black;*/
   margin: 0;
-  top: 8rem;
+  top: 4rem;
   left: 2rem;
 }
 
@@ -268,13 +268,7 @@ background: linear-gradient(90deg, rgba(125,59,199,1) 0%, rgba(64,30,101,1) 0%, 
   margin-bottom: 0;
 }
 
-.tina {
-display: block;
-margin-top: 2rem;
- font-size: 2rem;
- font-family: "MonumentExtended-Black";
- /*border: 1px solid black;*/
-}
+
 /*.culturelabel {*/
 /*    transform: translate(-50%, 50%) rotate(45deg);*/
 /*     z-index: 100;*/
