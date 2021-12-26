@@ -605,7 +605,7 @@ async function drawAnalysis() {
         .style("font", "0.5rem 'Open Sans'")
         .style("color", "#E8BEAC")
         .style("line-height", "13px")
-        .html("<h1 style='font-weight: 800'>Conclusion</h1><p style='font-size: 9px; color: white;'>Slim Thick seems to start off as a classic example of capitalization of the black female body and has gradually spun into its own whirlpool of problems. I am particularly concerned about how it has infiltrated the life of teenage girls. A generic search of #fitness on Instagram or TikTok corners you into endless videos of young girls deadlifting. Content on the banned Slim Thick drug Apetamin bypasses lazy checkpoints and circulates as usual. BBL continues to gain momentum amongst late teens. In a land that promises free will, American daughters take on the \"free will\" to please a bit too soon.");
+        .html("<h1 style='font-weight: 800'>Conclusion</h1><p style='font-size: 9px; color: white;'>Slim Thick seems to start off as a classic example of the capitalization of the black female body and has gradually spun into its own whirlpool of problems. I am particularly concerned about how it has infiltrated the life of teenage girls. A generic search of #fitness on Instagram or TikTok corners you into endless videos of young girls deadlifting. Content on the banned Slim Thick drug Apetamin bypasses lazy checkpoints and circulates as usual. BBL continues to gain momentum amongst late teens. In a land that promises free will, American daughters take on the \"free will\" to please a bit too soon.");
 
 
     const citation = conclusionGroup.append("foreignObject")
