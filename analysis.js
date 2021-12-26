@@ -597,27 +597,27 @@ async function drawAnalysis() {
         .attr("fill", "black")
 
     const conclusionText = conclusionGroup.append("foreignObject")
-        .attr("x", 200)
-        .attr("y", 450)
-        .attr("width", 450)
+        .attr("x", 250)
+        .attr("y", 440)
+        .attr("width", 320)
         .attr("height", 600)
         .append("xhtml:div")
         .style("font", "0.5rem 'Open Sans'")
         .style("color", "#E8BEAC")
         .style("line-height", "13px")
-        .html("<h1 style='font-weight: 800'>Conclusion</h1><p style='font-size: 9px; color: white;'>Slim Thick seems to me started off as a classic example of capitalization of the black female body that has gradually spun into its own whirlpool of problems. I am particularly concerned how it has infiltrated teenage girls' real life. A generic search of #fitness on Instagram or TikTok will corner you into endless videos of young girls deadlifting. Content on the banned Slim Thick drug Apetamin bypasses lazy checkpoints and circulates as usual. BBL continues to gain momentum amongst late teens. In a land that promises free will, American daughters take on the will to please a bit too soon.");
+        .html("<h1 style='font-weight: 800'>Conclusion</h1><p style='font-size: 9px; color: white;'>Slim Thick seems to start off as a classic example of capitalization of the black female body and has gradually spun into its own whirlpool of problems. I am particularly concerned about how it has infiltrated the life of teenage girls. A generic search of #fitness on Instagram or TikTok corners you into endless videos of young girls deadlifting. Content on the banned Slim Thick drug Apetamin bypasses lazy checkpoints and circulates as usual. BBL continues to gain momentum amongst late teens. In a land that promises free will, American daughters take on the \"free will\" to please a bit too soon.");
 
 
     const citation = conclusionGroup.append("foreignObject")
-        .attr("x", 200)
-        .attr("y", 600)
+        .attr("x", 250)
+        .attr("y", 620)
         .attr("width", 350)
         .attr("height", 400)
         .append("xhtml:div")
         .style("font", "0.3rem 'Open Sans'")
         .style("color", "#E8BEAC")
         .style("line-height", "10px")
-        .html("<h1 style='font-weight: 800; font-size: 12px'>References</h1><div class='citation' style='font-size: 7px; color: white;'><ul><li>Mbowe, Khadija. <a href='https://www.youtube.com/watch?v=H69-QpX-wG0>' target='_blank'>\“The reign of the Slim-Thick Influencer.\”</a> Aug 22, 2021. </li><li>Morris, Desmond. <i>The Naked Women</i>. St. Martin's Publishing Group, 2007. </li><li>Beauvoir, Simone. <i>The Second Sex</i>. New York: Vintage Books, 1989. Print.</li><li>Richardson, Kiesha. <a href='https://genelmag.com/article/stop-trying-to-redefine-thicc' target='_blank'>\“Stop Trying to Redefine ‘Thicc girls’ to Mean Skinny With a Booty.\”</a> GNL Magazine. Sep 29, 2021. </li><li>Tolentino, Jia. <a href='https://www.newyorker.com/culture/decade-in-review/the-age-of-instagram-face' target='_blank'>\“The Age of Instagram Face.” </a>The New Yorker. Dec 12, 2019. </li><li>Chauntell, Monet. <a href='https://www.unstrippedvoice.com/3660-slim-thick-the-new-skinny' target='_blank'>“Slim-Thick, the New Skinny.”</a> Sep 17, 2017. </li><li>Greatiest.com. <a href='https://greatist.com/grow/100-years-womens-body-image#1' target='_blank'>\“See How Much the ‘Perfect’ Female Body Has Changed in 100 Years (It's Crazy!).\” </a></li> <li>Sicardi, Arabelle.<a href='https://www.allure.com/story/the-kardashian-effect' target='_blank'> \“The Kardashian Effect.\”</a>Allure. Feb 16, 2021.</li><li>Roundtree, Cheyenne.<a href ='https://www.thedailybeast.com/how-the-kardashians-changed-the-face-of-plastic-surgery' target='_blank'>\“How the Kardashians Changed the Face of Plastic Surgery.\”</a> The Daily Beast. June 12, 2021.</li><li>Kim, Eunice. <a href='https://ucsdguardian.org/2021/03/07/the-marketing-of-black-womens-body-in-hip-hop' target='_blank'>\“The Marketing of Black Women’s Body in Hip-Hop.\” </a>UCSD Guardian. Mar 7, 2021.</li></ul ></div >");
+        .html("<h1 style='font-weight: 800; font-size: 12px'>References</h1><div class='citation' style='font-size: 7px; color: white;'><ul><li>Mbowe, Khadija. <a href='https://www.youtube.com/watch?v=H69-QpX-wG0>' target='_blank'>\“The reign of the Slim-Thick Influencer.\”</a> Aug 22, 2021. </li><li>Beauvoir, Simone. <i>The Second Sex</i>. New York: Vintage Books, 1989.</li><li>Richardson, Kiesha. <a href='https://genelmag.com/article/stop-trying-to-redefine-thicc' target='_blank'>\“Stop Trying to Redefine ‘Thicc girls’ to Mean Skinny With a Booty.\”</a> GNL Magazine. Sep 29, 2021. </li><li>Tolentino, Jia. <a href='https://www.newyorker.com/culture/decade-in-review/the-age-of-instagram-face' target='_blank'>\“The Age of Instagram Face.” </a>The New Yorker. Dec 12, 2019. </li><li>Greatiest.com. <a href='https://greatist.com/grow/100-years-womens-body-image#1' target='_blank'>\“See How Much the ‘Perfect’ Female Body Has Changed in 100 Years (It's Crazy!).\” </a></li> <li>Sicardi, Arabelle.<a href='https://www.allure.com/story/the-kardashian-effect' target='_blank'> \“The Kardashian Effect.\”</a>Allure. Feb 16, 2021.</li><li>Roundtree, Cheyenne.<a href ='https://www.thedailybeast.com/how-the-kardashians-changed-the-face-of-plastic-surgery' target='_blank'>\“How the Kardashians Changed the Face of Plastic Surgery.\”</a> The Daily Beast. June 12, 2021.</li><li>Kim, Eunice. <a href='https://ucsdguardian.org/2021/03/07/the-marketing-of-black-womens-body-in-hip-hop' target='_blank'>\“The Marketing of Black Women’s Body in Hip-Hop.\” </a>UCSD Guardian. Mar 7, 2021.</li></ul ></div >");
     //Draw Refrence Dots
 
     function drawReference(periodNum) {
