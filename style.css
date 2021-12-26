@@ -295,23 +295,12 @@ background: linear-gradient(90deg, rgba(125,59,199,1) 0%, rgba(64,30,101,1) 0%, 
 
 
  #scrolly-basic {
-  /* width: 1900px; */
-  /* position: relative; */
-  /* background-position:center; */
- /* height: 600rem; */
- /* height: calc(2.70s*100vw); */
-/* width: 100vw; */
   background-image: url( ./assets/gaze.svg);
-  /* background-size: cover; */
   background-repeat: no-repeat;
+  /* background-color: black; */
   /* border: 5px solid yellow;  */
 }
 
-/* div.side-gaze {
-  max-width: 100%;
-  position: relative;
-  background-image: url( ./assets/side-gaze.svg);
-  background-repeat: no-repeat; */
 
 #gaze article {
   position: relative;
@@ -414,12 +403,6 @@ div.divider {
    /* vertical-align: middle;  */
 }
 
-.tracing-line {
-  height: 1000px;
-  float: left;
-  position: abosulte;
-  top:0;
-}
 
 .analysis_spaceholder{
  height: 20rem;
@@ -528,10 +511,9 @@ margin-bottom: 0;
 }
 
 
-
 #analysis_spaceholder  {
-  height: 10rem;
-  margin-top: 10rem;
+  height: 5rem;
+  margin-top: 5rem;
   margin-left: 4rem;
   font-size: 2rem;
  text-align:middle;
@@ -545,7 +527,7 @@ margin-bottom: 0;
 
 #analysis {
   /* border: 5px solid orange; */
-
+ /* height: 30rem; */
 }
 
 

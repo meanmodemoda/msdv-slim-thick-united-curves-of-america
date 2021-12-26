@@ -30,7 +30,7 @@ async function draw2007() {
         .attr("cx", 150)
         .attr("cy", 50)
         .attr("r", 5)
-        .attr("fill", "Black")
+        .attr("fill", "#8aa10e")
 
     const buttJobsAnno = svg2007.append("rect")
         .attr("x", 0)
