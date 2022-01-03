@@ -253,7 +253,7 @@ background: linear-gradient(90deg, rgba(125,59,199,1) 0%, rgba(64,30,101,1) 0%, 
   height: 10rem;
   text-align: center;
    /*border: 1px solid black;*/
-  /*background-color: #fff;*/
+  background-color: #fff;
   /*opacity: 0.5;*/
 }
 
@@ -394,7 +394,7 @@ background: linear-gradient(90deg, rgba(125,59,199,1) 0%, rgba(64,30,101,1) 0%, 
 }
 
 .spaceholder {
-  height: 35rem;
+  height: 38rem;
   opacity: 0;
   /* margin-bottom: 200px; */
   border: 5px solid orange;
@@ -495,14 +495,14 @@ div.face {
 
 div.iris-left {
   position: relative;
-  top: 36rem;
+  top: 35rem;
   left: 24rem;
 
 }
 
 div.iris-right {
   position: relative;
-  top: 26rem;
+  top: 25rem;
   left: 70rem;
 }
 
