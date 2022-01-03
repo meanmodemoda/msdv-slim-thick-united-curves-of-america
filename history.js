@@ -179,7 +179,7 @@ async function draw() {
 
     const progressAxis = labelsGroup.append("g")
         .call(progressAxisGenerator)
-        .style("transform", `translateY(${dimensionsArea.boundedHeight / 2 + 100}px)`)
+        .style("transform", `translateY(${dimensionsArea.boundedHeight / 2 + 120}px)`)
 
 
     //---------------------------Draw Ordinal Scale Slider    
@@ -205,10 +205,30 @@ async function draw() {
         .classed("chartlabel", true)
         .text("(body measurement in inches, scale de-linearized)")
         .attr("x", 40)
-        .attr("y", 500)
+        .attr("y", 520)
         .attr("font-family", "Open Sans")
         .attr("font-size", 12)
 
+    const chartHeader = annoGroup.append("text")
+        .classed("chartheader", true)
+        .text("Main vs")
+        .attr("text-anchor", "left")
+        .attr("x", 60)
+        .attr("y", 20)
+
+    const chartHeaderCounter = annoGroup.append("text")
+        .classed("chartheader", true)
+        .text("Counter")
+        .attr("text-anchor", "left")
+        .attr("x", 180)
+        .attr("y", 20)
+        .attr("fill", "#7d3bc7")
+
+    const chartHeaderLine = annoGroup.append("rect")
+        .attr("x", 20)
+        .attr("y", 38)
+        .attr("width", 340)
+        .attr("height", 0.8)
 
     //*****************************8. Transition Generator
 
@@ -246,10 +266,10 @@ async function draw() {
             .join("text")
             .text(d => iconAccessor(d))
             .attr("x", 20)
-            .attr("y", 60)
+            .attr("y", 420)
             .style("fill", "black")
             .style("font-family", "Open Sans")
-            .style("font-size", 14)
+            .style("font-size", 12)
             .attr("font-weight", 700)
 
         const counterLabel = counterCultureLabel.selectAll("text")
@@ -258,10 +278,10 @@ async function draw() {
             .join("text")
             .text(d => d.icon === "Missy Elliott" ? `${d.icon}` : `"${d.icon}"`)
             .attr("x", 240)
-            .attr("y", 60)
+            .attr("y", 420)
             .style("fill", "#7d3bc7")
             .style("font-family", "Open Sans")
-            .style("font-size", 14)
+            .style("font-size", 12)
             .attr("font-weight", 700)
 
 
@@ -296,7 +316,7 @@ async function draw() {
             .join("rect")
             // .transition().duration(600)
             .attr("x", 20)
-            .attr("y", dimensionsArea.boundedHeight / 2 + 100)
+            .attr("y", dimensionsArea.boundedHeight / 2 + 120)
             .attr("width", progressScale(periodNum) - 20)
             .attr("height", 2)
             .attr("fill", "#000000")
@@ -306,7 +326,7 @@ async function draw() {
             .join("circle")
             // .transition().duration(600)
             .attr("cx", progressScale(periodNum))
-            .attr("cy", dimensionsArea.boundedHeight / 2 + 100)
+            .attr("cy", dimensionsArea.boundedHeight / 2 + 120)
             .attr("r", 4)
             .attr("fill", "#000000")
             .attr("stroke", "white")
@@ -332,6 +352,7 @@ async function draw() {
             .attr("text-anchor", "middle")
             .attr("alignment-baseline", "middle")
             .attr("font-weight", 600)
+            .style("font-size", 14)
 
         const leftAnno = leftChartGroup.selectAll("text")
             .data(annoFilter.filter(d => d.culture === "main"))
@@ -343,7 +364,7 @@ async function draw() {
             .attr("text-anchor", "middle")
             .attr("alignment-baseline", "middle")
             .attr("font-weight", 600)
-
+            .style("font-size", 14)
 
 
     }
