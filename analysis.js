@@ -370,7 +370,7 @@ async function drawAnalysis() {
 
     const foreignGaze = labelGroups.append("foreignObject")
         .attr("x", 100)
-        .attr("y", 60)
+        .attr("y", 65)
         .attr("width", 150)
         .attr("height", 400)
         .append("xhtml:div")

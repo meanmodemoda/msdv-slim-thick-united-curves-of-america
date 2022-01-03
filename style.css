@@ -6,7 +6,7 @@ src: url("./assets/MonumentExtended-Black.woff") format("woff");
   src: url("./assets/MonumentExtended-Bold.woff") format("woff");
   } 
 
-  @font-face { font-family: "MonumentExtended-Regular"; 
+@font-face { font-family: "MonumentExtended-Regular"; 
     src: url("./assets/MonumentExtended-Regular.woff") format("woff");
     } 
 @font-face { font-family: "RightGrotesk-WideMedium"; 
@@ -14,12 +14,12 @@ src: url("./assets/MonumentExtended-Black.woff") format("woff");
   /* font-stretch: 125% 180%; */
   } 
 
-  @font-face { font-family: "RightGrotesk-SpatialRegular"; 
+@font-face { font-family: "RightGrotesk-SpatialRegular"; 
     src: url("./assets/RightGrotesk-SpatialRegular.woff") format("woff");
     /* font-stretch: 125% 180%; */
     } 
 
-    @font-face { font-family: "RightGrotesk-SpatialBlack"; 
+@font-face { font-family: "RightGrotesk-SpatialBlack"; 
       src: url("./assets/RightGrotesk-SpatialBlack.woff") format("woff");
       /* font-stretch: 125% 180%; */
       } 
@@ -27,22 +27,72 @@ src: url("./assets/MonumentExtended-Black.woff") format("woff");
 html {
   font-size: 16px;
   font-family: "Open Sans",sans-serif;
-  max-width: 1900px;
+  max-width: 1920px;
+  min-width: 1366px;
   background: rgb(40,1,85);
   background: linear-gradient(90deg, rgba(40,1,85,0.4066001400560224) 0%, rgba(232,190,172,0.8239670868347339) 14%, rgba(232,190,172,1) 72%, rgba(232,190,172,1) 87%, rgba(232,190,172,0.4514180672268907) 100%);
   box-sizing: border-box;
-  margin: auto;
+  margin: 0 auto;
   width: 100%;
 }
 
-.sub-title h3 {
+*, *:before, *:after {
+  box-sizing: inherit;
+  }
+
+#title {
+  display: block;
+ min-height: 90rem;
+}
+
+.title {
+display: block;
+}
+
+#svg_title {
+  width: 100%;
+  height: auto;
+}
+
+#sub_title {
+  min-height: 8rem;
+} 
+
+#sub_title span {
+  display: block;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  font-size: 300%;
+  text-align: center;
+  line-height: 0.6rem;
+  font-family: "MonumentExtended-Black";
+}
+
+
+.introduction {
+  width: 40%;
+  margin: 0 auto;
+  margin-top: 4rem;
+}
+
+#intro_text {
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-align: left;
+}
+
+#tagline {
+  text-align: center;
+}
+
+#tagline h3 {
    font-family:"Open Sans",sans-serif;
    /* font-weight: 800; */
    background: -webkit-linear-gradient(left, #7d3bc7, #8aa10e);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     /*margin-top: 10vh;*/
-  /*stroke: 2;*/
+
     font-weight: 800;
     margin-top: 4rem;
     font-size: 1.3rem;
@@ -58,10 +108,6 @@ p.footnote {
   font-weight:600;
 }
 
-#filler_title {
-  display: block;
-  /* background-color: blue; */
-}
 
 #intro_bridge {
   display: block;
@@ -96,25 +142,15 @@ p.footnote {
   font-size: 1rem;
 }
 
-.sub-title span {
-display: block;
-margin-top: 4rem;
- font-size: 300%;
- line-height: 5px;
- font-family: "MonumentExtended-Black";
- /*border: 1px solid black;*/
-}
-
-#intro_text {
-  font-size: 1.1rem;
-  font-weight: 700;
-  text-align: left;
-}
-
 
 .filler {
   height: 20rem;
   text-align: center;
+}
+
+#scrolly-side {
+  display: block;
+  /* background-color: white; */
 }
 
 #scrolly-side .scrolly {
@@ -295,8 +331,11 @@ background: linear-gradient(90deg, rgba(125,59,199,1) 0%, rgba(64,30,101,1) 0%, 
 
 
  #scrolly-basic {
+  display: block;
   background-image: url( ./assets/gaze.svg);
   background-repeat: no-repeat;
+  /* background-position: center; */
+  /* background-size: 100% 100%; */
   /* background-color: black; */
   /* border: 5px solid yellow;  */
 }
@@ -346,11 +385,19 @@ background: linear-gradient(90deg, rgba(125,59,199,1) 0%, rgba(64,30,101,1) 0%, 
 
 }  
 
+#intro_gaze {
+  display: block;
+  height: 15rem;
+  width: 40%;
+  margin: 0 auto;
+
+}
+
 .spaceholder {
-  height: 20rem;
+  height: 35rem;
   opacity: 0;
   /* margin-bottom: 200px; */
-  /* border: 5px solid orange; */
+  border: 5px solid orange;
 }
 
 .summary {
@@ -448,13 +495,14 @@ div.face {
 
 div.iris-left {
   position: relative;
-  top: 17rem;
-  left: 26rem;
+  top: 36rem;
+  left: 24rem;
+
 }
 
 div.iris-right {
   position: relative;
-  top: 9rem;
+  top: 26rem;
   left: 70rem;
 }
 
