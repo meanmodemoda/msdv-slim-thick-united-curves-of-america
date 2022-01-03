@@ -465,7 +465,7 @@ div.divider {
 
 #social-font {
   font-family: "RightGrotesk-WideMedium";
-  font-size: 3.5rem;
+  font-size: 3rem;
   margin-top: 0rem; 
 }
 
@@ -495,14 +495,14 @@ div.face {
 
 div.iris-left {
   position: relative;
-  top: 35rem;
+  top: 34.5rem;
   left: 24rem;
 
 }
 
 div.iris-right {
   position: relative;
-  top: 25rem;
+  top: 24.8rem;
   left: 70rem;
 }
 
