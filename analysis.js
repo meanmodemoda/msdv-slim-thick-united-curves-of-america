@@ -199,7 +199,7 @@ async function drawAnalysis() {
     //const surgeryTypes = ["Breast augmentation", "Buttock surgeries", "Cheek implant", "Chin augmentation", "Facelift", "Lip augmentation", "Liposuction", "Nose reshaping", "Tummy tuck"]
     const lineColorScale = d3.scaleOrdinal()
         .domain(surgeryTypes)
-        .range(['#ac7ddf', '#8aa10e', '#FFFFFF', '#808080', '#808080', '#808080', '#808080', '#808080', '#808080'])
+        .range(['#6667ab', '#8aa10e', '#FFFFFF', '#808080', '#808080', '#808080', '#808080', '#808080', '#808080'])
 
     //const milType = ["Kim's Instagram", "Kylie's Instagram", "Kim's Networth","Kylie's Networth"]
 

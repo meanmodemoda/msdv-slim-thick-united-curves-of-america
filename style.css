@@ -596,12 +596,12 @@ a:link {
 
 /* visited link */
 a:visited {
-  color: green;
+  color: #8aa10e;
 }
 
 /* mouse over link */
 a:hover {
-  color: #E8BEAC;
+  color: white;
 }
 
 /* selected link */
