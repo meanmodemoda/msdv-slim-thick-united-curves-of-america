@@ -29,6 +29,7 @@ html {
   font-family: "Open Sans",sans-serif;
   max-width: 1920px;
   min-width: 1366px;
+  /* height: 5000px; */
   background: rgb(40,1,85);
   background: linear-gradient(90deg, rgba(40,1,85,0.4066001400560224) 0%, rgba(232,190,172,0.8239670868347339) 14%, rgba(232,190,172,1) 72%, rgba(232,190,172,1) 87%, rgba(232,190,172,0.4514180672268907) 100%);
   box-sizing: border-box;
@@ -253,7 +254,7 @@ background: linear-gradient(90deg, rgba(125,59,199,1) 0%, rgba(64,30,101,1) 0%, 
   height: 10rem;
   text-align: center;
    /*border: 1px solid black;*/
-  background-color: #fff;
+  /* background-color: #fff; */
   /*opacity: 0.5;*/
 }
 
@@ -586,4 +587,24 @@ p.bracket  {
 
 #nodata {
   top: 10rem;
+}
+
+/* unvisited link */
+a:link {
+  color: #E8BEAC;
+}
+
+/* visited link */
+a:visited {
+  color: green;
+}
+
+/* mouse over link */
+a:hover {
+  color: #E8BEAC;
+}
+
+/* selected link */
+a:active {
+  color: white;
 }
