@@ -285,7 +285,11 @@ background: linear-gradient(90deg, rgba(125,59,199,1) 0%, rgba(64,30,101,1) 0%, 
   background-color: white;
   /*border-radius: 8px;*/
   line-height: 1.2rem;
-  font-size: 0.7rem;
+  /* font-size: 0.6rem; */
+}
+
+.lyrics p {
+  font-size: 0.9rem;
 }
 
 .quotes h2 {
