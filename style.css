@@ -102,11 +102,8 @@ p {
   font-size: 1rem;
 
 }
-p.footnote {
-  margin-top: 0;
-  font-size: 0.8rem;
-  font-weight:600;
-}
+
+
 
 
 #intro_bridge {
@@ -358,6 +355,8 @@ background: linear-gradient(90deg, rgba(125,59,199,1) 0%, rgba(64,30,101,1) 0%, 
   background-image: url( ./assets/gaze.svg);
   background-repeat: no-repeat;
   /* background-position: center; */
+  background-size: cover;
+  margin-top: 2rem;
   /* background-size: 100% 100%; */
   /* background-color: black; */
   /* border: 5px solid yellow;  */
@@ -410,17 +409,17 @@ background: linear-gradient(90deg, rgba(125,59,199,1) 0%, rgba(64,30,101,1) 0%, 
 
 #intro_gaze {
   display: block;
-  height: 15rem;
+  height: 25rem;
   width: 40%;
   margin: 0 auto;
 
 }
 
 .spaceholder {
-  height: 38rem;
+  height: 18rem;
   opacity: 0;
   /* margin-bottom: 200px; */
-  border: 5px solid orange;
+  /* border: 5px solid orange; */
 }
 
 .summary {
@@ -518,15 +517,15 @@ div.face {
 
 div.iris-left {
   position: relative;
-  top: 34.5rem;
+  top: 16rem;
   left: 24rem;
 
 }
 
 div.iris-right {
   position: relative;
-  top: 24.8rem;
-  left: 70rem;
+  top: 7rem;
+  left: 69rem;
 }
 
 div.iris div {
@@ -631,12 +630,10 @@ a:active {
   color: white;
 }
 
-/* .stepbar {
-  height: 0.5px;
-  width: 80%;
-  margin: 0 auto;
-  background: rgb(125,59,199);
-  background: linear-gradient(90deg, rgba(125,59,199,1) 0%, rgba(138,161,14,1) 100%);
-} */
 
+p.footnote {
+  margin-top: 0;
+  font-size: 0.8rem;
+  font-weight:600;
+}
 
