@@ -228,7 +228,7 @@ async function draw() {
         .attr("x", 20)
         .attr("y", 38)
         .attr("width", 340)
-        .attr("height", 0.6)
+        .attr("height", 0.7)
 
     //*****************************8. Transition Generator
 
