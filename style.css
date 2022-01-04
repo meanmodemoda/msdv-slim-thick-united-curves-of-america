@@ -34,9 +34,9 @@ html {
   margin: 0 auto;
   width: 100%;
   background: rgb(102,103,171);
-  background: -moz-linear-gradient(90deg, rgba(102,103,171,0.6516981792717087) 0%, rgba(173,150,172,1) 19%, rgba(205,172,172,1) 38%, rgba(220,182,172,1) 50%, rgba(232,190,172,1) 100%);
-  background: -webkit-linear-gradient(90deg, rgba(102,103,171,0.6516981792717087) 0%, rgba(173,150,172,1) 19%, rgba(205,172,172,1) 38%, rgba(220,182,172,1) 50%, rgba(232,190,172,1) 100%);
-  background: linear-gradient(90deg, rgba(102,103,171,0.6516981792717087) 0%, rgba(173,150,172,1) 19%, rgba(205,172,172,1) 38%, rgba(220,182,172,1) 50%, rgba(232,190,172,1) 100%);
+  background: -moz-linear-gradient(90deg, rgba(102,103,171,0.6516981792717087) 0%, rgba(205,172,172,1) 33%, rgba(220,182,172,1) 45%, rgba(232,190,172,1) 59%);
+  background: -webkit-linear-gradient(90deg, rgba(102,103,171,0.6516981792717087) 0%, rgba(205,172,172,1) 33%, rgba(220,182,172,1) 45%, rgba(232,190,172,1) 59%);
+  background: linear-gradient(90deg, rgba(102,103,171,0.6516981792717087) 0%, rgba(205,172,172,1) 33%, rgba(220,182,172,1) 45%, rgba(232,190,172,1) 59%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#6667ab",endColorstr="#e8beac",GradientType=1);
   
 }
