@@ -158,8 +158,8 @@ p {
   max-width: 100rem;
   margin: 3rem auto;
   border-radius: 100px;
-background: rgb(232,190,172);
-background: radial-gradient(circle, rgba(232,190,172,0.8239670868347339) 14%, rgba(232,190,172,0.5102415966386555) 69%, rgba(232,190,172,0) 100%);
+/* background: rgb(232,190,172);
+background: radial-gradient(circle, rgba(232,190,172,0.8239670868347339) 14%, rgba(232,190,172,0.5102415966386555) 69%, rgba(232,190,172,0) 100%); */
   padding: 1rem;
 }
 
