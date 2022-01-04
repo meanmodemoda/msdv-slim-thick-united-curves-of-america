@@ -638,3 +638,7 @@ p.footnote {
 div.quotesanchor {
   z-index: 9999;
 }
+
+.description {
+  font-size: 0.9rem;
+}
