@@ -30,11 +30,14 @@ html {
   max-width: 1920px;
   min-width: 1366px;
   /* height: 5000px; */
-  background: rgb(40,1,85);
-  background: linear-gradient(90deg, rgba(40,1,85,0.4066001400560224) 0%, rgba(232,190,172,0.8239670868347339) 14%, rgba(232,190,172,1) 72%, rgba(232,190,172,1) 87%, rgba(232,190,172,0.4514180672268907) 100%);
   box-sizing: border-box;
   margin: 0 auto;
   width: 100%;
+  background: rgb(102,103,171);
+  background: -moz-linear-gradient(90deg, rgba(102,103,171,0.6516981792717087) 0%, rgba(173,150,172,1) 25%, rgba(232,190,172,1) 60%);
+  background: -webkit-linear-gradient(90deg, rgba(102,103,171,0.6516981792717087) 0%, rgba(173,150,172,1) 25%, rgba(232,190,172,1) 60%);
+  background: linear-gradient(90deg, rgba(102,103,171,0.6516981792717087) 0%, rgba(173,150,172,1) 25%, rgba(232,190,172,1) 60%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#6667ab",endColorstr="#e8beac",GradientType=1);
 }
 
 *, *:before, *:after {
@@ -162,7 +165,7 @@ background: radial-gradient(circle, rgba(232,190,172,0.8239670868347339) 14%, rg
 
 .step h2 {
   font-family: "MonumentExtended-Black";
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   /* background: rgb(125,59,199);
 background: linear-gradient(90deg, rgba(125,59,199,1) 0%, rgba(64,30,101,1) 0%, rgba(0,0,0,1) 100%, rgba(230,136,96,1) 100%);
   -webkit-background-clip: text;
@@ -246,7 +249,8 @@ background: linear-gradient(90deg, rgba(125,59,199,1) 0%, rgba(64,30,101,1) 0%, 
   height: 5rem;
 }
 
-#scrolly-side .scrolly figure.sticky .bar-outer {
+
+ #scrolly-side .scrolly figure.sticky .bar-outer {
   position: absolute;
   top: 13%;
   left: 50%;
@@ -254,24 +258,18 @@ background: linear-gradient(90deg, rgba(125,59,199,1) 0%, rgba(64,30,101,1) 0%, 
   width: 45%;
   height: 10rem;
   text-align: center;
+  transition: 600ms ease-in-out;
    /*border: 1px solid black;*/
   /* background-color: #fff; */
-  /*opacity: 0.5;*/
+  /* opacity: 0.5; */
 }
-
-/* #scrolly-side .scrolly figure.sticky .bar-inner { */
-  /*width: 30%;*/
-  /* height: 100%; */
-  /* transition: width 1s ease-in-out; */
-  /*background-color: white;*/
-  /*opacity: 0;*/
-/* } */
 
 .quotes {
   position: absolute;
   width: 100%;
   text-align: center;
   transition: 600ms;
+  background-color: #E8BEAC;
   /* transition-delay: 300ms; */
 }
 
@@ -291,7 +289,7 @@ background: linear-gradient(90deg, rgba(125,59,199,1) 0%, rgba(64,30,101,1) 0%, 
 
 .quotes h2 {
   font-family: "MonumentExtended-Black";
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   /* background: rgb(125,59,199); */
 /* background: linear-gradient(90deg, rgba(125,59,199,1) 0%, rgba(64,30,101,1) 0%, rgba(0,0,0,1) 100%, rgba(230,136,96,1) 100%); */
   /* -webkit-background-clip: text;
@@ -635,5 +633,9 @@ p.footnote {
   margin-top: 0;
   font-size: 0.8rem;
   font-weight:600;
+}
+
+div.quotesanchor {
+  z-index: 9999;
 }
 
