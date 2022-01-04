@@ -65,7 +65,7 @@ display: block;
 #sub_title span {
   display: block;
   margin-top: 3rem;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   font-size: 300%;
   text-align: center;
   line-height: 0.6rem;
@@ -97,8 +97,8 @@ display: block;
     -webkit-text-fill-color: transparent;
     /*margin-top: 10vh;*/
     font-weight: 800;
-    margin-top: 2.5rem;
-    font-size: 1.5rem;
+    margin-top: 2rem;
+    font-size: 1.8rem;
 }
 
 p {
