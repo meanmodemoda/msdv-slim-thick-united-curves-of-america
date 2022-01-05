@@ -34,6 +34,51 @@
   <link rel="stylesheet" type="text/css" href="./style.css" />
   <!--<link rel="stylesheet" href="./d3.slider.css" />  -->
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <!-- Screen Alert -->
+  <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function (event) {
+      const dismissText = document.getElementById("popup")
+      const removeDisclaimer
+
+      removeDisclaimer = function () {
+        const disclaimer = document.getElementById('popup')
+        disclaimer.remove()
+
+        dismissText.removeEventListener("click", removeDisclaimer, false)
+      }
+
+      dismissText.addEventListener("click", removeDisclaimer, false)
+    });  
+  </script>
+  <style>
+    #popup {
+      display: none;
+    }
+
+    @media only screen and (max-device-width:480px) {
+      #popup {
+        z-index: 10000;
+        display: block;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        background: rgba(0, 0, 0, 0.85);
+      }
+
+      #disclaimer-wrapper {
+        width: 95vw;
+        margin: 20px auto;
+        color: #fff;
+      }
+
+      #dismiss-disclaimer {
+        text-decoration: underline;
+        cursor: pointer;
+        color: #777;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -44,51 +89,51 @@
       <span class="fit-t">T</span><span class="fit-s">hi</span><span class="fit-c">ck</span>
       <div id="popup">
         <div id="disclaimer-wrapper">This content is designed for a more volputuous screen. View on a desktop or
+          <span id="dismiss-disclaimer">disregard this message.</span>
         </div>
-        <div id="dismiss-disclaimer">disregard this message.</div>
-      </div>
-    </div>
-
-    <div id="sub_title" class="title">
-      <span>The United Curves</span>
-      <span>of America</span>
-    </div>
-
-    <div id="tagline" class="title">
-      <h3>How A Stubborn Counterculture Finally “Took Over” The Narrative</h3>
-      <br>
-
-      <p class="description">Zhao Yang | Dec 2021</p>
-      <p class="description">made with a thick heart and a toned attitude<br>not optimized for mobile</p>
-    </div>
-
-    <div id="intro_bridge" class="introduction title">
-      <div class="intro">
-        <p id="intro_text">
-          This is a data story of my curious probe into the American obsession with the Slim Thick body. I set
-          out
-          to
-          trace the history of the idealization of the female body in America and the origin of
-          the Slim Thick body — a voluptuous body form originally celebrated in the
-          counterculture, particularly among women of color. It was eventually transformed and
-          popularized by the Kardashians
-          and their replicas, amplified by
-          social media, and often achieved through a type of plastic surgery called Brazilian Butt Lift (BBL).
-        </p>
       </div>
 
-      <div>
-        <p class="lead intro">
-          <br>I traversed back seven decades of visuals and vocals and teased out mentions of female body
-          measurements
-          celebrated in the mainstream media and alternatively and put them side by side for comparison. Let's take a
-          look
-          at how the counterculture dodged decades of pendulum swings and mutated into the ideal body type of our time.
-          <br>
-        </p>
+      <div id="sub_title" class="title">
+        <span>The United Curves</span>
+        <span>of America</span>
       </div>
 
-    </div>
+      <div id="tagline" class="title">
+        <h3>How A Stubborn Counterculture Finally “Took Over” The Narrative</h3>
+        <br>
+
+        <p class="description">Zhao Yang | Dec 2021</p>
+        <p class="description">made with a thick heart and a toned attitude<br>not optimized for mobile</p>
+      </div>
+
+      <div id="intro_bridge" class="introduction title">
+        <div class="intro">
+          <p id="intro_text">
+            This is a data story of my curious probe into the American obsession with the Slim Thick body. I set
+            out
+            to
+            trace the history of the idealization of the female body in America and the origin of
+            the Slim Thick body — a voluptuous body form originally celebrated in the
+            counterculture, particularly among women of color. It was eventually transformed and
+            popularized by the Kardashians
+            and their replicas, amplified by
+            social media, and often achieved through a type of plastic surgery called Brazilian Butt Lift (BBL).
+          </p>
+        </div>
+
+        <div>
+          <p class="lead intro">
+            <br>I traversed back seven decades of visuals and vocals and teased out mentions of female body
+            measurements
+            celebrated in the mainstream media and alternatively and put them side by side for comparison. Let's take a
+            look
+            at how the counterculture dodged decades of pendulum swings and mutated into the ideal body type of our
+            time.
+            <br>
+          </p>
+        </div>
+
+      </div>
 
   </section>
 
