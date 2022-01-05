@@ -37,7 +37,7 @@
   <!-- Screen Alert -->
   <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", function (event) {
-      const dismissText = document.getElementById("popup")
+      const dismissText = document.getElementById("dismiss-disclaimer")
       const removeDisclaimer
 
       removeDisclaimer = function () {
@@ -89,8 +89,10 @@
       <span class="fit-t">T</span><span class="fit-s">hi</span><span class="fit-c">ck</span>
     </div>
     <div id="popup">
-      <div id="disclaimer-wrapper">This content is designed for a more volputuous screen. View on a desktop or
-        <span id="dismiss-disclaimer">disregard this message.</span>
+      <div id="disclaimer-wrapper">
+        <p>This content is designed for a more volputuous screen. View on a desktop or</p>
+        <p id="dismiss-disclaimer">disregard
+          this message.</p>
       </div>
     </div>
 
