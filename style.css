@@ -200,7 +200,7 @@ html {
 }
 
 #intro_text {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 700;
   text-align: left;
 }
@@ -261,6 +261,7 @@ p {
   margin-bottom: 10%;
   height: 5rem;
   text-align: left;
+  font-size: 1rem;
 }
 
 
@@ -763,7 +764,7 @@ a:active {
 
 p.footnote {
   margin-top: 0;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight:600;
 }
 
@@ -784,7 +785,7 @@ div.quotesanchor {
 }
 
 #outro p {
-  font-size: 0.7rem;
+  font-size: 0.8rem;
 }
 
 .citation a {
