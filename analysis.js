@@ -1,6 +1,46 @@
 /*global d3 */
 
+//***************************Add Title Animation */
+// get the element to animate
+const element = document.getElementById('analysis_spaceholder');
+let elementHeight = element.clientHeight;
+
+// listen for scroll event and call animate function
+document.addEventListener('scroll', animate);
+
+// check if element is in view
+function inView() {
+    // get window height
+    const windowHeight = window.innerHeight;
+    // get number of pixels that the document is scrolled
+    let scrollY = window.scrollY || window.pageYOffset;
+
+    // get current scroll position (distance from the top of the page to the bottom of the current viewport)
+    let scrollPosition = scrollY + windowHeight;
+    // get element position (distance from the top of the page to the bottom of the element)
+    let elementPosition = element.getBoundingClientRect().top + scrollY + elementHeight;
+
+    // is scroll position greater than element position? (is element in view?)
+    if (scrollPosition > elementPosition) {
+        return true;
+    }
+
+    return false;
+}
+
+// animate element when it is in view
+function animate() {
+    // is element in view?
+    if (inView()) {
+        // element is in view, add class to element
+        element.classList.add('animate');
+    }
+}
+
 async function drawAnalysis() {
+
+
+
     //*************************1. Draw Dimensions 
 
     //------------------------ Area Chart Dimensions     
@@ -650,6 +690,7 @@ async function drawAnalysis() {
 
 
     const citation = conclusionGroup.append("foreignObject")
+        .classed("citation", true)
         .attr("x", 250)
         .attr("y", 600)
         .attr("width", 350)
@@ -658,7 +699,7 @@ async function drawAnalysis() {
         .style("font", "0.3rem 'Open Sans'")
         .style("color", "#E8BEAC")
         .style("line-height", "10px")
-        .html("<h1 style='font-weight: 800; font-size: 12px'>References & Data</h1><div class='citation' style='font-size: 7px; color: white; '><ul style='margin:0;padding:0;text-decoration: none;'><li>Mbowe, Khadija. <a href='https://www.youtube.com/watch?v=H69-QpX-wG0' target='_blank'>\“The reign of the Slim-Thick Influencer.\”</a> Aug 22, 2021. </li><li>Beauvoir, Simone. <i>The Second Sex</i>. New York: Vintage Books, 1989.</li><li>Richardson, Kiesha. <a href='https://genelmag.com/article/stop-trying-to-redefine-thicc' target='_blank'>\“Stop Trying to Redefine ‘Thicc girls’ to Mean Skinny With a Booty.\”</a> GNL Magazine. Sep 29, 2021. </li><li>Tolentino, Jia. <a href='https://www.newyorker.com/culture/decade-in-review/the-age-of-instagram-face' target='_blank'>\“The Age of Instagram Face.” </a>The New Yorker. Dec 12, 2019. </li><li>Greatiest.com. <a href='https://greatist.com/grow/100-years-womens-body-image#1' target='_blank'>\“See How Much the ‘Perfect’ Female Body Has Changed in 100 Years (It's Crazy!).\” </a></li> <li>Sicardi, Arabelle.<a href='https://www.allure.com/story/the-kardashian-effect' target='_blank'> \“The Kardashian Effect.\”</a>Allure. Feb 16, 2021.</li><li>Roundtree, Cheyenne.<a href ='https://www.thedailybeast.com/how-the-kardashians-changed-the-face-of-plastic-surgery' target='_blank'>\“How the Kardashians Changed the Face of Plastic Surgery.\”</a> The Daily Beast. June 12, 2021.</li><li>Kim, Eunice. <a href='https://ucsdguardian.org/2021/03/07/the-marketing-of-black-womens-body-in-hip-hop' target='_blank'>\“The Marketing of Black Women’s Body in Hip-Hop.\” </a>UCSD Guardian. Mar 7, 2021.</li><li>US Plastic Surgery Statistics. <a href='https://www.plasticsurgery.org/news/plastic-surgery-statistics' target='_blank'>American Society of Plastic Surgeons.</a></li><li>Data on Instagram and Kardashians: various sources including Bloomberg, eMarketer, Statista and <a href='https://www.celebritynetworth.com' target='_blank'>Celebrity Net Worth.</a></li></ul ></div >");
+        .html("<h1 style='font-weight: 800; font-size: 12px'>References & Data</h1><div class='citation' style='font-size: 7px; color: white; '><ul style='margin:0;padding:0;'><li>Mbowe, Khadija. <a href='https://www.youtube.com/watch?v=H69-QpX-wG0' target='_blank'>\“The reign of the Slim-Thick Influencer.\”</a> Aug 22, 2021. </li><li>Beauvoir, Simone. <i>The Second Sex</i>. New York: Vintage Books, 1989.</li><li>Richardson, Kiesha. <a href='https://genelmag.com/article/stop-trying-to-redefine-thicc' target='_blank'>\“Stop Trying to Redefine ‘Thicc girls’ to Mean Skinny With a Booty.\”</a> GNL Magazine. Sep 29, 2021. </li><li>Tolentino, Jia. <a href='https://www.newyorker.com/culture/decade-in-review/the-age-of-instagram-face' target='_blank'>\“The Age of Instagram Face.” </a>The New Yorker. Dec 12, 2019. </li><li>Greatiest.com. <a href='https://greatist.com/grow/100-years-womens-body-image#1' target='_blank'>\“See How Much the ‘Perfect’ Female Body Has Changed in 100 Years (It's Crazy!).\” </a></li> <li>Sicardi, Arabelle.<a href='https://www.allure.com/story/the-kardashian-effect' target='_blank'> \“The Kardashian Effect.\”</a>Allure. Feb 16, 2021.</li><li>Roundtree, Cheyenne.<a href ='https://www.thedailybeast.com/how-the-kardashians-changed-the-face-of-plastic-surgery' target='_blank'>\“How the Kardashians Changed the Face of Plastic Surgery.\”</a> The Daily Beast. June 12, 2021.</li><li>Kim, Eunice. <a href='https://ucsdguardian.org/2021/03/07/the-marketing-of-black-womens-body-in-hip-hop' target='_blank'>\“The Marketing of Black Women’s Body in Hip-Hop.\” </a>UCSD Guardian. Mar 7, 2021.</li><li>US Plastic Surgery Statistics. <a href='https://www.plasticsurgery.org/news/plastic-surgery-statistics' target='_blank'>American Society of Plastic Surgeons.</a></li><li>Data on Instagram and Kardashians: various sources including Bloomberg, eMarketer, Statista and <a href='https://www.celebritynetworth.com' target='_blank'>Celebrity Net Worth.</a></li></ul ></div >");
 
 
 
