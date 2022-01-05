@@ -46,6 +46,19 @@
     }
 }
 
+@keyframes animate-type-subtitle {
+  0% {
+    transform: translateY(-0.5rem) scale(1,0.5);
+    transform-origin: 0 0;
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0.5rem) scale(1,1);
+    transform-origin: 0 0;
+    opacity: 1;
+  }
+}
+
 html {
   font-size: 16px;
   font-family: "Open Sans",sans-serif;
@@ -93,7 +106,7 @@ html {
 }
 
 .fit-c {
-  animation: animate-type-c 3s cubic-bezier(0.65,0,0.35,1);
+  animation: animate-type-c 3s cubic-bezier(0.55,0,0.45,1);
   animation-fill-mode: both;
 }
 
@@ -109,6 +122,8 @@ html {
   text-align: center;
   line-height: 0.6rem;
   font-family: "MonumentExtended-Black";
+  animation: animate-type-subtitle 3.5s cubic-bezier(0.75,0,0.25,1);
+  animation-fill-mode: both;
 }
 
 
