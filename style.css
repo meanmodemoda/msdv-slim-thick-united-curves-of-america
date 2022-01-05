@@ -771,3 +771,11 @@ div.quotesanchor {
 .sliderref :hover {
  font-size: 1rem;
 }
+
+div#popup {
+  display: none;
+}
+
+@media only screen and (max-device-width:480px) {
+  div#popup { display: block; }
+}
