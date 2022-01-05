@@ -142,6 +142,10 @@ html {
  /* background-color: red; */
 }
 
+#iconimg {
+  display: none;
+}
+
 #title span {
   font-family: "FitVariable-VF";
   font-size: 25rem;
