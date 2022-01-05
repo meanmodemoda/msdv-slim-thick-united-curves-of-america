@@ -2,6 +2,11 @@
   src: url("./assets/FitVariable-VF.woff") format("woff");
   } 
 
+  @font-face { font-family: "MonumentExtended-Black";
+    src: url("./assets/MonumentExtended-Black.woff") format("woff");
+    } 
+  
+
 @font-face { font-family: "MonumentExtended-Bold"; 
   src: url("./assets/MonumentExtended-Bold.woff") format("woff");
   } 
@@ -139,6 +144,7 @@ html {
 
 .fit-t {
  animation: animate-type-t 3s cubic-bezier(0.65,0,0.35,1);
+ animation-delay: 0.2s;
  animation-fill-mode: both;
 }
 
@@ -146,11 +152,13 @@ html {
   font-variation-settings: "wdth" 110; 
   letter-spacing: 0.3rem;
   animation: animate-type-s 3s cubic-bezier(0.55,0,0.45,1);
+  animation-delay: 0.2s;
   animation-fill-mode: both;
 }
 
 .fit-c {
   animation: animate-type-c 3s cubic-bezier(0.55,0,0.45,1);
+  animation-delay: 0.2s;
   animation-fill-mode: both;
 }
 
@@ -166,6 +174,7 @@ html {
   text-align: center;
   line-height: 0.6rem;
   font-family: "MonumentExtended-Black";
+  animation-delay: 0.2s;
   animation: animate-type-subtitle 3.5s cubic-bezier(0.75,0,0.25,1);
   animation-fill-mode: both;
 }
