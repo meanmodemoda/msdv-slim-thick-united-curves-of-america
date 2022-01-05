@@ -1,6 +1,6 @@
-@font-face { font-family: "MonumentExtended-Black"; 
-src: url("./assets/MonumentExtended-Black.woff") format("woff");
-} 
+@font-face { font-family: "FitVariable-VF"; 
+  src: url("./assets/FitVariable-VF.woff") format("woff");
+  } 
 
 @font-face { font-family: "MonumentExtended-Bold"; 
   src: url("./assets/MonumentExtended-Bold.woff") format("woff");
@@ -24,6 +24,28 @@ src: url("./assets/MonumentExtended-Black.woff") format("woff");
       /* font-stretch: 125% 180%; */
       } 
 
+@keyframes animate-type-t {
+        0% {
+          font-variation-settings: "wdth" 110; 
+          letter-spacing: 0.3rem;
+        }
+        100% {
+          font-variation-settings: "wdth" 600; 
+          letter-spacing: 0.5rem;
+        }
+  }
+
+  @keyframes animate-type-c {
+    0% {
+      font-variation-settings: "wdth" 110; 
+      letter-spacing: 0.3rem;
+    }
+    100% {
+      font-variation-settings: "wdth" 320; 
+      letter-spacing: 0.3rem;
+    }
+}
+
 html {
   font-size: 16px;
   font-family: "Open Sans",sans-serif;
@@ -45,18 +67,34 @@ html {
   box-sizing: inherit;
   }
 
+
+
 #title {
   display: block;
- min-height: 90rem;
-}
-
-.title {
-display: block;
-}
-
-#svg_title {
   width: 100%;
-  height: auto;
+ min-height: 35rem;
+}
+
+#title span {
+  font-family: "FitVariable-VF";
+  font-size: 25rem;
+  line-height: 20rem;
+  
+}
+
+.fit-t {
+ animation: animate-type-t 3s cubic-bezier(0.65,0,0.35,1);
+ animation-fill-mode: both;
+}
+
+.fit-s {
+  font-variation-settings: "wdth" 110; 
+  letter-spacing: 0.3rem;
+}
+
+.fit-c {
+  animation: animate-type-c 3s cubic-bezier(0.65,0,0.35,1);
+  animation-fill-mode: both;
 }
 
 #sub_title {
@@ -646,4 +684,20 @@ div.quotesanchor {
 
 .description {
   font-size: 0.9rem;
+}
+
+#outro {
+  background-color: black;
+  color: #808080;
+  margin-top: -2rem;
+  height: 3rem;
+  text-align: center;
+}
+
+#outro p {
+  font-size: 0.7rem;
+}
+
+.citation a {
+  text-decoration: none;
 }
