@@ -57,13 +57,13 @@
 
   @keyframes animate-type-c {
     0% {
-      font-variation-settings: "wdth" 110; 
+      font-variation-settings: "wdth" 100; 
       letter-spacing: 0.3rem;
       filter: blur(1px);
       -webkit-filter: blur(2px);
     }
     100% {
-      font-variation-settings: "wdth" 320; 
+      font-variation-settings: "wdth" 312; 
       letter-spacing: 0.3rem;    
     }
 }
@@ -149,7 +149,7 @@ html {
 }
 
 .fit-s {
-  font-variation-settings: "wdth" 110; 
+  font-variation-settings: "wdth" 100; 
   letter-spacing: 0.3rem;
   animation: animate-type-s 3s cubic-bezier(0.55,0,0.45,1);
   animation-delay: 0.2s;
