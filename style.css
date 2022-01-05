@@ -256,10 +256,11 @@ p {
   margin-right: 30%;
 }
 
-.lead {
+#lead_intro {
   margin-top: 5%;
-  height: 2rem;
-  font-size: 1rem;
+  margin-bottom: 10%;
+  height: 5rem;
+  text-align: left;
 }
 
 
