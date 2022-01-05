@@ -1,5 +1,6 @@
 @font-face { font-family: "FitVariable-VF"; 
   src: url("./assets/FitVariable-VF.woff") format("woff");
+  /* font-stretch: 25% 151%; */
   } 
 
   @font-face { font-family: "MonumentExtended-Black";
@@ -31,7 +32,7 @@
 
 @keyframes animate-type-t {
         0% {
-          font-variation-settings: "wdth" 100; 
+          font-variation-settings: "wdth" 115; 
           letter-spacing: 0.3rem;
           filter: blur(3px);
           -webkit-filter: blur(3px);
@@ -59,14 +60,14 @@
 
   @keyframes animate-type-c {
     0% {
-      font-variation-settings: "wdth" 100; 
+      font-variation-settings: "wdth" 110; 
       letter-spacing: 0.3rem;
       filter: blur(1px);
       -webkit-filter: blur(2px);
 
     }
     100% {
-      font-variation-settings: "wdth" 312; 
+      font-variation-settings: "wdth" 315; 
       letter-spacing: 0.3rem; 
     }
 }
@@ -113,7 +114,7 @@ html {
   font-size: 16px;
   font-family: "Open Sans",sans-serif;
   max-width: 1920px;
-  min-width: 1024px;
+  min-width: 1366px;
   /* height: 5000px; */
   box-sizing: border-box;
   margin: 0 auto;
@@ -135,7 +136,10 @@ html {
 #title {
   display: block;
   width: 100%;
+  margin: 0 0 0 0;
  min-height: 35rem;
+ text-align: center;
+ /* background-color: red; */
 }
 
 #title span {
@@ -143,7 +147,8 @@ html {
   font-size: 25rem;
   /* font-stretch: 150%; */
   line-height: 20rem;
-  
+ 
+  /* object-fit: cover; */
 }
 
 .fit-t {
@@ -163,10 +168,12 @@ html {
 }
 
 .fit-c {
-  animation: animate-type-c 3s cubic-bezier(0.55,0,0.45,1);
-  animation-delay: 0.1s;
+  animation: animate-type-c 3s cubic-bezier(0.65,0,0.35,1);
+  /* animation-delay: 0.1s; */
   animation-fill-mode: both;
 }
+
+
 
 #sub_title {
   min-height: 8rem;
