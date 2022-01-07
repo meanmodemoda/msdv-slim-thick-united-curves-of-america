@@ -469,31 +469,34 @@ async function drawAnalysis() {
         .attr("rx", 2)
 
     const milHeader = tooltipGroup.append('text')
+        .classed('firefox', true)
         .text("Influencers")
         .attr("x", 560)
         .attr("y", 85)
         .style("fill", "black")
         .style("font-family", "Open Sans")
-        .style("font-size", 7)
+        .style("font-size", "7px")
         .style("font-weight", 800)
 
 
     const igHeader = tooltipGroup.append('text')
+        .classed('firefox', true)
         .text("Followers")
         .attr("x", 630)
         .attr("y", 85)
         .style("fill", "black")
         .style("font-family", "Open Sans")
-        .style("font-size", 7)
+        .style("font-size", "7px")
         .style("font-weight", 800)
 
     const nwHeader = tooltipGroup.append('text')
+        .classed('firefox', true)
         .text("Net Worth")
         .attr("x", 680)
         .attr("y", 85)
         .style("fill", "black")
         .style("font-family", "Open Sans")
-        .style("font-size", 7)
+        .style("font-size", "7px")
         .style("font-weight", 800)
 
     const milDivider = tooltipGroup.append('rect')
@@ -504,6 +507,7 @@ async function drawAnalysis() {
         .style("fill", "black")
 
     const tooltipMilHeader = tooltipGroup.append('g')
+        .classed('firefox', true)
         .selectAll("text")
         .data(partyType)
         .join("text")
@@ -512,7 +516,7 @@ async function drawAnalysis() {
         .text(d => d)
         .style("fill", d => bilColorScale(d))
         .style("font-family", "Open Sans")
-        .style("font-size", 7)
+        .style("font-size", "7px")
         .style("font-weight", 700)
         .raise()
 
@@ -522,7 +526,7 @@ async function drawAnalysis() {
         .attr("y", 165)
         .style("fill", "black")
         .style("font-family", "Open Sans")
-        .style("font-size", 7)
+        .style("font-size", "7px")
         .style("font-weight", 800)
 
 
@@ -532,7 +536,7 @@ async function drawAnalysis() {
         .attr("y", 165)
         .style("fill", "black")
         .style("font-family", "Open Sans")
-        .style("font-size", 7)
+        .style("font-size", "7px")
         .style("font-weight", 800)
 
     const sryCount = tooltipGroup.append('text')
@@ -541,7 +545,7 @@ async function drawAnalysis() {
         .attr("y", 165)
         .style("fill", "black")
         .style("font-family", "Open Sans")
-        .style("font-size", 7)
+        .style("font-size", "7px")
         .style("font-weight", 800)
 
     const sryDivider = tooltipGroup.append('rect')
@@ -561,7 +565,7 @@ async function drawAnalysis() {
         .text(d => d)
         .style("fill", d => lineColorScale(d))
         .style("font-family", "Open Sans")
-        .style("font-size", 7)
+        .style("font-size", "7px")
         .style("font-weight", 700)
 
 
@@ -574,7 +578,7 @@ async function drawAnalysis() {
         .text(d => d)
         .style("fill", d => bilColorScale(d))
         .style("font-family", "Open Sans")
-        .style("font-size", 7)
+        .style("font-size", "7px")
         .style("font-weight", 700)
         .raise()
 
@@ -584,7 +588,7 @@ async function drawAnalysis() {
         .attr("y", 285)
         .style("fill", "black")
         .style("font-family", "Open Sans")
-        .style("font-size", 7)
+        .style("font-size", "7px")
         .style("font-weight", 700)
 
     const bilHeader = tooltipGroup.append('text')
@@ -593,7 +597,7 @@ async function drawAnalysis() {
         .attr("y", 285)
         .style("fill", "black")
         .style("font-family", "Open Sans")
-        .style("font-size", 7)
+        .style("font-size", "7px")
         .style("font-weight", 700)
 
     const bilDivider = tooltipGroup.append('rect')
@@ -621,7 +625,7 @@ async function drawAnalysis() {
         .attr("y", 70)
         .style("fill", "#A9A9A9")
         .style("font-family", "Open Sans")
-        .style("font-size", 6)
+        .style("font-size", "6px")
         .style("font-weight", 500)
         .style("alignment-baseline", "middle")
 
@@ -639,7 +643,7 @@ async function drawAnalysis() {
         .attr("y", 80)
         .style("fill", "#A9A9A9")
         .style("font-family", "Open Sans")
-        .style("font-size", 6)
+        .style("font-size", "6px")
         .style("font-weight", 500)
         .style("alignment-baseline", "middle")
 
@@ -660,7 +664,7 @@ async function drawAnalysis() {
         .attr("y", 380)
         .style("fill", "#E8BEAC")
         .style("font-family", "Open Sans")
-        .style("font-size", 7)
+        .style("font-size", "7px")
         .style("font-weight", 500)
         .style("alignment-baseline", "middle")
 
@@ -734,7 +738,7 @@ async function drawAnalysis() {
             .text(noteAccessor)
             .style("fill", "#E8BEAC")
             .style("font-family", "Open Sans")
-            .style("font-size", 10)
+            .style("font-size", "10px")
 
         const dotMilChart = dotMilGroup.selectAll("circle")
             .data(millions.filter(d => d.periodnum === periodNum))
@@ -775,7 +779,7 @@ async function drawAnalysis() {
             .text(d => `${d.value} mil`)
             .style("fill", "black")
             .style("font-family", "Open Sans")
-            .style("font-size", 7)
+            .style("font-size", "7px")
             .style("font-weight", 500)
             .style("text-anchor", "left")
 
@@ -787,7 +791,7 @@ async function drawAnalysis() {
             .text(d => `$${d.value} mil dollars`)
             .style("fill", "black")
             .style("font-family", "Open Sans")
-            .style("font-size", 7)
+            .style("font-size", "7px")
             .style("font-weight", 500)
             .style("text-anchor", "left")
 
@@ -799,7 +803,7 @@ async function drawAnalysis() {
             .text(d => numFormatter(countAccessor(d)))
             .style("fill", "black")
             .style("font-family", "Open Sans")
-            .style("font-size", 7)
+            .style("font-size", "7px")
             .style("font-weight", 500)
             .style("text-anchor", "left")
 
@@ -812,7 +816,7 @@ async function drawAnalysis() {
             .text(d => pctFormatter(rateAccessor(d)))
             .style("fill", "black")
             .style("font-family", "Open Sans")
-            .style("font-size", 7)
+            .style("font-size", "7px")
             .style("font-weight", 500)
             .style("text-anchor", "left")
 
@@ -825,7 +829,7 @@ async function drawAnalysis() {
             .text(d => `$${d.value} bil dollars`)
             .style("fill", "black")
             .style("font-family", "Open Sans")
-            .style("font-size", 7)
+            .style("font-size", "7px")
             .style("font-weight", 500)
             .style("text-anchor", "left")
 

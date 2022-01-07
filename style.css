@@ -87,12 +87,12 @@
 
 @keyframes animate-meta-medi{
   0% {
-       transform: translate(30%, 35%);
+       transform: translate(0, 35%);
     opacity: 0.75;
   }
   100% {
 
-    transform: translate(30%, 30%);
+    transform: translate(0, 30%);
     opacity: 1;
   }
 }
@@ -678,6 +678,7 @@ div.iris div {
 
 .spaceholder1 {
   height: 15rem;
+  /* background-color: red; */
   display: flex;
   justify-content: center;
   /* opacity: 0; */
@@ -815,33 +816,34 @@ div.quotesanchor {
 
 
 .dot {
-
   /* width:100px; */
   offset-path: path("M43,21.94S34.59,37.45,28.62,43.27C21.91,49.8,13,52.55,6.43,46.73-2.84,38.51,5,8.64,22.55,3c18.73-6,33.7,45.26,53.7,46.51S84.75-1.42,60.8,3.32c-4.31.86-12,9.43-14.94,15.1");
  /* offset-rotate: auto 45deg; */
-
  position: relative;
- top: 5.5rem;
- left: 6.6rem;
+ top: 35%;
+ left: 45.5%; 
+ align-items: center;
  width: 16px;
  height: 16px;
  background-color: beige;
  border-radius: 8px;
- /* transform: translate(50%, 50%); */
      filter: blur(3px);
           -webkit-filter: blur(3px);
-animation: fly 9s infinite cubic-bezier(.22, 0, .76, 1) both;
+animation: fly 7s infinite alternate cubic-bezier(.22, 0, .76, 1) both;
 z-index: 9998;
 
 }
 
 .dot-path {
+width: 10%;
+margin: 0 auto;
   /* border: 5px solid orange; */
-  justify-content: center;
-   /* transform: translate(50%, 50%); */
    animation: animate-meta-medi 1s infinite alternate;
    animation-fill-mode: both;
    
 }
 
 
+.dot-path g {
+  justify-content: center;
+}
