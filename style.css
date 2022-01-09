@@ -34,8 +34,8 @@
         0% {
           font-variation-settings: "wdth" 115; 
           letter-spacing: 0.3rem;
-          filter: blur(3px);
-          -webkit-filter: blur(3px);
+          /* filter: blur(3px); */
+          /* -webkit-filter: blur(3px); */
         }
         100% {
           font-variation-settings: "wdth" 600;  
@@ -47,13 +47,13 @@
 
   @keyframes animate-type-s {
     0% {
-      filter: blur(1px);
-      -webkit-filter: blur(2px);
+      /* filter: blur(1px); */
+      /* -webkit-filter: blur(2px); */
 
     }
     100% {
-      filter: blur(0px);
-      -webkit-filter: blur(0px);
+      /* filter: blur(0px); */
+      /* -webkit-filter: blur(0px); */
 
     }
 }
@@ -62,8 +62,8 @@
     0% {
       font-variation-settings: "wdth" 110; 
       letter-spacing: 0.3rem;
-      filter: blur(1px);
-      -webkit-filter: blur(2px);
+      /* filter: blur(1px); */
+      /* -webkit-filter: blur(2px); */
 
     }
     100% {
@@ -800,6 +800,7 @@ div.quotesanchor {
 }
 
 #outro p {
+  margin-top: 2rem;
   font-size: 0.8rem;
 }
 
