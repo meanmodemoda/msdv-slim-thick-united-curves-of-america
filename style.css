@@ -792,17 +792,36 @@ div.quotesanchor {
 }
 
 #outro {
-  background-color: black;
-  color: #808080;
+
+  /* color: #808080; */
+  color: white;
   margin-top: -2rem;
-  height: 3rem;
+  height: 10rem;
   text-align: center;
+  vertical-align: bottom;
+  background-color: black;
 }
 
-#outro p {
-  margin-top: 2rem;
-  font-size: 0.8rem;
+p#outro-assignment  {
+  height: 3rem;
+  font-size: 0.9rem;
+  background-color: black;
+  margin: 2rem 0;
+  vertical-align: center; 
 }
+
+
+#linkedin {
+  margin: auto;
+  vertical-align: middle; 
+  display: inline-block;
+  transform: translate(10%,-15%);
+ } 
+ 
+ 
+ #linkedin:hover {
+ transform: translate(25%,-25%);
+  } 
 
 .citation a {
   text-decoration: none;
@@ -811,10 +830,6 @@ div.quotesanchor {
 .sliderref :hover {
  font-size: 1rem;
 }
-
-
-
-
 
 .dot {
   /* width:100px; */
@@ -848,3 +863,7 @@ margin: 0 auto;
 .dot-path g {
   justify-content: center;
 }
+
+
+
+
