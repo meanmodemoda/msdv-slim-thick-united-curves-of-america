@@ -5,29 +5,34 @@ Slim Thick is an uncommon female body type that consists of a flat stomach, tone
 
 I decided to dig deeper into this topic when I started to hear more and more stories about teenage girls’ obsession with Slim Thick. The idealization of the Slim Thick body is a phenomenon I attributed to the continuation of the historical male gaze and capitalist exploitation of the female body. It is also another example of appropriation of the Black culture, all against the backdrop of the growing normality of plastic surgery and algorithmic reinforcement of social media.
 
-# Design Concept
+## Design Concept
 Body contouring will be a recurring theme and is also used in one of the charts. Background color is set to be a peculiar type of skin tone that represents the "manufactured look of rootless exoticism", with accent colors resembling the Kardashian family's cosmetic lines.
+<img src="./assets/readme/Sketch.jpg" width="800" alt="Sketch">
+<img src="./assets/readme/dual_area_chart.png" width="800" alt="Dual Area Chart">
 
-# Data
+## Data
 The dataset is hand gathered and compiled across multiple sources including [US Plastic Surgery Statistics](https://www.plasticsurgery.org/news/plastic-surgery-statistics), Statista, eMarketer and Bloomberg.
+<img src="./assets/readme/Spreadsheet showcase.jpg" width="800" alt="Data Exerpts">
 
 You can download the processed [dataset](https://github.com/muonius/msdv-slim-thick-united-curves-of-america/tree/master/data) here.
 
-# Narrative
-All charts including reference lines and sliders are done in `d3.js`. For UI, I used the following libraries.
+## Narrative
+I strive to achieve a balance between a pop culture representation and rigorous research and analysis. 
+<img src="./assets/readme/Scroll.gif" width="800" alt="Narrative">
 
+## Development
+All charts including reference lines and sliders are done in `d3.js`. For UI, I used the following libraries.
 - [sticky scroll](https://pudding.cool/process/scrollytelling-sticky/)
 - [scrollama](https://github.com/russellgoldenberg/scrollama)
 - [d3-simple-slider](https://www.npmjs.com/package/d3-simple-slider)
 
-# UI & UX Experiement
 I continue to explore how to improve UI & UX on multi-layered data. I was presented with a challenge that I had lots of info that I wanted to compare side by side that a hover-over, moving tooltip would be overwhelming. I eventually chose to use a slider with reference lines.
+<img src="./assets/readme/comp_line_chart.png" width="800" alt="Comp Line Chart">
 
-
-# Credit
+## Credit
 This is my first web based data visualization project and I owe every little bit of progress made to the amazing community of friends, classmates and practitioners. Thank you for brainstorming with me, showing me what’s possible out there, encouraging me to experiment, and critiquing from tiny details to structural thinking. I am fortunate to be part of this community.
 
-# Bibliography
+## Bibliography
 - Mbowe, Khadija. “The reign of the Slim-Thick Influencer.” Aug 22, 2021. [https://www.youtube.com/watch?v=H69-QpX-wG0](https://www.youtube.com/watch?v=H69-QpX-wG0).
 - Morris, Desmond. *The Naked Women*. [St. Martin's Publishing Group](https://www.google.com/search?hl=en&gbpv=1&dq=rap+songs+that+praise+the+booty&pg=PA228&printsec=frontcover&q=inpublisher:%22St.+Martin%27s+Publishing+Group%22&tbm=bks&sa=X&ved=2ahUKEwjL6Y6m6uL0AhUTmGoFHYdABf4QmxMoAHoECCAQAg&sxsrf=AOaemvK1LA1sBEAMVwVmRXAwWZRMr6r2Hg:1639469090915), 2007.
 - Beauvoir, Simone. *The Second Sex*. New York: Vintage Books, 1989. Print.
