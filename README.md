@@ -12,9 +12,9 @@ Body contouring will be a recurring theme and is also used in one of the charts.
 
 Initial Prototype<br/>
 <img src="./assets/readme/Slim Thick Draft.png" width="600" alt="Initial Prototype">
-I began with the idea of body contouring that gradually transitioned to an optical illusion.<br/>
+<br/>I began with the idea of body contouring that gradually transitioned to an optical illusion.
 <img src="./assets/readme/Sketch.jpg" width="600" alt="Sketch">
-The dual area chart revisits the body contour theme.<br/>
+<br/>The dual area chart revisits the body contour theme.
 <img src="./assets/readme/dual_area_chart.png" width="600" alt="Dual Area Chart">
 
 
