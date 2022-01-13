@@ -38,7 +38,7 @@ All charts including reference lines and sliders are done in `d3.js`. For UI, I 
 - [d3-simple-slider](https://www.npmjs.com/package/d3-simple-slider)
 
 I continue to explore how to improve UI & UX on multi-layered data. I was presented with a challenge that I had lots of info that I wanted to compare side by side that a hover-over, moving tooltip would be overwhelming. I eventually chose to use a slider with reference lines.
-<img src="./assets/readme/comp_line_chart.png" width="800" alt="Comp Line Chart">
+<img src="./assets/readme/comp_line_chart.png" width="600" alt="Comp Line Chart">
 
 ## Credit
 This is my first web based data visualization project and I owe every little bit of progress made to the amazing community of friends, classmates and practitioners. Thank you for brainstorming with me, showing me what’s possible out there, encouraging me to experiment, and critiquing from tiny details to structural thinking. I am fortunate to be part of this community.
