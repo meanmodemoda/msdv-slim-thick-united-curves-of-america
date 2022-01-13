@@ -10,11 +10,11 @@ The main design element is an optical illusion of the male gaze, which is compos
 
 Body contouring will be a recurring theme and is also used in one of the charts. Background color is set to be a peculiar type of skin tone that represents the "manufactured look of rootless exoticism", with accent colors resembling the Kardashian family's cosmetic lines.
 
-<img src="./assets/readme/Slim Thick Draft.png" width="600" alt="Initial Prototype"><br>
-Initial Prototype
+<img src="./assets/readme/Slim Thick Draft.png" width="600" alt="Initial Prototype">
+Initial Prototype<br/>
 <img src="./assets/readme/Sketch.jpg" width="600" alt="Sketch">
-I began with the idea of body contouring that gradually transitioned to an optical illusion.
-<br><img src="./assets/readme/dual_area_chart.png" width="600" alt="Dual Area Chart">
+I began with the idea of body contouring that gradually transitioned to an optical illusion.<br/>
+<img src="./assets/readme/dual_area_chart.png" width="600" alt="Dual Area Chart">
 The dual area chart revisits the body contour theme.
 
 ##
