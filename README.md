@@ -11,7 +11,7 @@ Body contouring will be a recurring theme and is also used in one of the charts.
 # Data
 The dataset is hand gathered and compiled across multiple sources including [US Plastic Surgery Statistics](https://www.plasticsurgery.org/news/plastic-surgery-statistics), Statista, eMarketer and Bloomberg.
 
-You can download the processed dataset here.
+You can download the processed [dataset](https://github.com/muonius/msdv-slim-thick-united-curves-of-america/tree/master/data) here.
 
 # Narrative
 All charts including reference lines and sliders are done in `d3.js`. For UI, I used the following libraries.
