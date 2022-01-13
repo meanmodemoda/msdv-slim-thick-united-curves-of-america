@@ -5,32 +5,33 @@ Slim Thick is an uncommon female body type that consists of a flat stomach, tone
 
 I decided to dig deeper into this topic when I started to hear more and more stories about teenage girls’ obsession with Slim Thick. The idealization of the Slim Thick body is a phenomenon I attributed to the continuation of the historical male gaze and capitalist exploitation of the female body. It is also another example of appropriation of the Black culture, all against the backdrop of the growing normality of plastic surgery and algorithmic reinforcement of social media.
 
-## Design Concept
+### Design Concept
 The main design element is an optical illusion of the male gaze, which is composed of two silhouettes featuring Zuck-Buck-A-Lot (social media) and Dr. Butt-A-Lot (plastic surgery). The negative space between the silhouettes resembles the outline of the Slim Thick body. 
 
 Body contouring will be a recurring theme and is also used in one of the charts. Background color is set to be a peculiar type of skin tone that represents the "manufactured look of rootless exoticism", with accent colors resembling the Kardashian family's cosmetic lines.
 
-*Initial Prototype*
-<br>
-<img src="./assets/readme/Slim Thick Draft.png" width="600" alt="Initial Prototype">
+<img src="./assets/readme/Slim Thick Draft.png" width="600" alt="Initial Prototype"><br>
+Initial Prototype
 
-*I began with the idea of body contouring that gradually transitioned to an optical illusion.*
 <img src="./assets/readme/Sketch.jpg" width="600" alt="Sketch">
+I began with the idea of body contouring that gradually transitioned to an optical illusion.
 
-*The dual area chart revisits the body contour theme.*
+
 <img src="./assets/readme/dual_area_chart.png" width="600" alt="Dual Area Chart">
+The dual area chart revisits the body contour theme.
 
-## Data
+##
+### Data
 The dataset is hand gathered and compiled across multiple sources including [US Plastic Surgery Statistics](https://www.plasticsurgery.org/news/plastic-surgery-statistics), Statista, eMarketer and Bloomberg.
 <img src="./assets/readme/Spreadsheet showcase.jpg" width="600" alt="Data Exerpts">
 
 You can download the processed [dataset](https://github.com/muonius/msdv-slim-thick-united-curves-of-america/tree/master/data) here.
 
-## Narrative
+### Narrative
 I strive to achieve a balance between a pop culture representation and rigorous research and analysis. 
 <img src="./assets/readme/Scroll.gif" width="800" alt="Narrative">
 
-## Development
+### Development
 All charts including reference lines and sliders are done in `d3.js`. For UI, I used the following libraries.
 - [sticky scroll](https://pudding.cool/process/scrollytelling-sticky/)
 - [scrollama](https://github.com/russellgoldenberg/scrollama)
