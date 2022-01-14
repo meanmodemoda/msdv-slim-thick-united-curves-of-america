@@ -29,7 +29,7 @@ You can download the processed [dataset](https://github.com/muonius/msdv-slim-th
 
 ### Narrative
 I strive to achieve a balance between a pop culture representation and rigorous research and analysis. 
-<img src="./assets/readme/Scroll.gif" width="800" alt="Narrative">
+<img src="./assets/readme/Scroll.gif" width="600" alt="Narrative">
 
 ### Development
 All charts including reference lines and sliders are done in `d3.js`. For UI, I used the following libraries.
