@@ -810,7 +810,7 @@ p#outro-assignment  {
 }
 
 
-#linkedin {
+.icon {
   margin: auto;
   vertical-align: middle; 
   display: inline-block;
@@ -818,9 +818,14 @@ p#outro-assignment  {
  } 
  
  
- #linkedin:hover {
+ .icon:hover {
  transform: translate(25%,-25%);
   } 
+
+  #filler {
+    opacity: 0;
+    font-size: 3px;
+}
 
 .citation a {
   text-decoration: none;
