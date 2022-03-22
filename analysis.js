@@ -434,7 +434,7 @@ async function drawAnalysis() {
         .style("font", "0.5rem 'Open Sans'")
         .style("color", "#E8BEAC")
         .style("line-height", "12px")
-        .html("<h1 style='font-weight: 800'>The Gaze</h1><p style='font-size: 8px; color: white;'>A trend line of estimated Kim and Kylie's Instagram followers and their networth in millions (count/$).");
+        .html("<h1 style='font-weight: 800'>The Gaze</h1><p style='font-size: 8px; color: white;'>Trendlines of estimated Kim and Kylie's Instagram followers and their networth in millions (count/$).");
 
     const foreignSry = labelGroups.append("foreignObject")
         .attr("x", 100)
@@ -445,7 +445,7 @@ async function drawAnalysis() {
         .style("font", "0.5rem 'Open Sans'")
         .style("color", "#E8BEAC")
         .style("line-height", "12px")
-        .html("<h1 style='font-weight: 800'>The Surgery</h1><p style='font-size: 8px; color: white;'>A trend line of annual growth rate (vs 2012) of key plastic surgeries performed in America (%).");
+        .html("<h1 style='font-weight: 800'>The Surgery</h1><p style='font-size: 8px; color: white;'>Trendlines of annual growth rate (vs 2012) of key plastic surgeries performed in America (%).");
 
     const foreignMoney = labelGroups.append("foreignObject")
         .attr("x", 100)
@@ -456,7 +456,7 @@ async function drawAnalysis() {
         .style("font", "0.5rem 'Open Sans'")
         .style("color", "#E8BEAC")
         .style("line-height", "12px")
-        .html("<h1 style='font-weight: 800'>The Money</h1><p style='font-size: 8px; color: white;'>A trend line of US plastic surgery spending and estimated Instagram annual ad revenue in billions ($).");
+        .html("<h1 style='font-weight: 800'>The Money</h1><p style='font-size: 8px; color: white;'>Trendlines of US plastic surgery spending and estimated Instagram annual ad revenue in billions ($).");
 
     //Draw Tooltip
     const tooltipBox = tooltipGroup.append('rect')
